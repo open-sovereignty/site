@@ -10,7 +10,10 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="site-title" href="../index.html">
-        <img src="../assets/logo.svg" alt="Open Digital Sovereignty" class="site-logo" />
+        <picture>
+          <source srcset="../assets/logo-dark.svg"  media="(prefers-color-scheme: dark)">
+          <img    src="../assets/logo-light.svg" alt="Open Digital Sovereignty" class="site-logo" />
+        </picture>
       </a>
       <input type="checkbox" id="site-nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
       <label for="site-nav-toggle" class="nav-burger" aria-hidden="true">

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <!-- Light-mode: dark navy text on white/light header -->
+  <g transform="translate(20, 15)">
+    <path d="M25,10 L45,10 C45,10 50,45 25,70 C25,70 25,70 25,70 C0,45 5,10 5,10 Z"
+          fill="#1E3A8A" opacity="0.25"/>
+    <path d="M45,20 L65,20 C65,20 70,55 45,80 C45,80 45,80 45,80 C20,55 25,20 25,20 Z"
+          fill="none" stroke="#06B6D4" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M37,48 L43,54 L55,40"
+          fill="none" stroke="#1E3A8A" stroke-width="4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="110" y="55"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="28" font-weight="800"
+        fill="#1E3A8A" letter-spacing="1">OPEN DIGITAL</text>
+  <text x="110" y="85"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="22" font-weight="400"
+        fill="#06B6D4" letter-spacing="4">SOVEREIGNTY</text>
+</svg>
