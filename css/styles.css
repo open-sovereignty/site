@@ -111,40 +111,27 @@ a:hover {
 .site-title {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  font-weight: 700;
-  font-size: 0.9375rem;
-  letter-spacing: -0.02em;
-  color: var(--header-text);
   text-decoration: none;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   z-index: 2;
-}
-
-.site-title:hover {
-  color: var(--gold-400);
-}
-
-.site-mark {
-  width: 2rem;
-  height: 2rem;
   flex-shrink: 0;
-  border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--blue-600) 50%, var(--gold-500) 50%);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.15);
 }
 
-.site-title-text {
-  max-width: 12rem;
+.site-title:hover .site-logo {
+  opacity: 0.85;
+}
+
+.site-logo {
+  /* Preserve 500:120 aspect ratio; height drives the size */
+  height: 2.25rem;
+  width: auto;
+  display: block;
+  transition: opacity 0.15s;
 }
 
 @media (min-width: 480px) {
-  .site-title {
-    font-size: 1rem;
-  }
-
-  .site-title-text {
-    max-width: none;
+  .site-logo {
+    height: 2.5rem;
   }
 }
 
