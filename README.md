@@ -25,7 +25,26 @@ Open [http://localhost:8080](http://localhost:8080).
 
 ## Deployment
 
-Pushes to `main` deploy automatically via GitHub Actions. Enable **Settings → Pages → Build and deployment → GitHub Actions** if not already configured.
+Pushes to `main` deploy automatically via GitHub Actions.
+
+### One-time setup (required)
+
+If the deploy job fails with `Failed to create deployment (status: 404)`, Pages is not enabled yet:
+
+1. **Organisation** (if `open-sovereignty` restricts Pages):  
+   [Organisation Settings → Pages](https://github.com/organizations/open-sovereignty/settings/pages) — allow GitHub Pages for repositories.
+
+2. **Repository**:  
+   [site → Settings → Pages](https://github.com/open-sovereignty/site/settings/pages)
+
+   - Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+   - Save. GitHub creates the `github-pages` environment.
+
+3. Re-run the workflow: **Actions → Deploy to GitHub Pages → Run workflow**, or push an empty commit.
+
+**Live URL:** https://open-sovereignty.github.io/site/
+
+> Private repos need a paid GitHub plan for Pages. Public repos work on the free tier.
 
 ## References
 
