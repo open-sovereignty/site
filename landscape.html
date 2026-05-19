@@ -37,20 +37,43 @@
     </div>
   </header>
 
-  <main>
+  <main class="landscape-main">
     <header class="page-header">
       <h1>Technology Landscape</h1>
-      <p class="lead">A structured view of technologies, standards, and providers relevant to digital sovereignty.</p>
+      <p class="lead">
+        Sovereignty-enabling technologies grouped by the eight objectives of the
+        <a id="landscape-framework-link" href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">EU Cloud Sovereignty Framework</a>.
+        This is a curated starter set — we will expand it over time.
+      </p>
+      <p class="landscape-cta">
+        <a href="assessment/eu-csf.html" class="btn btn-primary">Evaluate your posture</a>
+      </p>
     </header>
-    <section class="coming-soon">
-      <h2>Coming soon</h2>
-      <p>This section will map the technology landscape for open and sovereign cloud adoption. Check back as the project grows.</p>
-    </section>
+
+    <div class="landscape-toolbar">
+      <label class="landscape-search-wrap">
+        <span class="landscape-search-label">Filter</span>
+        <input type="search" id="landscape-search" class="landscape-search" placeholder="Search technologies…" autocomplete="off" />
+      </label>
+      <nav class="landscape-jump" id="landscape-jump" aria-label="Jump to category"></nav>
+    </div>
+
+    <p id="landscape-empty" class="landscape-empty hidden" role="status">No technologies match your search.</p>
+
+    <div id="landscape-root" class="landscape-root" aria-live="polite">
+      <p class="landscape-loading">Loading landscape…</p>
+    </div>
+
+    <p class="landscape-footnote">
+      Curated for education — not an exhaustive or endorsed catalogue. Suggest additions via the project repository.
+    </p>
   </main>
 
   <footer class="site-footer">
     <p>Open Digital Sovereignty</p>
     <p>Educational resource — not official procurement or certification guidance.</p>
   </footer>
+
+  <script src="js/landscape.js"></script>
 </body>
 </html>

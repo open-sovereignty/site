@@ -21,7 +21,8 @@ Open [http://localhost:8080](http://localhost:8080).
 | `index.html` | Home — principles and pillars |
 | `assessment/` | Sovereignty self-assessments |
 | `assessment/eu-csf.html` | EU Cloud Sovereignty Framework quiz |
-| `landscape.html` | Technology landscape (coming soon) |
+| `landscape.html` | Technology landscape (EU CSF objectives) |
+| `data/sovereignty-landscape.json` | Landscape categories and technology entries |
 
 ## Deployment
 
@@ -45,6 +46,23 @@ If the deploy job fails with `Failed to create deployment (status: 404)`, Pages 
 **Live URL:** https://open-sovereignty.github.io/site/
 
 > Private repos need a paid GitHub plan for Pages. Public repos work on the free tier.
+
+## Technology landscape
+
+Entries live in [`data/sovereignty-landscape.json`](data/sovereignty-landscape.json). Each category maps to an EU Cloud Sovereignty Framework objective (`SOV-1` … `SOV-8`).
+
+To add a technology:
+
+```json
+{
+  "name": "Example Project",
+  "url": "https://example.org",
+  "summary": "One-line description for the tile tooltip.",
+  "tags": ["open-source", "eu"]
+}
+```
+
+Push to `main` to publish. Optional `logoUrl` can be added later for image logos instead of initials.
 
 ## References
 
