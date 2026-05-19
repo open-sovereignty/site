@@ -3,6 +3,9 @@
   --navy-950: #060d18;
   --navy-900: #0a1628;
   --navy-800: #132337;
+  --navy-700: #1e3a5f;
+  --navy-100: #e2eaf6;
+  --blue-700: #1d4ed8;
   --blue-600: #2563eb;
   --blue-500: #3b82f6;
   --gold-500: #c9a227;
@@ -1208,4 +1211,182 @@ main {
   font-size: 0.8125rem;
   color: var(--muted);
   text-align: center;
+}
+
+/* ── ViewFinder True/False Quiz ──────────────────────────────── */
+
+.vf-question-body {
+  min-height: 14rem;
+}
+
+.vf-category-tag {
+  display: inline-block;
+  background: var(--blue-600);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2em 0.7em;
+  border-radius: 99px;
+  margin-bottom: 1rem;
+}
+
+.vf-statement {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--navy-900);
+  margin-bottom: 1.5rem;
+}
+
+.vf-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.vf-btn {
+  min-width: 7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.6em 1.5em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.vf-btn-true {
+  background: var(--blue-600);
+  color: #fff;
+}
+.vf-btn-true:hover:not(:disabled) {
+  background: var(--blue-700);
+}
+
+.vf-btn-false {
+  background: transparent;
+  color: var(--blue-600);
+  border-color: var(--blue-600);
+}
+.vf-btn-false:hover:not(:disabled) {
+  background: var(--blue-50, #eff6ff);
+}
+
+.vf-btn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.vf-btn-correct {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.vf-btn-incorrect {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.vf-feedback {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-top: 0.75rem;
+}
+
+.vf-feedback-correct {
+  background: #dcfce7;
+  border-left: 4px solid #16a34a;
+  color: #14532d;
+}
+
+.vf-feedback-incorrect {
+  background: #fee2e2;
+  border-left: 4px solid #dc2626;
+  color: #7f1d1d;
+}
+
+.vf-verdict {
+  font-weight: 700;
+}
+.vf-verdict-correct  { color: #15803d; }
+.vf-verdict-incorrect { color: #b91c1c; }
+
+/* Results */
+.vf-overall-score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.vf-score-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--navy-900);
+  line-height: 1;
+}
+
+.vf-score-denom {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.vf-band-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue-700);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.vf-band-desc {
+  text-align: center;
+  color: var(--navy-700);
+  font-size: 0.9375rem;
+  max-width: 40ch;
+  margin: 0 auto 1.5rem;
+}
+
+.vf-results-table td:first-child { font-weight: 600; }
+.vf-results-table td:nth-child(2) {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.vf-cat-full { color: #15803d; }
+.vf-cat-good { color: var(--blue-700); }
+.vf-cat-low  { color: #b91c1c; }
+
+.vf-mini-bar {
+  width: 8rem;
+  height: 0.5rem;
+  background: var(--navy-100, #e2e8f0);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.vf-mini-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.vf-mini-fill.vf-cat-full { background: #16a34a; }
+.vf-mini-fill.vf-cat-good { background: var(--blue-600); }
+.vf-mini-fill.vf-cat-low  { background: #dc2626; }
+
+@media (max-width: 480px) {
+  .vf-mini-bar { width: 5rem; }
+  .vf-score-number { font-size: 2.5rem; }
 }

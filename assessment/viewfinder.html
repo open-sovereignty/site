@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EU Cloud Sovereignty Framework Assessment</title>
+  <title>ViewFinder Assessment — Open Digital Sovereignty</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -27,8 +27,8 @@
               <summary aria-current="page">Sovereignty Assessment</summary>
               <ul class="nav-submenu">
                 <li><a href="index.html">All assessments</a></li>
-                <li><a href="eu-csf.html" aria-current="page">EU Cloud Sovereignty Framework</a></li>
-                <li><a href="viewfinder.html">ViewFinder Assessment</a></li>
+                <li><a href="eu-csf.html">EU Cloud Sovereignty Framework</a></li>
+                <li><a href="viewfinder.html" aria-current="page">ViewFinder Assessment</a></li>
               </ul>
             </details>
           </li>
@@ -40,56 +40,64 @@
 
   <main>
     <header class="page-header">
-      <h1>EU Cloud Sovereignty Framework</h1>
-      <p class="lead">Self-assessment across eight sovereignty objectives. Each section has four questions; your lowest answer per objective determines the SEAL level (conservative rule from the framework).</p>
+      <h1>ViewFinder Assessment</h1>
+      <p class="lead">21 true-or-false questions across seven sovereignty dimensions. Test your understanding and identify where your knowledge has gaps.</p>
     </header>
 
-    <div id="eu-csf-quiz" class="quiz-container">
+    <div id="viewfinder-quiz" class="quiz-container">
+
+      <!-- Intro -->
       <section data-quiz-intro>
         <p class="quiz-disclaimer" role="note">
-          <strong>Disclaimer:</strong> This is a self-assessment for learning only. It is not an official European Commission
-          or public procurement evaluation. Minimum SEAL thresholds in real tenders are set per procurement specification.
-          Based on the <a href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">EU Cloud Sovereignty Framework v1.2.1</a> (October 2025).
+          <strong>About this quiz:</strong> The ViewFinder Assessment covers Data, Technical, Operational, Assurance, Open Source, Executive, and Managed Services sovereignty. Each question presents a statement — decide whether it is <strong>True</strong> or <strong>False</strong>, then read the explanation to sharpen your understanding. Based on the <a href="https://github.com/redhat-cop/viewfinder" target="_blank" rel="noopener noreferrer">Red Hat ViewFinder</a> framework.
         </p>
-        <p>You'll work through eight sections (SOV-1 to SOV-8), four questions each. For every question, select the SEAL level that best describes your current posture.</p>
+        <p>7 categories · 3 questions each · 21 questions total. No time limit.</p>
         <button type="button" class="btn btn-primary" data-btn-start>Start assessment</button>
       </section>
 
+      <!-- Questions -->
       <section data-quiz-form class="hidden">
         <div class="quiz-progress">
-          <div class="quiz-progress-label" data-progress-label>Section 1 of 8</div>
-          <div class="quiz-progress-bar"><div class="quiz-progress-fill" data-progress-fill style="width: 12.5%"></div></div>
+          <div class="quiz-progress-label" data-progress-label>Question 1 of 21</div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" data-progress-fill style="width: 0%"></div>
+          </div>
         </div>
-        <div data-quiz-sections></div>
+
+        <div data-vf-body class="vf-question-body"></div>
+
         <div class="quiz-actions">
-          <button type="button" class="btn btn-secondary" data-btn-prev disabled>Previous</button>
-          <button type="button" class="btn btn-primary" data-btn-next>Next section</button>
+          <button type="button" class="btn btn-primary hidden" data-btn-next>Next question</button>
           <button type="button" class="btn btn-primary hidden" data-btn-submit>View results</button>
         </div>
       </section>
 
+      <!-- Results -->
       <section data-quiz-results class="hidden">
         <h2>Your results</h2>
         <div data-results-score class="results-score"></div>
-        <table class="results-table">
+
+        <table class="results-table vf-results-table">
           <thead>
             <tr>
-              <th>Objective</th>
-              <th>SEAL level</th>
-              <th>Assurance</th>
+              <th>Category</th>
+              <th>Score</th>
+              <th>Progress</th>
             </tr>
           </thead>
           <tbody data-results-tbody></tbody>
         </table>
+
         <p class="results-source">
-          Scoring uses framework weights (SOV-5 supply chain 20%, SOV-8 sustainability 5%, etc.). Per objective, the lowest SEAL among your answers applies.
-          <a href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">Read the full framework (PDF)</a>.
+          Based on the <a href="https://github.com/redhat-cop/viewfinder" target="_blank" rel="noopener noreferrer">Red Hat ViewFinder</a> open-source sovereignty quiz framework.
         </p>
+
         <div class="quiz-actions">
           <button type="button" class="btn btn-secondary" data-btn-restart>Start over</button>
           <a href="index.html" class="btn btn-primary">All assessments</a>
         </div>
       </section>
+
     </div>
   </main>
 
@@ -98,7 +106,11 @@
     <p>Educational resource — not official procurement or certification guidance.</p>
   </footer>
 
-  <script src="../js/quiz-engine.js"></script>
-  <script src="../js/quiz-eu-csf.js"></script>
+  <script src="../js/quiz-viewfinder.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      ViewFinderQuiz.init("viewfinder-quiz", "../data/viewfinder-questions.json");
+    });
+  </script>
 </body>
 </html>
