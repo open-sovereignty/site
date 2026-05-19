@@ -23,9 +23,32 @@ jobs:
 
       - name: Stage site files
         run: |
-          mkdir _site
+          mkdir -p _site/assets/logos
           cp index.html landscape.html _site/
           cp -r assessment css js data _site/
+          # Copy manually committed logos (fallbacks for non-Simple-Icons items)
+          cp -r assets/. _site/assets/
+
+      - name: Fetch brand logos from Simple Icons CDN
+        run: |
+          fetch_logo() { curl -sf --max-time 15 "https://cdn.simpleicons.org/$2" -o "_site/assets/logos/$1" || echo "Skipping $2 (not found)"; }
+          fetch_logo "scaleway.svg"    "scaleway"
+          fetch_logo "ovhcloud.svg"    "ovh"
+          fetch_logo "eclipse.svg"     "eclipseide"
+          fetch_logo "nextcloud.svg"   "nextcloud"
+          fetch_logo "hashicorp.svg"   "hashicorp"
+          fetch_logo "minio.svg"       "minio"
+          fetch_logo "kubernetes.svg"  "kubernetes"
+          fetch_logo "crossplane.svg"  "crossplane"
+          fetch_logo "ansible.svg"     "ansible"
+          fetch_logo "suse.svg"        "suse"
+          fetch_logo "openshift.svg"   "redhatopenshift"
+          fetch_logo "sigstore.svg"    "sigstore"
+          fetch_logo "linux.svg"       "linux"
+          fetch_logo "openstack.svg"   "openstack"
+          fetch_logo "envoy.svg"       "envoyproxy"
+          fetch_logo "keycloak.svg"    "keycloak"
+          fetch_logo "falco.svg"       "falco"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

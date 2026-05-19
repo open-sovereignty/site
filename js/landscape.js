@@ -31,7 +31,26 @@
 
   function renderTile(item) {
     var hue = hashHue(item.name);
+    var inits = escapeHtml(initials(item.name));
     var searchText = (item.name + " " + (item.summary || "") + " " + (item.tags || []).join(" ")).toLowerCase();
+    var logoHtml;
+    if (item.logo) {
+      logoHtml =
+        '<span class="landscape-tile-logo landscape-tile-logo--img" style="--tile-hue:' +
+        hue +
+        '" data-initials="' +
+        inits +
+        '">' +
+        '<img src="assets/logos/' +
+        escapeHtml(item.logo) +
+        '" alt="" loading="lazy" class="landscape-tile-img" />' +
+        "</span>";
+    } else {
+      logoHtml =
+        '<span class="landscape-tile-logo" style="--tile-hue:' + hue + '">' +
+        inits +
+        "</span>";
+    }
     return (
       '<a class="landscape-tile" href="' +
       escapeHtml(item.url) +
@@ -40,11 +59,7 @@
       '" data-search="' +
       escapeHtml(searchText) +
       '">' +
-      '<span class="landscape-tile-logo" style="--tile-hue:' +
-      hue +
-      '">' +
-      escapeHtml(initials(item.name)) +
-      "</span>" +
+      logoHtml +
       '<span class="landscape-tile-name">' +
       escapeHtml(item.name) +
       "</span>" +
@@ -127,6 +142,17 @@
         }
 
         root.innerHTML = data.categories.map(renderCategory).join("");
+
+        // Swap broken images to their initials fallback (error doesn't bubble so use capture)
+        root.addEventListener("error", function (e) {
+          var img = e.target;
+          if (img.tagName !== "IMG" || !img.classList.contains("landscape-tile-img")) return;
+          var logo = img.parentElement;
+          if (logo && logo.classList.contains("landscape-tile-logo")) {
+            logo.classList.remove("landscape-tile-logo--img");
+            logo.innerHTML = logo.getAttribute("data-initials") || "";
+          }
+        }, true);
 
         var frameworkLink = document.getElementById("landscape-framework-link");
         if (frameworkLink && data.framework) {

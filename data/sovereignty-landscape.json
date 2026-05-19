@@ -10,11 +10,11 @@
       "title": "Strategic Sovereignty",
       "description": "Anchoring within the EU legal, financial, and industrial ecosystem.",
       "items": [
-        { "name": "Gaia-X", "url": "https://gaia-x.eu", "summary": "European federated data infrastructure and trust framework.", "tags": ["initiative", "federation"] },
-        { "name": "Scaleway", "url": "https://www.scaleway.com", "summary": "EU-headquartered cloud provider with regional data centres.", "tags": ["cloud", "provider"] },
-        { "name": "OVHcloud", "url": "https://www.ovhcloud.com", "summary": "European cloud provider with EU governance and hosting options.", "tags": ["cloud", "provider"] },
-        { "name": "Eclipse Foundation", "url": "https://www.eclipse.org", "summary": "Open-source foundation with strong European industry participation.", "tags": ["foundation", "open-source"] },
-        { "name": "IONOS", "url": "https://www.ionos.com", "summary": "European hosting and cloud services provider.", "tags": ["cloud", "provider"] }
+        { "name": "Gaia-X",            "logo": "gaia-x.svg",    "url": "https://gaia-x.eu",             "summary": "European federated data infrastructure and trust framework.",                         "tags": ["initiative", "federation"] },
+        { "name": "Scaleway",          "logo": "scaleway.svg",  "url": "https://www.scaleway.com",       "summary": "EU-headquartered cloud provider with regional data centres.",                      "tags": ["cloud", "provider"] },
+        { "name": "OVHcloud",          "logo": "ovhcloud.svg",  "url": "https://www.ovhcloud.com",       "summary": "European cloud provider with EU governance and hosting options.",                  "tags": ["cloud", "provider"] },
+        { "name": "Eclipse Foundation","logo": "eclipse.svg",   "url": "https://www.eclipse.org",        "summary": "Open-source foundation with strong European industry participation.",               "tags": ["foundation", "open-source"] },
+        { "name": "IONOS",             "logo": "ionos.svg",     "url": "https://www.ionos.com",          "summary": "European hosting and cloud services provider.",                                    "tags": ["cloud", "provider"] }
       ]
     },
     {
@@ -22,11 +22,11 @@
       "title": "Legal & Jurisdictional Sovereignty",
       "description": "Legal environment, foreign authority exposure, and enforceability of rights.",
       "items": [
-        { "name": "eIDAS", "url": "https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation", "summary": "EU framework for electronic identification and trust services.", "tags": ["regulation", "trust"] },
-        { "name": "LuxTrust", "url": "https://www.luxtrust.lu", "summary": "EU qualified trust service provider for signatures and seals.", "tags": ["qtsp", "trust"] },
-        { "name": "European Data Boundary", "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-computing", "summary": "EU policy direction for data processing within the Union.", "tags": ["policy", "data-residency"] },
-        { "name": "Nextcloud Hub", "url": "https://nextcloud.com", "summary": "Self-hosted collaboration platform deployable under EU jurisdiction.", "tags": ["collaboration", "self-hosted"] },
-        { "name": "Standard Contractual Clauses", "url": "https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en", "summary": "EU-approved mechanism for international data transfers.", "tags": ["legal", "gdpr"] }
+        { "name": "eIDAS",                       "logo": "eu-institution.svg", "url": "https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation",                                                                         "summary": "EU framework for electronic identification and trust services.",               "tags": ["regulation", "trust"] },
+        { "name": "LuxTrust",                    "logo": "luxtrust.svg",        "url": "https://www.luxtrust.lu",                                                                                                                      "summary": "EU qualified trust service provider for signatures and seals.",                "tags": ["qtsp", "trust"] },
+        { "name": "European Data Boundary",      "logo": "eu-institution.svg", "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-computing",                                                                           "summary": "EU policy direction for data processing within the Union.",                    "tags": ["policy", "data-residency"] },
+        { "name": "Nextcloud Hub",               "logo": "nextcloud.svg",       "url": "https://nextcloud.com",                                                                                                                        "summary": "Self-hosted collaboration platform deployable under EU jurisdiction.",          "tags": ["collaboration", "self-hosted"] },
+        { "name": "Standard Contractual Clauses","logo": "eu-institution.svg", "url": "https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en",      "summary": "EU-approved mechanism for international data transfers.",                      "tags": ["legal", "gdpr"] }
       ]
     },
     {
@@ -34,12 +34,12 @@
       "title": "Data & AI Sovereignty",
       "description": "Protection, control, and independence of data and AI services within the EU.",
       "items": [
-        { "name": "HashiCorp Vault", "url": "https://www.hashicorp.com/products/vault", "summary": "Secrets and key management deployable on-premises in the EU.", "tags": ["secrets", "keys"] },
-        { "name": "Thales Luna HSM", "url": "https://cpl.thalesgroup.com/encryption/hardware-security-modules", "summary": "Hardware security modules for customer-controlled cryptographic keys.", "tags": ["hsm", "encryption"] },
-        { "name": "Mistral AI", "url": "https://mistral.ai", "summary": "European AI models and APIs with EU hosting options.", "tags": ["ai", "eu"] },
-        { "name": "Aleph Alpha", "url": "https://aleph-alpha.com", "summary": "European sovereign AI research and commercial offerings.", "tags": ["ai", "eu"] },
-        { "name": "Infomaniak kDrive", "url": "https://www.infomaniak.com/kdrive", "summary": "Swiss-European cloud storage with strong data-protection posture.", "tags": ["storage", "eu"] },
-        { "name": "MinIO", "url": "https://min.io", "summary": "S3-compatible object storage for sovereign on-prem or EU cloud deployment.", "tags": ["storage", "open-source"] }
+        { "name": "HashiCorp Vault",    "logo": "hashicorp.svg",     "url": "https://www.hashicorp.com/products/vault",                          "summary": "Secrets and key management deployable on-premises in the EU.",                                   "tags": ["secrets", "keys"] },
+        { "name": "Thales Luna HSM",    "logo": "thales.svg",        "url": "https://cpl.thalesgroup.com/encryption/hardware-security-modules",  "summary": "Hardware security modules for customer-controlled cryptographic keys.",                          "tags": ["hsm", "encryption"] },
+        { "name": "Mistral AI",         "logo": "mistral.svg",       "url": "https://mistral.ai",                                                "summary": "European AI models and APIs with EU hosting options.",                                           "tags": ["ai", "eu"] },
+        { "name": "Aleph Alpha",        "logo": "aleph-alpha.svg",   "url": "https://aleph-alpha.com",                                           "summary": "European sovereign AI research and commercial offerings.",                                       "tags": ["ai", "eu"] },
+        { "name": "Infomaniak kDrive",  "logo": "infomaniak.svg",    "url": "https://www.infomaniak.com/kdrive",                                  "summary": "Swiss-European cloud storage with strong data-protection posture.",                              "tags": ["storage", "eu"] },
+        { "name": "MinIO",              "logo": "minio.svg",         "url": "https://min.io",                                                    "summary": "S3-compatible object storage for sovereign on-prem or EU cloud deployment.",                    "tags": ["storage", "open-source"] }
       ]
     },
     {
@@ -47,11 +47,11 @@
       "title": "Operational Sovereignty",
       "description": "Ability to run, support, and evolve technology independently of foreign control.",
       "items": [
-        { "name": "Kubernetes", "url": "https://kubernetes.io", "summary": "Portable orchestration standard for workload mobility across providers.", "tags": ["orchestration", "cncf"] },
-        { "name": "Crossplane", "url": "https://www.crossplane.io", "summary": "Open control plane for multi-cloud infrastructure as code.", "tags": ["iac", "cncf"] },
-        { "name": "Ansible", "url": "https://www.ansible.com", "summary": "Agentless automation for EU-operated infrastructure and applications.", "tags": ["automation"] },
-        { "name": "SUSE Rancher", "url": "https://www.rancher.com", "summary": "European vendor Kubernetes management and edge operations.", "tags": ["kubernetes", "eu-vendor"] },
-        { "name": "OpenShift", "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift", "summary": "Enterprise Kubernetes platform for hybrid and dedicated EU deployments.", "tags": ["kubernetes", "platform"] }
+        { "name": "Kubernetes",   "logo": "kubernetes.svg",  "url": "https://kubernetes.io",         "summary": "Portable orchestration standard for workload mobility across providers.", "tags": ["orchestration", "cncf"] },
+        { "name": "Crossplane",   "logo": "crossplane.svg",  "url": "https://www.crossplane.io",     "summary": "Open control plane for multi-cloud infrastructure as code.",              "tags": ["iac", "cncf"] },
+        { "name": "Ansible",      "logo": "ansible.svg",     "url": "https://www.ansible.com",       "summary": "Agentless automation for EU-operated infrastructure and applications.",   "tags": ["automation"] },
+        { "name": "SUSE Rancher", "logo": "suse.svg",        "url": "https://www.rancher.com",       "summary": "European vendor Kubernetes management and edge operations.",              "tags": ["kubernetes", "eu-vendor"] },
+        { "name": "OpenShift",    "logo": "openshift.svg",   "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift", "summary": "Enterprise Kubernetes platform for hybrid and dedicated EU deployments.", "tags": ["kubernetes", "platform"] }
       ]
     },
     {
@@ -59,11 +59,11 @@
       "title": "Supply Chain Sovereignty",
       "description": "Geographic origin, transparency, and resilience of the technology supply chain.",
       "items": [
-        { "name": "Sigstore", "url": "https://www.sigstore.dev", "summary": "Signed artifacts and transparency logs for software supply chain integrity.", "tags": ["signing", "cncf"] },
-        { "name": "in-toto", "url": "https://in-toto.io", "summary": "Framework for securing software supply chain metadata and attestations.", "tags": ["attestation", "ssdf"] },
-        { "name": "Syft", "url": "https://github.com/anchore/syft", "summary": "SBOM generator for visibility into software composition.", "tags": ["sbom"] },
-        { "name": "CycloneDX", "url": "https://cyclonedx.org", "summary": "Machine-readable SBOM standard widely used in compliance programmes.", "tags": ["sbom", "standard"] },
-        { "name": "SPDX", "url": "https://spdx.dev", "summary": "Open standard for software bill of materials and licence clarity.", "tags": ["sbom", "licence"] }
+        { "name": "Sigstore",   "logo": "sigstore.svg",    "url": "https://www.sigstore.dev",           "summary": "Signed artifacts and transparency logs for software supply chain integrity.", "tags": ["signing", "cncf"] },
+        { "name": "in-toto",    "logo": "in-toto.svg",     "url": "https://in-toto.io",                 "summary": "Framework for securing software supply chain metadata and attestations.",    "tags": ["attestation", "ssdf"] },
+        { "name": "Syft",       "logo": "syft.svg",        "url": "https://github.com/anchore/syft",    "summary": "SBOM generator for visibility into software composition.",                    "tags": ["sbom"] },
+        { "name": "CycloneDX", "logo": "cyclonedx.svg",   "url": "https://cyclonedx.org",              "summary": "Machine-readable SBOM standard widely used in compliance programmes.",        "tags": ["sbom", "standard"] },
+        { "name": "SPDX",       "logo": "spdx.svg",        "url": "https://spdx.dev",                   "summary": "Open standard for software bill of materials and licence clarity.",           "tags": ["sbom", "licence"] }
       ]
     },
     {
@@ -71,11 +71,11 @@
       "title": "Technology Sovereignty",
       "description": "Openness, transparency, and independence in the underlying technology stack.",
       "items": [
-        { "name": "Linux", "url": "https://www.kernel.org", "summary": "Open operating system kernel underpinning sovereign cloud stacks.", "tags": ["os", "open-source"] },
-        { "name": "OpenStack", "url": "https://www.openstack.org", "summary": "Open cloud infrastructure APIs for private and sovereign regions.", "tags": ["iaas", "open-source"] },
-        { "name": "OpenNebula", "url": "https://opennebula.io", "summary": "European-origin open cloud and edge management platform.", "tags": ["iaas", "eu"] },
-        { "name": "Envoy", "url": "https://www.envoyproxy.io", "summary": "Open proxy for portable, standards-based service networking.", "tags": ["networking", "cncf"] },
-        { "name": "Apache CloudStack", "url": "https://cloudstack.apache.org", "summary": "Open-source IaaS for building sovereign cloud regions.", "tags": ["iaas", "apache"] }
+        { "name": "Linux",              "logo": "linux.svg",      "url": "https://www.kernel.org",           "summary": "Open operating system kernel underpinning sovereign cloud stacks.",                "tags": ["os", "open-source"] },
+        { "name": "OpenStack",          "logo": "openstack.svg",  "url": "https://www.openstack.org",        "summary": "Open cloud infrastructure APIs for private and sovereign regions.",               "tags": ["iaas", "open-source"] },
+        { "name": "OpenNebula",         "logo": "opennebula.svg", "url": "https://opennebula.io",            "summary": "European-origin open cloud and edge management platform.",                       "tags": ["iaas", "eu"] },
+        { "name": "Envoy",              "logo": "envoy.svg",      "url": "https://www.envoyproxy.io",        "summary": "Open proxy for portable, standards-based service networking.",                   "tags": ["networking", "cncf"] },
+        { "name": "Apache CloudStack",  "logo": "cloudstack.svg", "url": "https://cloudstack.apache.org",   "summary": "Open-source IaaS for building sovereign cloud regions.",                        "tags": ["iaas", "apache"] }
       ]
     },
     {
@@ -83,11 +83,11 @@
       "title": "Security & Compliance Sovereignty",
       "description": "Security operations and compliance controlled within the EU.",
       "items": [
-        { "name": "Keycloak", "url": "https://www.keycloak.org", "summary": "Open identity and access management for self-hosted EU deployments.", "tags": ["iam", "open-source"] },
-        { "name": "Wazuh", "url": "https://wazuh.com", "summary": "Open XDR and SIEM platform from a European security vendor.", "tags": ["siem", "eu-vendor"] },
-        { "name": "Falco", "url": "https://falco.org", "summary": "Cloud-native runtime security for Kubernetes workloads.", "tags": ["security", "cncf"] },
-        { "name": "MONARC", "url": "https://www.monarc.lu", "summary": "Risk management tool used in Luxembourg and EU public sector.", "tags": ["grc", "eu"] },
-        { "name": "EUCS", "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-computing", "summary": "EU cloud cybersecurity certification scheme (reference framework).", "tags": ["certification", "policy"] }
+        { "name": "Keycloak", "logo": "keycloak.svg",       "url": "https://www.keycloak.org",                                               "summary": "Open identity and access management for self-hosted EU deployments.",             "tags": ["iam", "open-source"] },
+        { "name": "Wazuh",    "logo": "wazuh.svg",          "url": "https://wazuh.com",                                                       "summary": "Open XDR and SIEM platform from a European security vendor.",                    "tags": ["siem", "eu-vendor"] },
+        { "name": "Falco",    "logo": "falco.svg",          "url": "https://falco.org",                                                       "summary": "Cloud-native runtime security for Kubernetes workloads.",                       "tags": ["security", "cncf"] },
+        { "name": "MONARC",   "logo": "monarc.svg",         "url": "https://www.monarc.lu",                                                   "summary": "Risk management tool used in Luxembourg and EU public sector.",                  "tags": ["grc", "eu"] },
+        { "name": "EUCS",     "logo": "eu-institution.svg", "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-computing",       "summary": "EU cloud cybersecurity certification scheme (reference framework).",             "tags": ["certification", "policy"] }
       ]
     },
     {
@@ -95,10 +95,10 @@
       "title": "Environmental Sustainability",
       "description": "Long-term autonomy relating to energy usage and resource dependency.",
       "items": [
-        { "name": "Kepler", "url": "https://sustainable-computing.io", "summary": "CNCF project for Kubernetes energy and carbon metrics.", "tags": ["metrics", "cncf"] },
-        { "name": "Scaphandre", "url": "https://github.com/hubblo-org/scaphandre", "summary": "Energy consumption metrology agent for servers and containers.", "tags": ["energy", "open-source"] },
-        { "name": "Green Software Foundation", "url": "https://greensoftware.foundation", "summary": "Standards and patterns for reducing software carbon impact.", "tags": ["standards", "sustainability"] },
-        { "name": "Open Compute Project", "url": "https://www.opencompute.org", "summary": "Open hardware designs for efficient data centre infrastructure.", "tags": ["hardware", "efficiency"] }
+        { "name": "Kepler",                    "logo": "kepler.svg",         "url": "https://sustainable-computing.io",       "summary": "CNCF project for Kubernetes energy and carbon metrics.",                               "tags": ["metrics", "cncf"] },
+        { "name": "Scaphandre",                "logo": "scaphandre.svg",     "url": "https://github.com/hubblo-org/scaphandre","summary": "Energy consumption metrology agent for servers and containers.",                        "tags": ["energy", "open-source"] },
+        { "name": "Green Software Foundation", "logo": "green-software.svg", "url": "https://greensoftware.foundation",       "summary": "Standards and patterns for reducing software carbon impact.",                          "tags": ["standards", "sustainability"] },
+        { "name": "Open Compute Project",      "logo": "open-compute.svg",   "url": "https://www.opencompute.org",            "summary": "Open hardware designs for efficient data centre infrastructure.",                       "tags": ["hardware", "efficiency"] }
       ]
     }
   ]

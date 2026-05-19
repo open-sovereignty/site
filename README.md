@@ -51,18 +51,28 @@ If the deploy job fails with `Failed to create deployment (status: 404)`, Pages 
 
 Entries live in [`data/sovereignty-landscape.json`](data/sovereignty-landscape.json). Each category maps to an EU Cloud Sovereignty Framework objective (`SOV-1` … `SOV-8`).
 
-To add a technology:
+To add a technology, append an item to the relevant category's `items` array:
 
 ```json
 {
   "name": "Example Project",
+  "logo": "example.svg",
   "url": "https://example.org",
   "summary": "One-line description for the tile tooltip.",
   "tags": ["open-source", "eu"]
 }
 ```
 
-Push to `main` to publish. Optional `logoUrl` can be added later for image logos instead of initials.
+### Logos
+
+Logos live in `assets/logos/`. There are two sources:
+
+- **Manual SVGs** committed to the repo (`assets/logos/`). Used for EU/policy items and projects not covered by Simple Icons.
+- **Simple Icons** — well-known brand logos (Kubernetes, Ansible, Linux, etc.) are fetched automatically from [cdn.simpleicons.org](https://simpleicons.org) during the GitHub Actions build and stored in `_site/assets/logos/`. Simple Icons SVGs are released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Trademarks belong to their respective owners.
+
+When no logo is available or a file fails to load, the tile falls back to a coloured initials badge.
+
+To add a logo for a new entry, place an SVG in `assets/logos/` and reference it via the `"logo"` field. Aim for a 24 × 24 viewBox with clean fills.
 
 ## References
 
