@@ -9,25 +9,31 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-title" href="../index.html">Open Digital Sovereignty</a>
-      <details class="nav-toggle">
-        <summary aria-label="Open menu">Menu</summary>
-        <nav class="site-nav" aria-label="Main">
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li>
-              <details class="nav-dropdown" open>
-                <summary aria-current="page">Sovereignty Assessment</summary>
-                <ul class="nav-submenu">
-                  <li><a href="index.html">All assessments</a></li>
-                  <li><a href="eu-csf.html" aria-current="page">EU Cloud Sovereignty Framework</a></li>
-                </ul>
-              </details>
-            </li>
-            <li><a href="../landscape.html">Technology Landscape</a></li>
-          </ul>
-        </nav>
-      </details>
+      <a class="site-title" href="../index.html">
+        <span class="site-mark" aria-hidden="true"></span>
+        <span class="site-title-text">Open Digital Sovereignty</span>
+      </a>
+      <input type="checkbox" id="site-nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
+      <label for="site-nav-toggle" class="nav-burger" aria-hidden="true">
+        <span class="nav-burger-bar"></span>
+        <span class="nav-burger-bar"></span>
+        <span class="nav-burger-bar"></span>
+      </label>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <details class="nav-dropdown" open>
+              <summary aria-current="page">Sovereignty Assessment</summary>
+              <ul class="nav-submenu">
+                <li><a href="index.html">All assessments</a></li>
+                <li><a href="eu-csf.html" aria-current="page">EU Cloud Sovereignty Framework</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="../landscape.html">Technology Landscape</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
