@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EU Cloud Sovereignty Framework Assessment</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">Open Digital Sovereignty</a>
+      <details class="nav-toggle">
+        <summary aria-label="Open menu">Menu</summary>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li>
+              <details class="nav-dropdown" open>
+                <summary aria-current="page">Sovereignty Assessment</summary>
+                <ul class="nav-submenu">
+                  <li><a href="index.html">All assessments</a></li>
+                  <li><a href="eu-csf.html" aria-current="page">EU Cloud Sovereignty Framework</a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="../landscape.html">Technology Landscape</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <header class="page-header">
+      <h1>EU Cloud Sovereignty Framework</h1>
+      <p class="lead">Self-assessment across eight sovereignty objectives. Each section has four questions; your lowest answer per objective determines the SEAL level (conservative rule from the framework).</p>
+    </header>
+
+    <div id="eu-csf-quiz" class="quiz-container">
+      <section data-quiz-intro>
+        <p class="quiz-disclaimer" role="note">
+          <strong>Disclaimer:</strong> This is a self-assessment for learning only. It is not an official European Commission
+          or public procurement evaluation. Minimum SEAL thresholds in real tenders are set per procurement specification.
+          Based on the <a href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">EU Cloud Sovereignty Framework v1.2.1</a> (October 2025).
+        </p>
+        <p>You'll work through eight sections (SOV-1 to SOV-8), four questions each. For every question, select the SEAL level that best describes your current posture.</p>
+        <button type="button" class="btn btn-primary" data-btn-start>Start assessment</button>
+      </section>
+
+      <section data-quiz-form class="hidden">
+        <div class="quiz-progress">
+          <div class="quiz-progress-label" data-progress-label>Section 1 of 8</div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" data-progress-fill style="width: 12.5%"></div></div>
+        </div>
+        <div data-quiz-sections></div>
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-secondary" data-btn-prev disabled>Previous</button>
+          <button type="button" class="btn btn-primary" data-btn-next>Next section</button>
+          <button type="button" class="btn btn-primary hidden" data-btn-submit>View results</button>
+        </div>
+      </section>
+
+      <section data-quiz-results class="hidden">
+        <h2>Your results</h2>
+        <div data-results-score class="results-score"></div>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Objective</th>
+              <th>SEAL level</th>
+              <th>Assurance</th>
+            </tr>
+          </thead>
+          <tbody data-results-tbody></tbody>
+        </table>
+        <p class="results-source">
+          Scoring uses framework weights (SOV-5 supply chain 20%, SOV-8 sustainability 5%, etc.). Per objective, the lowest SEAL among your answers applies.
+          <a href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">Read the full framework (PDF)</a>.
+        </p>
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-secondary" data-btn-restart>Start over</button>
+          <a href="index.html" class="btn btn-primary">All assessments</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Open Digital Sovereignty</p>
+    <p>Educational resource — not official procurement or certification guidance.</p>
+  </footer>
+
+  <script src="../js/quiz-engine.js"></script>
+  <script src="../js/quiz-eu-csf.js"></script>
+</body>
+</html>
