@@ -1215,8 +1215,40 @@ main {
 
 /* ── ViewFinder True/False Quiz ──────────────────────────────── */
 
-.vf-question-body {
-  min-height: 14rem;
+.vf-category-body {
+  /* no fixed min-height — expands with three question cards */
+}
+
+.vf-cat-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: var(--navy-900);
+}
+
+.vf-questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.vf-question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.vf-q-number {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
 }
 
 .vf-category-tag {
@@ -1229,7 +1261,6 @@ main {
   text-transform: uppercase;
   padding: 0.2em 0.7em;
   border-radius: 99px;
-  margin-bottom: 1rem;
 }
 
 .vf-statement {

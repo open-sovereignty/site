@@ -58,17 +58,18 @@
       <!-- Questions -->
       <section data-quiz-form class="hidden">
         <div class="quiz-progress">
-          <div class="quiz-progress-label" data-progress-label>Question 1 of 21</div>
+          <div class="quiz-progress-label" data-progress-label>Category 1 of 7</div>
           <div class="quiz-progress-bar">
             <div class="quiz-progress-fill" data-progress-fill style="width: 0%"></div>
           </div>
         </div>
 
-        <div data-vf-body class="vf-question-body"></div>
+        <div data-vf-body class="vf-category-body"></div>
 
         <div class="quiz-actions">
-          <button type="button" class="btn btn-primary hidden" data-btn-next>Next question</button>
-          <button type="button" class="btn btn-primary hidden" data-btn-submit>View results</button>
+          <button type="button" class="btn btn-secondary" data-btn-prev disabled>Previous</button>
+          <button type="button" class="btn btn-primary"   data-btn-next disabled>Next category</button>
+          <button type="button" class="btn btn-primary hidden" data-btn-submit disabled>View results</button>
         </div>
       </section>
 
