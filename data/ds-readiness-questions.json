@@ -1,0 +1,231 @@
+{
+  "profiles": [
+    {
+      "id": "balanced",
+      "label": "Balanced",
+      "description": "Equal weighting across all domains — suitable for general assessments and organisations without specific regulatory constraints.",
+      "weights": { "data": 1.0, "tech": 1.0, "ops": 1.0, "assu": 1.0, "oss": 1.0, "exec": 1.0, "mng": 1.0 }
+    },
+    {
+      "id": "finserv",
+      "label": "Financial Services",
+      "description": "Heavily weighted towards data residency, assurance, and executive governance driven by financial regulation.",
+      "weights": { "data": 2.0, "tech": 1.5, "ops": 1.5, "assu": 2.0, "oss": 1.0, "exec": 2.0, "mng": 1.5 }
+    },
+    {
+      "id": "healthcare",
+      "label": "Healthcare",
+      "description": "Strong emphasis on data protection and assurance due to patient data sensitivity and healthcare compliance mandates.",
+      "weights": { "data": 2.0, "tech": 1.0, "ops": 2.0, "assu": 2.0, "oss": 1.0, "exec": 1.5, "mng": 1.5 }
+    },
+    {
+      "id": "government",
+      "label": "Government & Public Sector",
+      "description": "Highest priority on data sovereignty, assurance, and executive commitment — sovereignty is a constitutional requirement.",
+      "weights": { "data": 2.0, "tech": 1.5, "ops": 2.0, "assu": 2.0, "oss": 1.5, "exec": 2.0, "mng": 1.0 }
+    },
+    {
+      "id": "technology",
+      "label": "Technology & SaaS",
+      "description": "Prioritises technical independence and open-source strategy as core competitive and risk-management levers.",
+      "weights": { "data": 1.5, "tech": 2.0, "ops": 1.5, "assu": 1.5, "oss": 2.0, "exec": 1.0, "mng": 1.5 }
+    },
+    {
+      "id": "manufacturing",
+      "label": "Manufacturing & Industrial",
+      "description": "Operational resilience and managed service control are critical for industrial continuity and supply chain integrity.",
+      "weights": { "data": 1.5, "tech": 1.5, "ops": 2.0, "assu": 1.5, "oss": 1.0, "exec": 1.5, "mng": 2.0 }
+    },
+    {
+      "id": "telecoms",
+      "label": "Telecommunications",
+      "description": "Data, operational resilience, and assurance are critical given telecoms infrastructure and regulatory exposure.",
+      "weights": { "data": 2.0, "tech": 1.5, "ops": 2.0, "assu": 2.0, "oss": 1.0, "exec": 1.5, "mng": 1.5 }
+    },
+    {
+      "id": "energy",
+      "label": "Energy & Utilities",
+      "description": "Operational continuity and managed service control are paramount for critical national infrastructure.",
+      "weights": { "data": 1.5, "tech": 1.5, "ops": 2.0, "assu": 2.0, "oss": 1.0, "exec": 1.5, "mng": 2.0 }
+    }
+  ],
+  "domains": [
+    { "id": "data",  "title": "Data Sovereignty",        "description": "Data control, residency, and encryption sovereignty" },
+    { "id": "tech",  "title": "Technical Sovereignty",   "description": "Technology independence and platform portability" },
+    { "id": "ops",   "title": "Operational Sovereignty", "description": "Operational independence and resilience" },
+    { "id": "assu",  "title": "Assurance Sovereignty",   "description": "Security, compliance, and audit control" },
+    { "id": "oss",   "title": "Open Source",             "description": "Open source strategy and independence" },
+    { "id": "exec",  "title": "Executive Oversight",     "description": "Strategic governance and leadership commitment" },
+    { "id": "mng",   "title": "Managed Services",        "description": "Cloud service control and provider independence" }
+  ],
+  "maturityLevels": [
+    {
+      "level": 0, "name": "Initial", "min": 0, "max": 20,
+      "description": "Unpredictable, poorly controlled, reactive processes. Digital sovereignty is not yet a managed practice in your organisation.",
+      "actions": [
+        { "title": "Assess Current State",    "detail": "Conduct a baseline inventory of data assets, cloud dependencies, and third-party suppliers." },
+        { "title": "Identify Critical Gaps",  "detail": "Pinpoint the highest-risk sovereignty exposures in data storage, access, and jurisdiction." },
+        { "title": "Secure Leadership Buy-in","detail": "Present sovereignty risks in business terms to executive leadership to gain mandate and resource." },
+        { "title": "Quick Wins",              "detail": "Implement basic data classification, encryption at rest, and access logging as immediate controls." },
+        { "title": "Awareness Training",      "detail": "Run sovereignty awareness sessions for technical staff and procurement teams." }
+      ],
+      "focusAreas": ["Basic data classification and encryption", "Cloud dependency mapping", "Regulatory obligation identification", "Executive awareness"]
+    },
+    {
+      "level": 1, "name": "Managed", "min": 21, "max": 40,
+      "description": "Projects are planned and executed per policy. Basic controls are in place but not yet standardised across the organisation.",
+      "actions": [
+        { "title": "Develop Strategy",        "detail": "Create a digital sovereignty roadmap aligned with business objectives and regulatory requirements." },
+        { "title": "Implement Controls",      "detail": "Deploy encryption key management (BYOK/HYOK) and enforce data residency at the platform level." },
+        { "title": "Establish Governance",    "detail": "Form a sovereignty governance committee with clear ownership, responsibilities, and escalation paths." },
+        { "title": "Document Procedures",     "detail": "Create standard operating procedures for sovereignty-critical activities such as vendor onboarding and data transfers." },
+        { "title": "Build Capabilities",      "detail": "Train technical teams on sovereign technologies, cloud-native security, and open-source tooling." },
+        { "title": "Evaluate Solutions",      "detail": "Research and pilot open-source and EU-certified sovereign-ready platforms for key workloads." }
+      ],
+      "focusAreas": ["Data sovereignty and encryption controls", "Repeatable assessment processes", "Vendor risk management framework", "Compliance tracking and reporting"]
+    },
+    {
+      "level": 2, "name": "Defined", "min": 41, "max": 60,
+      "description": "Standardised, documented, and proactive processes exist organisation-wide. Sovereignty is an embedded practice.",
+      "actions": [
+        { "title": "Standardise Processes",   "detail": "Roll out sovereignty controls consistently across all programmes, projects, and business units." },
+        { "title": "Automate Compliance",     "detail": "Implement automated scanning and policy-as-code to continuously verify sovereignty posture." },
+        { "title": "Vendor Framework",        "detail": "Establish a formal supplier sovereignty assessment programme with contractual minimum standards." },
+        { "title": "Open Source Roadmap",     "detail": "Define and execute a strategic open-source adoption plan, replacing high-risk proprietary dependencies." },
+        { "title": "Pursue Certification",    "detail": "Target relevant national and EU certifications such as NIS2 compliance, SecNumCloud, or BSI C5." }
+      ],
+      "focusAreas": ["Consistent cross-organisational controls", "Automated compliance monitoring", "Supply chain sovereignty standards", "Strategic open-source adoption"]
+    },
+    {
+      "level": 3, "name": "Quantitatively Managed", "min": 61, "max": 80,
+      "description": "Sovereignty is measured and controlled using data and statistical techniques. Decisions are evidence-driven.",
+      "actions": [
+        { "title": "Define Metrics & KPIs",   "detail": "Establish sovereignty KPIs across all domains and integrate them into executive reporting dashboards." },
+        { "title": "Continuous Monitoring",   "detail": "Deploy real-time sovereignty posture monitoring with automated alerts for deviations." },
+        { "title": "Quantify Risk",           "detail": "Model sovereignty risk in financial and operational terms to support investment decisions." },
+        { "title": "Supply Chain Visibility", "detail": "Achieve full, auditable visibility of third-party sovereignty dependencies and sub-processors." },
+        { "title": "Advanced Auditing",       "detail": "Implement continuous compliance auditing with automated evidence collection and remediation workflows." }
+      ],
+      "focusAreas": ["Data-driven sovereignty governance", "Real-time posture monitoring", "Quantified risk management", "Full supply chain transparency"]
+    },
+    {
+      "level": 4, "name": "Optimising", "min": 81, "max": 100,
+      "description": "Continuous improvement and innovation are embedded. Your organisation is a sovereignty leader and ecosystem contributor.",
+      "actions": [
+        { "title": "Lead Innovation",         "detail": "Contribute to EU sovereignty frameworks, open-source projects, and industry working groups." },
+        { "title": "Ecosystem Building",      "detail": "Share best practices with peers, suppliers, and public sector bodies to raise the collective baseline." },
+        { "title": "Full Automation",         "detail": "Achieve fully automated sovereignty compliance, reporting, and evidence generation with minimal human effort." },
+        { "title": "Future-Proof Architecture","detail": "Design for emerging requirements such as the EU AI Act, Data Act, and next-generation secure hardware." },
+        { "title": "Policy Engagement",       "detail": "Engage proactively with regulators and standards bodies to shape sovereignty frameworks." }
+      ],
+      "focusAreas": ["Industry leadership and contribution", "Fully automated compliance", "Regulatory engagement", "Next-generation sovereign architecture"]
+    }
+  ],
+  "questions": [
+    {
+      "id": "d1", "domainId": "data",
+      "text": "Does your organisation currently comply with all data residency requirements or regulations relevant to your country, region, or sector?",
+      "explanation": "Data residency laws require certain data to be stored and processed within specific geographic boundaries. Non-compliance can result in significant regulatory penalties and loss of operating licences."
+    },
+    {
+      "id": "d2", "domainId": "data",
+      "text": "Do you control and manage your encryption keys exclusively, without sharing them with cloud providers?",
+      "explanation": "If your cloud provider holds your encryption keys (provider-managed keys), they — and by extension foreign governments with legal reach over that provider — can potentially access your data. Customer-managed keys (BYOK/HYOK) give you sole control."
+    },
+    {
+      "id": "d3", "domainId": "data",
+      "text": "Can you technically prevent sensitive data from crossing specific geographic or jurisdictional borders?",
+      "explanation": "Critical for compliance with data localisation laws. Requires technical controls such as geo-fenced storage policies, data egress monitoring, and contractual prohibitions to ensure data stays within approved regions."
+    },
+    {
+      "id": "t1", "domainId": "tech",
+      "text": "Can you meaningfully mitigate vendor lock-in risks with your current technology stack?",
+      "explanation": "Vendor lock-in occurs when proprietary technologies, APIs, or data formats make it costly or technically difficult to switch providers. Open standards, container-based workloads, and infrastructure-as-code reduce this risk significantly."
+    },
+    {
+      "id": "t2", "domainId": "tech",
+      "text": "Do you prioritise open standards over proprietary APIs when selecting or building platforms?",
+      "explanation": "Open, publicly governed standards (such as OCI, S3, LDAP, OAuth) mean your workloads are not tied to a single vendor's implementation. Proprietary APIs create hidden dependencies that only become visible when you try to leave."
+    },
+    {
+      "id": "t3", "domainId": "tech",
+      "text": "Could you migrate your critical applications to a different cloud platform if required?",
+      "explanation": "Platform portability is a practical test of technical sovereignty. If migration would take more than a few months or require architectural redesign, your dependency on the current provider is a strategic risk."
+    },
+    {
+      "id": "o1", "domainId": "ops",
+      "text": "Can you continue operating critical systems if your external cloud services become unavailable?",
+      "explanation": "Operational resilience means critical systems can run independently if cloud providers experience outages, revoke service, or are subject to regulatory action. This requires on-premise fallback capability or multi-cloud architectures."
+    },
+    {
+      "id": "o2", "domainId": "ops",
+      "text": "Does your organisation have in-house technical expertise to manage sovereign infrastructure without relying on the vendor?",
+      "explanation": "Managing sovereign systems requires specialist skills in security, compliance, and infrastructure operations. Over-reliance on vendor-provided support erodes operational sovereignty and creates a single point of dependency."
+    },
+    {
+      "id": "o3", "domainId": "ops",
+      "text": "Do your disaster recovery plans account for geopolitical scenarios such as sanctions, trade restrictions, or foreign access laws?",
+      "explanation": "Traditional DR focuses on technical failures. Geopolitical DR must also address scenarios where an international provider is legally compelled to restrict, suspend, or hand over access to your systems — including the CLOUD Act, Chinese Cybersecurity Law, and similar statutes."
+    },
+    {
+      "id": "a1", "domainId": "assu",
+      "text": "Do you have contractual rights to audit your vendors' security practices and controls independently?",
+      "explanation": "The right to audit — and the practical ability to exercise it — is the difference between taking a vendor's word for their security posture and verifying it independently. Without audit rights, assurance claims are unverifiable."
+    },
+    {
+      "id": "a2", "domainId": "assu",
+      "text": "Do you control where your security logs and audit trails are stored, and can you prevent the vendor accessing them?",
+      "explanation": "Security logs contain sensitive information about your systems and user behaviour. If logs are stored in vendor-controlled infrastructure, the vendor — and any government with jurisdiction over them — may be able to access your security telemetry."
+    },
+    {
+      "id": "a3", "domainId": "assu",
+      "text": "Is your organisation certified against relevant national or EU security standards such as NIS2, SecNumCloud, BSI C5, or ISO 27001?",
+      "explanation": "Certification against recognised standards provides independent assurance that your security controls meet a defined baseline. It also signals sovereignty commitment to customers, regulators, and procurement bodies."
+    },
+    {
+      "id": "os1", "domainId": "oss",
+      "text": "Do you have a formal policy that favours open-source software over proprietary alternatives where functionally equivalent?",
+      "explanation": "A formal OSS policy creates consistent decision-making criteria for procurement and architecture. Without it, proprietary solutions accumulate by default, increasing lock-in and reducing transparency."
+    },
+    {
+      "id": "os2", "domainId": "oss",
+      "text": "Could you fork and independently maintain critical open-source dependencies if the upstream project was abandoned or compromised?",
+      "explanation": "Forking capability is the practical safety net of open source. If your team lacks the skills or processes to maintain a fork, your sovereignty benefit from OSS is theoretical rather than real."
+    },
+    {
+      "id": "os3", "domainId": "oss",
+      "text": "Does your organisation actively contribute to open-source projects that are strategically important to your operations?",
+      "explanation": "Contributing to upstream projects gives your organisation influence over the project's direction, early visibility of security issues, and deeper internal expertise — all of which strengthen your long-term sovereignty position."
+    },
+    {
+      "id": "e1", "domainId": "exec",
+      "text": "Do you have a named executive sponsor or steering committee with accountability for digital sovereignty?",
+      "explanation": "Without executive ownership, sovereignty initiatives lack the authority to override cost-driven procurement decisions or challenge vendor proposals. A named sponsor signals organisational commitment and provides escalation authority."
+    },
+    {
+      "id": "e2", "domainId": "exec",
+      "text": "Is digital sovereignty explicitly included in your corporate or IT strategy documents?",
+      "explanation": "Strategy-level inclusion ensures sovereignty considerations are applied at the point of architectural and procurement decisions, not retrofitted after the fact. It also makes sovereignty a measurable objective for leadership teams."
+    },
+    {
+      "id": "e3", "domainId": "exec",
+      "text": "Is there a dedicated budget allocated specifically for digital sovereignty initiatives and compliance?",
+      "explanation": "Budget allocation is the clearest indicator of organisational seriousness. Without dedicated funding, sovereignty work competes with — and typically loses to — feature delivery and operational cost reduction."
+    },
+    {
+      "id": "m1", "domainId": "mng",
+      "text": "Can you restrict cloud service deployments to specific certified regions or data centres?",
+      "explanation": "The ability to enforce geographic and certification constraints on deployments is a basic managed services sovereignty control. Without it, workloads may inadvertently land outside approved jurisdictions during scaling or failover events."
+    },
+    {
+      "id": "m2", "domainId": "mng",
+      "text": "Do you control and actively monitor your cloud provider's administrative access to your systems?",
+      "explanation": "Privileged access by vendor support staff represents a high-risk sovereignty exposure. Controlling and logging when, why, and who accesses your environment — including just-in-time access models — is essential for assurance and incident response."
+    },
+    {
+      "id": "m3", "domainId": "mng",
+      "text": "Have you tested and validated your ability to migrate workloads to a different cloud provider?",
+      "explanation": "Theoretical portability and proven portability are very different things. A tested migration — even a partial one — reveals hidden dependencies, undocumented vendor-specific features, and operational gaps that paper assessments cannot surface."
+    }
+  ]
+}

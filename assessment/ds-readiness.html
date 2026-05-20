@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DS Readiness Assessment — Open Digital Sovereignty</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">
+        <picture>
+          <source srcset="../assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="../assets/logo-light.svg" alt="Open Digital Sovereignty" class="site-logo" />
+        </picture>
+      </a>
+      <input type="checkbox" id="site-nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
+      <label for="site-nav-toggle" class="nav-burger" aria-hidden="true">
+        <span class="nav-burger-bar"></span>
+        <span class="nav-burger-bar"></span>
+        <span class="nav-burger-bar"></span>
+      </label>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <details class="nav-dropdown" open>
+              <summary aria-current="page">Sovereignty Assessment</summary>
+              <ul class="nav-submenu">
+                <li><a href="index.html">All assessments</a></li>
+                <li><a href="eu-csf.html">EU Cloud Sovereignty Framework</a></li>
+                <li><a href="viewfinder.html">Digital Sovereignty Quiz</a></li>
+                <li><a href="ds-readiness.html" aria-current="page">DS Readiness Assessment</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="../landscape.html">Technology Landscape</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <header class="page-header">
+      <h1>DS Readiness Assessment</h1>
+      <p class="lead">A structured 21-question assessment across 7 sovereignty domains, weighted by your industry profile, that produces a maturity score and targeted improvement roadmap.</p>
+    </header>
+
+    <div class="quiz-container">
+
+      <!-- ── Step 1: Intro ─────────────────────────────────────── -->
+      <section id="dsr-intro">
+        <div class="dsr-intro-card">
+          <h2>About this assessment</h2>
+          <ul class="dsr-intro-list">
+            <li><strong>7 domains</strong> — Data, Technical, Operational, Assurance, Open Source, Executive Oversight, and Managed Services</li>
+            <li><strong>21 questions</strong> — 3 per domain, each with contextual guidance</li>
+            <li><strong>3 answer options</strong> — Yes, No, or Don't Know (DK answers surface knowledge gaps)</li>
+            <li><strong>Industry profiles</strong> — domain weights adapt to your sector's regulatory context</li>
+            <li><strong>Maturity output</strong> — scored 0–100% against a 5-level maturity model with a tailored action plan</li>
+          </ul>
+          <p class="dsr-disclaimer" role="note">
+            This assessment is for self-evaluation and educational purposes. It is not a formal certification or regulatory compliance tool. Results are calculated client-side and are not stored or transmitted.
+          </p>
+          <button type="button" class="btn btn-primary" id="dsr-start-btn">Select your profile →</button>
+        </div>
+      </section>
+
+      <!-- ── Step 2: Profile selector ─────────────────────────── -->
+      <section id="dsr-profile" hidden>
+        <h2 class="dsr-step-heading">Choose your industry profile</h2>
+        <p class="dsr-step-subheading">Your profile determines how each domain is weighted in the final score. Select the option that best describes your organisation.</p>
+
+        <div id="dsr-profile-grid" class="dsr-profile-grid"></div>
+
+        <p id="dsr-profile-error" class="dsr-error" hidden>Please select a profile before continuing.</p>
+
+        <div id="dsr-weight-summary" class="dsr-weight-summary" hidden>
+          <h3>Domain weights for selected profile</h3>
+          <table id="dsr-weight-table" class="dsr-weight-table">
+            <thead>
+              <tr><th>Domain</th><th>Weight</th><th>Relative priority</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-primary" id="dsr-begin-btn">Begin Assessment →</button>
+        </div>
+      </section>
+
+      <!-- ── Step 3: Quiz form ──────────────────────────────────── -->
+      <section id="dsr-quiz" hidden>
+
+        <div class="quiz-progress">
+          <div class="quiz-progress-label" id="dsr-progress-label">Domain 1 of 7</div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="dsr-progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div id="dsr-form-body"></div>
+
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-secondary" id="dsr-prev-btn" disabled>← Previous</button>
+          <button type="button" class="btn btn-primary"   id="dsr-next-btn" disabled>Next domain →</button>
+          <button type="button" class="btn btn-accent"    id="dsr-submit-btn" hidden disabled>View results →</button>
+        </div>
+      </section>
+
+      <!-- ── Step 4: Results ───────────────────────────────────── -->
+      <section id="dsr-results" hidden>
+
+        <div class="dsr-results-header">
+          <h2>Your Readiness Report</h2>
+          <p class="dsr-report-meta">
+            Profile: <strong class="dsr-profile-used"></strong> &nbsp;·&nbsp;
+            Generated: <span class="dsr-report-date"></span>
+          </p>
+        </div>
+
+        <!-- Maturity badge + overall score -->
+        <div class="dsr-score-block">
+          <div class="dsr-maturity-badge dsr-level-0">
+            <span class="dsr-maturity-level-num">Level 0</span>
+            <span class="dsr-maturity-name">Initial</span>
+          </div>
+          <div class="dsr-overall-block">
+            <div class="dsr-overall-numbers">
+              <span class="dsr-overall-pct">0%</span>
+              <span class="dsr-overall-pts">0.0 / 21 pts</span>
+            </div>
+            <div class="dsr-overall-bar">
+              <div class="dsr-overall-fill" style="width: 0%"></div>
+            </div>
+            <p class="dsr-maturity-desc"></p>
+          </div>
+        </div>
+
+        <!-- Domain breakdown table -->
+        <section class="dsr-results-section">
+          <h3>Domain Breakdown</h3>
+          <table id="dsr-domain-table" class="dsr-domain-table">
+            <thead>
+              <tr>
+                <th>Domain</th>
+                <th>Score</th>
+                <th>Weight</th>
+                <th>Gaps</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <!-- Improvement actions -->
+        <section class="dsr-results-section">
+          <h3>Recommended Actions</h3>
+          <div id="dsr-actions-body"></div>
+        </section>
+
+        <!-- Don't Know research items -->
+        <section class="dsr-results-section">
+          <h3>Questions to Research</h3>
+          <p class="dsr-results-section-intro">Areas where you answered 'Don't Know' — these represent knowledge gaps to address next.</p>
+          <div id="dsr-research-body"></div>
+        </section>
+
+        <div class="quiz-actions dsr-results-actions">
+          <button type="button" class="btn btn-secondary" id="dsr-restart-btn">Start over</button>
+          <button type="button" class="btn btn-outline" onclick="window.print()">Print / Save PDF</button>
+          <a href="index.html" class="btn btn-primary">All assessments</a>
+        </div>
+
+      </section>
+
+    </div><!-- /.quiz-container -->
+  </main>
+
+  <footer class="site-footer">
+    <p>Open Digital Sovereignty</p>
+    <p>Educational resource — not official procurement or certification guidance.</p>
+  </footer>
+
+  <script src="../js/quiz-ds-readiness.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      DSReadiness.init("../data/ds-readiness-questions.json");
+    });
+  </script>
+</body>
+</html>
