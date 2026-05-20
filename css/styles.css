@@ -1573,6 +1573,23 @@ main {
   margin-bottom: 0.75rem;
 }
 
+/* Active profile bar (shown throughout quiz) */
+.dsr-active-profile-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--border-color));
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  margin-bottom: 1rem;
+}
+.dsr-active-profile-bar strong {
+  color: var(--color-primary);
+}
+
 /* Domain sections */
 .dsr-domain-section { padding: 0.25rem 0; }
 .dsr-domain-header {

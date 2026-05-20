@@ -32,6 +32,10 @@
       answers = {};
       currentDomainIdx = 0;
       buildQuizForm();
+
+      var profileNameEl = document.getElementById("dsr-active-profile-name");
+      if (profileNameEl) profileNameEl.textContent = selectedProfile.label;
+
       showSection("dsr-quiz");
       renderDomain(0);
     });
