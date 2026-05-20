@@ -1575,19 +1575,44 @@ main {
 
 /* Active profile bar (shown throughout quiz) */
 .dsr-active-profile-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
   font-size: 0.8125rem;
   color: var(--text-muted);
   background: color-mix(in srgb, var(--color-primary) 6%, var(--bg-card));
   border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--border-color));
   border-radius: 6px;
-  padding: 0.4rem 0.85rem;
   margin-bottom: 1rem;
+}
+.dsr-active-profile-bar summary {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.dsr-active-profile-bar summary::after {
+  content: "▸";
+  font-size: 0.7em;
+  margin-left: auto;
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+.dsr-active-profile-bar[open] summary::after {
+  transform: rotate(90deg);
 }
 .dsr-active-profile-bar strong {
   color: var(--color-primary);
+}
+.dsr-active-profile-detail {
+  padding: 0.75rem 0.85rem 0.875rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--border-color));
+}
+.dsr-profile-detail-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
 }
 
 /* Domain sections */

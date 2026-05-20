@@ -36,6 +36,22 @@
       var profileNameEl = document.getElementById("dsr-active-profile-name");
       if (profileNameEl) profileNameEl.textContent = selectedProfile.label;
 
+      var profileDetailEl = document.getElementById("dsr-active-profile-detail");
+      if (profileDetailEl) {
+        var weightRows = qData.domains.map(function (d) {
+          var w = selectedProfile.weights[d.id] || 1;
+          return "<tr><td>" + esc(d.title) + "</td>" +
+            '<td class="dsr-weight-val">' + w.toFixed(1) + "×</td>" +
+            '<td><div class="dsr-weight-bar"><div class="dsr-weight-fill" style="width:' +
+            (w / 2 * 100) + '%"></div></div></td></tr>';
+        }).join("");
+        profileDetailEl.innerHTML =
+          '<p class="dsr-profile-detail-desc">' + esc(selectedProfile.description) + "</p>" +
+          '<table class="dsr-weight-table"><thead><tr>' +
+            "<th>Domain</th><th>Weight</th><th>Priority</th>" +
+          "</tr></thead><tbody>" + weightRows + "</tbody></table>";
+      }
+
       showSection("dsr-quiz");
       renderDomain(0);
     });
