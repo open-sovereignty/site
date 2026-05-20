@@ -208,7 +208,10 @@
     if (allAnswered) {
       var isLast = (idx === qData.domains.length - 1);
       if (nextBtn) nextBtn.disabled = isLast;
-      if (submitBtn) submitBtn.hidden = !isLast;
+      if (submitBtn) {
+        submitBtn.hidden = !isLast;
+        submitBtn.disabled = false;
+      }
     }
   }
 
