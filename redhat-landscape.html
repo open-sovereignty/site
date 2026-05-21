@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Technology Landscape — Open Digital Sovereignty</title>
+  <title>Red Hat Sovereignty Portfolio — Open Digital Sovereignty</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -35,9 +35,9 @@
               </ul>
             </details>
           </li>
-          <li><a href="landscape.html" aria-current="page">Technology Landscape</a></li>
+          <li><a href="landscape.html">Technology Landscape</a></li>
           <li><a href="sovereignty-landscape.html">CNCF Sovereignty Landscape</a></li>
-          <li><a href="redhat-landscape.html">Red Hat Portfolio</a></li>
+          <li><a href="redhat-landscape.html" aria-current="page">Red Hat Portfolio</a></li>
         </ul>
       </nav>
     </div>
@@ -45,33 +45,35 @@
 
   <main class="landscape-main">
     <header class="page-header">
-      <h1>Technology Landscape</h1>
+      <h1>Red Hat Sovereignty Portfolio</h1>
       <p class="lead">
-        Sovereignty-enabling technologies grouped by the eight objectives of the
-        <a id="landscape-framework-link" href="https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en" target="_blank" rel="noopener noreferrer">EU Cloud Sovereignty Framework</a>.
-        This is a curated starter set — we will expand it over time.
+        CNCF projects that Red Hat actively contributes to, maintains, or ships as part of its product portfolio
+        — filtered from the
+        <a href="sovereignty-landscape.html">CNCF Sovereignty Landscape</a>.
+        Hover over any tile to see the Red Hat product mapping.
       </p>
       <p class="landscape-cta">
-        <a href="assessment/ds-readiness.html" class="btn btn-primary">Evaluate your posture</a>
+        <a href="sovereignty-landscape.html" class="btn btn-primary">View full landscape</a>
       </p>
     </header>
 
     <div class="landscape-toolbar">
       <label class="landscape-search-wrap">
         <span class="landscape-search-label">Filter</span>
-        <input type="search" id="landscape-search" class="landscape-search" placeholder="Search technologies…" autocomplete="off" />
+        <input type="search" id="landscape-search" class="landscape-search" placeholder="Search technologies or products…" autocomplete="off" />
       </label>
       <nav class="landscape-jump" id="landscape-jump" aria-label="Jump to category"></nav>
     </div>
 
     <p id="landscape-empty" class="landscape-empty hidden" role="status">No technologies match your search.</p>
 
-    <div id="landscape-root" class="landscape-root" aria-live="polite">
+    <div id="landscape-root" class="landscape-root" data-rh-only="true" aria-live="polite">
       <p class="landscape-loading">Loading landscape…</p>
     </div>
 
     <p class="landscape-footnote">
-      Curated for education — not an exhaustive or endorsed catalogue. Suggest additions via the project repository.
+      Showing only projects supported by Red Hat.
+      See the <a href="sovereignty-landscape.html">full CNCF Sovereignty Landscape</a> for all projects.
     </p>
   </main>
 
@@ -80,6 +82,6 @@
     <p>Educational resource — not official procurement or certification guidance.</p>
   </footer>
 
-  <script src="js/landscape.js"></script>
+  <script src="js/landscape-cncf.js"></script>
 </body>
 </html>

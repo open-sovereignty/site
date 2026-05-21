@@ -1,0 +1,1627 @@
+{
+  "framework": {
+    "name": "Digital Sovereignty Pillars",
+    "source": "CNCF Cloud Native Landscape",
+    "sourceUrl": "https://landscape.cncf.io/"
+  },
+  "categories": [
+    {
+      "id": "DS-1",
+      "title": "Data Sovereignty",
+      "description": "Projects that protect, encrypt, store, control access to, and manage residency of data.",
+      "items": [
+        {
+          "name": "etcd",
+          "logo": "logos/0d8c081f2c074582caafefe4b135388d3e62c6e64ca1faf2058743c9d784f14f.svg",
+          "url": "https://etcd.io/",
+          "github": "https://github.com/etcd-io/etcd",
+          "summary": "Distributed reliable key-value store for the most critical data of a distributed system.",
+          "stars": 51702,
+          "maturity": "graduated",
+          "tags": [
+            "database",
+            "key-value"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Rook",
+          "logo": "logos/d08d5a49647bd660e74f90a4ff4f46524f35a4463b65090f4bcc513e577922b2.svg",
+          "url": "https://rook.io/",
+          "github": "https://github.com/rook/rook",
+          "summary": "Storage orchestration for Kubernetes, turning distributed storage systems into self-managing services.",
+          "stars": 13504,
+          "maturity": "graduated",
+          "tags": [
+            "storage",
+            "orchestration"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "TiKV",
+          "logo": "logos/9e6b263505fe51ce980697b6dc0e1624e618d6f493072fd50d5ce8a592f0d547.svg",
+          "url": "https://tikv.org",
+          "github": "https://github.com/tikv/tikv",
+          "summary": "A distributed transactional key-value database, based on the design of Google Spanner and HBase.",
+          "stars": 16677,
+          "maturity": "graduated",
+          "tags": [
+            "database",
+            "transactional"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Vitess",
+          "logo": "logos/0400b55699049b5048a7121585c90a40310a3e98b07193c259ead4945aba9a38.svg",
+          "url": "https://vitess.io/",
+          "github": "https://github.com/vitessio/vitess",
+          "summary": "MySQL-compatible, horizontally scalable, cloud-native database solution.",
+          "stars": 20968,
+          "maturity": "graduated",
+          "tags": [
+            "database",
+            "mysql"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Strimzi",
+          "logo": "logos/7d10ac8a7224e5d1cce99d7e0c16ea0f48b434c0461139c48a4f8b1477b5400a.svg",
+          "url": "https://strimzi.io/",
+          "github": "https://github.com/strimzi/strimzi-kafka-operator",
+          "summary": "Apache Kafka running on Kubernetes. Provides operators to deploy and manage Kafka clusters.",
+          "stars": 5810,
+          "maturity": "incubating",
+          "tags": [
+            "streaming",
+            "kafka"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat AMQ Streams"
+        },
+        {
+          "name": "NATS",
+          "logo": "logos/96862eb7542174f9ffeca0d2965f0c30d45675896983d9c4e17e9b8f4306f2c5.svg",
+          "url": "https://nats.io/",
+          "github": "https://github.com/nats-io/nats-server",
+          "summary": "High-performance connective technology for distributed systems. Cloud native messaging and streaming.",
+          "stars": 19821,
+          "maturity": "incubating",
+          "tags": [
+            "messaging",
+            "streaming"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "CloudEvents",
+          "logo": "logos/bf6283eac7e14f6e3a119e9276a5215e47cd79f8971eb6d32e99b8d601f05e23.svg",
+          "url": "https://cloudevents.io/",
+          "github": "https://github.com/cloudevents/spec",
+          "summary": "A specification for describing event data in a common way, enabling interoperability across services.",
+          "stars": 5762,
+          "maturity": "graduated",
+          "tags": [
+            "eventing",
+            "specification"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Serverless"
+        },
+        {
+          "name": "Longhorn",
+          "logo": "logos/acd3d31cbdf0aa2ef2d695fa4a3571e6d232a96214ec33fe0b2022b9719c244c.svg",
+          "url": "https://longhorn.io/",
+          "github": "https://github.com/longhorn/longhorn",
+          "summary": "Cloud-native distributed block storage for Kubernetes.",
+          "stars": 7719,
+          "maturity": "incubating",
+          "tags": [
+            "storage",
+            "block"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "CubeFS",
+          "logo": "logos/b92a57819da9dd521189017d84cbf4d4405c55355fbe7bb7137f5f5b38305c0e.svg",
+          "url": "https://cubefs.io/",
+          "github": "https://github.com/cubefs/cubefs",
+          "summary": "Cloud-native distributed storage platform supporting S3, POSIX, and HDFS interfaces.",
+          "stars": 5564,
+          "maturity": "graduated",
+          "tags": [
+            "storage",
+            "distributed"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Harbor",
+          "logo": "logos/de4f2dfd628db72e7d482ff0d9d22f0615f800a222ce7c8d6d2b5a147da77883.svg",
+          "url": "https://goharbor.io/",
+          "github": "https://github.com/goharbor/harbor",
+          "summary": "An open source trusted cloud native registry project that stores, signs, and scans content.",
+          "stars": 28499,
+          "maturity": "graduated",
+          "tags": [
+            "registry",
+            "security"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Quay"
+        },
+        {
+          "name": "Infinispan",
+          "logo": "logos/56a60cdd9cee0f39803553887dfcdc4d101c66a44273b6e40a8c5a0c57d61f92.svg",
+          "url": "https://infinispan.org/",
+          "github": "https://github.com/infinispan/infinispan",
+          "summary": "Open source distributed in-memory data grid and highly scalable NoSQL cloud data store.",
+          "stars": 1326,
+          "maturity": "sandbox",
+          "tags": [
+            "cache",
+            "data-grid"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Data Grid"
+        },
+        {
+          "name": "OpenEBS",
+          "logo": "logos/340b36e26fb0aad744cc65b296b96cddb95d44e3f9b8aa814e35d0010db0d6b8.svg",
+          "url": "https://www.openebs.io/",
+          "github": "https://github.com/openebs/openebs",
+          "summary": "A widely deployed open source container-native storage platform for stateful applications on Kubernetes.",
+          "stars": 9739,
+          "maturity": "sandbox",
+          "tags": [
+            "storage",
+            "container-native"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "CloudNativePG",
+          "logo": "logos/d795f87b2810954c88802c0b4bd6b3eee5a840c32cbee7276b25831cfb09e1cd.svg",
+          "url": "https://www.cloudnative-pg.io/",
+          "github": "https://github.com/cloudnative-pg/cloudnative-pg",
+          "summary": "Comprehensive platform to seamlessly manage PostgreSQL databases within Kubernetes environments.",
+          "stars": 8613,
+          "maturity": "sandbox",
+          "tags": [
+            "database",
+            "postgresql"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Vineyard",
+          "logo": "logos/56b0b5b743b3ef7b5366e800c6ce92d935aa8a7cede0f69e0cd89425d098b438.svg",
+          "url": "https://v6d.io",
+          "github": "https://github.com/v6d-io/v6d",
+          "summary": "An in-memory immutable data manager providing zero-copy data sharing across big data and AI systems.",
+          "stars": 951,
+          "maturity": "sandbox",
+          "tags": [
+            "data-sharing",
+            "in-memory"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "ORAS",
+          "logo": "logos/9fb94960a820a4ca1851097501a745b3e8c66b8a263c1e800e2c2adac2e04cd9.svg",
+          "url": "https://oras.land/",
+          "github": "https://github.com/oras-project/oras",
+          "summary": "OCI registry client for managing content like artifacts, images, and packages.",
+          "stars": 2265,
+          "maturity": "sandbox",
+          "tags": [
+            "registry",
+            "oci"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Quay"
+        }
+      ]
+    },
+    {
+      "id": "DS-2",
+      "title": "Technical Sovereignty",
+      "description": "Stack ownership, portability, container runtimes, interoperability, and avoiding vendor lock-in.",
+      "items": [
+        {
+          "name": "Kubernetes",
+          "logo": "logos/e0303fdc381c96c1b4461ad1a2437c8f050cfb856fcb8710c9104367ca60f316.svg",
+          "url": "https://kubernetes.io/",
+          "github": "https://github.com/kubernetes/kubernetes",
+          "summary": "Open-source system for automating deployment, scaling, and management of containerized applications.",
+          "stars": 122303,
+          "maturity": "graduated",
+          "tags": [
+            "orchestration",
+            "cncf"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "CRI-O",
+          "logo": "logos/710f6a5529c3084bf79e0584c92e2334ffd011714df93de4beb6de5af7f7b3ee.svg",
+          "url": "https://cri-o.io/",
+          "github": "https://github.com/cri-o/cri-o",
+          "summary": "Open Container Initiative-based implementation of Kubernetes Container Runtime Interface.",
+          "stars": 5612,
+          "maturity": "graduated",
+          "tags": [
+            "runtime",
+            "oci"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "containerd",
+          "logo": "logos/f26381b645b2f14293a2a597bc98b5bbe1e5e086029de41830ba7c667353bf3e.svg",
+          "url": "https://containerd.io/",
+          "github": "https://github.com/containerd/containerd",
+          "summary": "An open and reliable container runtime, industry standard for container execution.",
+          "stars": 20719,
+          "maturity": "graduated",
+          "tags": [
+            "runtime",
+            "container"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Crossplane",
+          "logo": "logos/c43855293d114dcad77461e7e5af20cf26023e365619f5d4abb54942b51ffc8a.svg",
+          "url": "https://crossplane.io/",
+          "github": "https://github.com/crossplane/crossplane",
+          "summary": "Cloud native control plane framework for building control planes without writing code.",
+          "stars": 11675,
+          "maturity": "graduated",
+          "tags": [
+            "iac",
+            "control-plane"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Helm",
+          "logo": "logos/caf58dcdb373502573c954e0aa3e03e725c12ffec5f8fe183c7f174b71357dd5.svg",
+          "url": "https://helm.sh/",
+          "github": "https://github.com/helm/helm",
+          "summary": "The Kubernetes Package Manager. Find, share, and use software built for Kubernetes.",
+          "stars": 29821,
+          "maturity": "graduated",
+          "tags": [
+            "package-manager",
+            "deployment"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "KubeVirt",
+          "logo": "logos/1cfd7bf84e118cc66f4e80cb112b330a46c260e9dced9258e1d7832949584461.svg",
+          "url": "https://kubevirt.io/",
+          "github": "https://github.com/kubevirt/kubevirt",
+          "summary": "Kubernetes Virtualization API and runtime to define and manage virtual machines alongside containers.",
+          "stars": 6856,
+          "maturity": "incubating",
+          "tags": [
+            "virtualization",
+            "vm"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Virtualization"
+        },
+        {
+          "name": "Knative",
+          "logo": "logos/6a1b7572490f95cada1836b3e0f932e5ff10c683bc1167b08ff868fb7867cfd5.svg",
+          "url": "https://knative.dev",
+          "github": "https://github.com/knative/serving",
+          "summary": "Developer-focused serverless application layer, a complement to existing Kubernetes application patterns.",
+          "stars": 6048,
+          "maturity": "graduated",
+          "tags": [
+            "serverless",
+            "eventing"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Serverless"
+        },
+        {
+          "name": "Podman",
+          "logo": "logos/88ebb2077819b6779ed4ef164a09694f8688785964c5f85a1515e247f18256fe.svg",
+          "url": "https://podman.io/",
+          "github": "https://github.com/containers/podman",
+          "summary": "A daemonless container engine for developing, managing, and running OCI containers and pods.",
+          "stars": 31699,
+          "maturity": "sandbox",
+          "tags": [
+            "container",
+            "engine"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Enterprise Linux"
+        },
+        {
+          "name": "Buildah",
+          "logo": "logos/88ebb2077819b6779ed4ef164a09694f8688785964c5f85a1515e247f18256fe.svg",
+          "url": "https://buildah.io/",
+          "github": "https://github.com/containers/buildah",
+          "summary": "A tool to build OCI container images without requiring a running daemon.",
+          "stars": 7700,
+          "maturity": "sandbox",
+          "tags": [
+            "container",
+            "build"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Enterprise Linux"
+        },
+        {
+          "name": "Devfile",
+          "logo": "logos/ee1c46664342421b96fad24e0d31e3c0f0df443b277410448a30e94f713e2bc3.svg",
+          "url": "https://devfile.io",
+          "github": "https://github.com/devfile/api",
+          "summary": "Kube-native API for cloud development workspace specification and portable developer environments.",
+          "stars": 337,
+          "maturity": "sandbox",
+          "tags": [
+            "developer",
+            "workspace"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Dev Spaces"
+        },
+        {
+          "name": "OpenShift",
+          "logo": "logos/53197fbac5d18fc680bc9de74d896f75c2cbba86019b9f05c68f0ad282c5e51d.svg",
+          "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift",
+          "github": "https://github.com/openshift/kubernetes",
+          "summary": "Enterprise Kubernetes platform for hybrid and multi-cloud deployments with built-in security and automation.",
+          "stars": 100,
+          "maturity": "graduated",
+          "tags": [
+            "platform",
+            "enterprise"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "KubeEdge",
+          "logo": "logos/cfb665dc9a024771b54107c3ebcd0802bfdfc74c65ea00892516bf36a3a4dc8a.svg",
+          "url": "https://kubeedge.io/",
+          "github": "https://github.com/kubeedge/kubeedge",
+          "summary": "Kubernetes native edge computing framework extending cloud-native capabilities to the edge.",
+          "stars": 7449,
+          "maturity": "graduated",
+          "tags": [
+            "edge",
+            "iot"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Metal3-io",
+          "logo": "logos/5c18560e3c06e682845b6daccc58e55fe161c73dccf15e3b106021bcdef7006d.svg",
+          "url": "https://metal3.io/",
+          "github": "https://github.com/metal3-io/baremetal-operator",
+          "summary": "Bare metal host provisioning integration for Kubernetes, enabling infrastructure-as-code for physical servers.",
+          "stars": 743,
+          "maturity": "incubating",
+          "tags": [
+            "bare-metal",
+            "provisioning"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Bare Metal"
+        },
+        {
+          "name": "crun",
+          "logo": "logos/8e241f1145fcf8ca479d6a65e04a1ef7e5ca9817e2d25dfe08953b649b22fb20.svg",
+          "url": "https://github.com/containers/crun",
+          "github": "https://github.com/containers/crun",
+          "summary": "A fast and lightweight fully featured OCI runtime written in C.",
+          "stars": 3921,
+          "maturity": "sandbox",
+          "tags": [
+            "runtime",
+            "oci"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Buildpacks",
+          "logo": "logos/90290bef758df2bd10485616a6445e240b903ecbaee96a8cc844d1c3ed6591ba.svg",
+          "url": "https://buildpacks.io/",
+          "github": "https://github.com/buildpacks/pack",
+          "summary": "Transform application source code into images that run on any cloud using Cloud Native Buildpacks.",
+          "stars": 2918,
+          "maturity": "incubating",
+          "tags": [
+            "build",
+            "source-to-image"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Flatcar Container Linux",
+          "logo": "logos/0e5b4c979e798905f5bb26c892beffdd489dc56701347a802b0698257ca6bb24.svg",
+          "url": "https://www.flatcar.org/",
+          "github": "https://github.com/flatcar/Flatcar",
+          "summary": "A community Linux distribution designed for container workloads, with high security and low maintenance.",
+          "stars": 1153,
+          "maturity": "incubating",
+          "tags": [
+            "os",
+            "linux"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "k3s",
+          "logo": "logos/6fc4d4394f933b66196684183a6d138a3a8fc83d8d4f711028a80cba81c10397.svg",
+          "url": "https://k3s.io",
+          "github": "https://github.com/k3s-io/k3s",
+          "summary": "Lightweight Kubernetes distribution for edge, IoT, CI, and ARM deployments.",
+          "stars": 33015,
+          "maturity": "sandbox",
+          "tags": [
+            "kubernetes",
+            "lightweight"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    },
+    {
+      "id": "DS-3",
+      "title": "Operational Sovereignty",
+      "description": "Running, automating, and evolving services independently without critical foreign dependency.",
+      "items": [
+        {
+          "name": "Argo",
+          "logo": "logos/ba71fd50cbc06c7bad3554de23cbca4298593141df3842003a94065c209610f4.svg",
+          "url": "https://argoproj.github.io/",
+          "github": "https://github.com/argoproj/argo-cd",
+          "summary": "Kubernetes-native tools to run workflows, manage clusters, and do GitOps right.",
+          "stars": 22896,
+          "maturity": "graduated",
+          "tags": [
+            "gitops",
+            "cd"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift GitOps"
+        },
+        {
+          "name": "Flux",
+          "logo": "logos/c513f673e1c90ff7826a7aa6065452b4bade9bd731db2e05675b74d6f5940d49.svg",
+          "url": "https://fluxcd.io/",
+          "github": "https://github.com/fluxcd/flux2",
+          "summary": "Open and extensible continuous delivery solution for Kubernetes, powered by GitOps Toolkit.",
+          "stars": 8122,
+          "maturity": "graduated",
+          "tags": [
+            "gitops",
+            "cd"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Tekton",
+          "logo": "logos/6435e589e94c6cef2a892324f822f41cf57da43dfb6a4d7c6ef8bfd537086d20.svg",
+          "url": "https://tekton.dev/",
+          "github": "https://github.com/tektoncd/pipeline",
+          "summary": "A cloud-native Pipeline resource for Kubernetes CI/CD.",
+          "stars": 8963,
+          "maturity": "sandbox",
+          "tags": [
+            "ci",
+            "pipelines"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Pipelines"
+        },
+        {
+          "name": "Ansible",
+          "logo": "logos/ef7870b35b4aef059b17bb97531ac3e80655bd8b4f24451d4200e07013790b07.svg",
+          "url": "https://www.ansible.com/",
+          "github": "https://github.com/ansible/ansible",
+          "summary": "Radically simple IT automation platform that makes applications and systems easier to deploy and maintain.",
+          "stars": 68569,
+          "maturity": "graduated",
+          "tags": [
+            "automation",
+            "configuration"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Ansible Automation Platform"
+        },
+        {
+          "name": "Operator Framework",
+          "logo": "logos/31185d07fe99edfa77fdadb1bf9de41fddcbe97a5fd4cf28dea07d1cea170213.svg",
+          "url": "https://operatorframework.io/",
+          "github": "https://github.com/operator-framework/operator-sdk",
+          "summary": "SDK for building Kubernetes applications. High level APIs, useful abstractions, and project scaffolding.",
+          "stars": 7641,
+          "maturity": "incubating",
+          "tags": [
+            "operator",
+            "sdk"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift (OLM)"
+        },
+        {
+          "name": "KEDA",
+          "logo": "logos/c87a77d52e0b19e58b98012864dbd5d963a4c4d97c767b15e074d30077104b12.svg",
+          "url": "https://keda.sh/",
+          "github": "https://github.com/kedacore/keda",
+          "summary": "Kubernetes-based Event Driven Autoscaler. Scale any container based on events from various sources.",
+          "stars": 10189,
+          "maturity": "graduated",
+          "tags": [
+            "autoscaling",
+            "events"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Custom Metrics Autoscaler Operator"
+        },
+        {
+          "name": "Open Cluster Management",
+          "logo": "logos/edc23c541bb05197cefcf51eb9bfa7edaf5d53435b752d6436baf1c21db63de2.svg",
+          "url": "https://open-cluster-management.io/",
+          "github": "https://github.com/open-cluster-management-io/ocm",
+          "summary": "Multi-cluster management with a hub-spoke architecture for fleet-wide governance and workload placement.",
+          "stars": 1039,
+          "maturity": "sandbox",
+          "tags": [
+            "multi-cluster",
+            "management"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Advanced Cluster Management"
+        },
+        {
+          "name": "Karmada",
+          "logo": "logos/57df0a733577a27787ef3a7a8544dc52e4c65a87a10c8d9705083429d599b0a8.svg",
+          "url": "https://karmada.io/",
+          "github": "https://github.com/karmada-io/karmada",
+          "summary": "Open, multi-cloud, multi-cluster Kubernetes orchestration for workload distribution.",
+          "stars": 5468,
+          "maturity": "incubating",
+          "tags": [
+            "multi-cluster",
+            "federation"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "cert-manager",
+          "logo": "logos/781162dfd40606ace7e76f727bb24f3222ac6878f7bdb129a1082b533f3f8be7.svg",
+          "url": "https://cert-manager.io/",
+          "github": "https://github.com/cert-manager/cert-manager",
+          "summary": "Automatically provision and manage TLS certificates in Kubernetes.",
+          "stars": 13813,
+          "maturity": "graduated",
+          "tags": [
+            "certificates",
+            "tls"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "CoreDNS",
+          "logo": "logos/9f366c2d009f0fc6fa4dd5fbfc4dbb462f3d20a09c534d3e4ced67dcb9b092b1.svg",
+          "url": "https://coredns.io/",
+          "github": "https://github.com/coredns/coredns",
+          "summary": "CoreDNS is a DNS server that chains plugins, providing flexible and extensible DNS for Kubernetes.",
+          "stars": 14079,
+          "maturity": "graduated",
+          "tags": [
+            "dns",
+            "service-discovery"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Shipwright",
+          "logo": "logos/934337f3dfc22110ed0f59267e234dc815e912fc75e18c541ba21961b779b882.svg",
+          "url": "https://shipwright.io/",
+          "github": "https://github.com/shipwright-io/build",
+          "summary": "Framework for building container images on Kubernetes, supporting multiple build strategies.",
+          "stars": 619,
+          "maturity": "sandbox",
+          "tags": [
+            "build",
+            "ci"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Builds"
+        },
+        {
+          "name": "Konveyor",
+          "logo": "logos/715ad140019608b9c66f808d41b05ced59f203baa0400704b8e52330966901fa.svg",
+          "url": "https://www.konveyor.io/",
+          "github": "https://github.com/konveyor/tackle2-hub",
+          "summary": "Tools for modernizing and migrating applications to Kubernetes, analyzing dependencies and risks.",
+          "stars": 88,
+          "maturity": "sandbox",
+          "tags": [
+            "migration",
+            "modernization"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Migration Toolkit for Applications"
+        },
+        {
+          "name": "OpenKruise",
+          "logo": "logos/0d5940504889e46c3de7eab60f4b1c6b3504406880d2e0af177d1476b5a77ee4.svg",
+          "url": "https://openkruise.io/",
+          "github": "https://github.com/openkruise/kruise",
+          "summary": "Automated management of large-scale applications on Kubernetes with advanced rolling and sidecar strategies.",
+          "stars": 5239,
+          "maturity": "incubating",
+          "tags": [
+            "workload",
+            "management"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Volcano",
+          "logo": "logos/45984434efdb609308838359d65422b44b2c60579df44a3f56c642b4161660d1.svg",
+          "url": "https://volcano.sh/",
+          "github": "https://github.com/volcano-sh/volcano",
+          "summary": "A cloud native batch system for high-performance workloads such as AI/ML, big data, and HPC on Kubernetes.",
+          "stars": 5568,
+          "maturity": "incubating",
+          "tags": [
+            "batch",
+            "hpc"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "OpenGitOps",
+          "logo": "logos/0467938e71483d7b6fd46333527eb95ffd377bd90f8a9109ec172b45a1227d7e.svg",
+          "url": "https://opengitops.dev/",
+          "github": "https://github.com/open-gitops/project",
+          "summary": "Set of open-source standards, best practices, and community-focused education for GitOps.",
+          "stars": 1170,
+          "maturity": "sandbox",
+          "tags": [
+            "gitops",
+            "standards"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "OpenTofu",
+          "logo": "logos/6526b49341f73e9ce99f4c13a3f51197dd1898cdf027864e91d276b427bfda01.svg",
+          "url": "https://opentofu.org/",
+          "github": "https://github.com/opentofu/opentofu",
+          "summary": "Open source infrastructure as code tool to safely and predictably provision and manage infrastructure.",
+          "stars": 28667,
+          "maturity": "sandbox",
+          "tags": [
+            "iac",
+            "terraform"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Backstage",
+          "logo": "logos/041229aa6e716c8d0beb5752747b4789f42dc3239c245c6cf3af8d5cf651b1ee.svg",
+          "url": "https://backstage.io/",
+          "github": "https://github.com/backstage/backstage",
+          "summary": "Open framework for building developer portals, enabling engineering teams to manage services and infrastructure.",
+          "stars": 33354,
+          "maturity": "incubating",
+          "tags": [
+            "developer-portal",
+            "platform"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    },
+    {
+      "id": "DS-4",
+      "title": "Assurance Sovereignty",
+      "description": "Audit, security monitoring, identity, policy enforcement, supply chain integrity, and compliance verification.",
+      "items": [
+        {
+          "name": "Falco",
+          "logo": "logos/4b03a845c7d926abfb00df4ed9c16fc5a024b700fa1aea4984b1d8393550d46d.svg",
+          "url": "https://falco.org/",
+          "github": "https://github.com/falcosecurity/falco",
+          "summary": "Cloud-native runtime security tool for Linux, detecting abnormal behavior and threats in real time.",
+          "stars": 8313,
+          "maturity": "graduated",
+          "tags": [
+            "security",
+            "runtime"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Advanced Cluster Security"
+        },
+        {
+          "name": "Open Policy Agent",
+          "logo": "logos/c6d473cc6a37ca7850f1f787e5e1eefd1c898c0b288b1c895e663561aa3de387.svg",
+          "url": "https://www.openpolicyagent.org/",
+          "github": "https://github.com/open-policy-agent/opa",
+          "summary": "General-purpose policy engine that enables unified, context-aware policy enforcement across the stack.",
+          "stars": 10965,
+          "maturity": "graduated",
+          "tags": [
+            "policy",
+            "authorization"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Advanced Cluster Security"
+        },
+        {
+          "name": "Kyverno",
+          "logo": "logos/cd16e4a1d4b1b2b785530124b090d2fe64cbe2ce0f4d80e1bb968c45bb35af0b.svg",
+          "url": "https://kyverno.io/",
+          "github": "https://github.com/kyverno/kyverno",
+          "summary": "Kubernetes native policy management for validation, mutation, generation, and cleanup of resources.",
+          "stars": 6715,
+          "maturity": "graduated",
+          "tags": [
+            "policy",
+            "kubernetes"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Keycloak",
+          "logo": "logos/e7ec76aed9cec7e65927f9f8cf4e675d49e79154c45c504a5cd6da1fdaecfc2d.svg",
+          "url": "https://www.keycloak.org/",
+          "github": "https://github.com/keycloak/keycloak",
+          "summary": "Open source identity and access management solution for modern applications and services.",
+          "stars": 27316,
+          "maturity": "incubating",
+          "tags": [
+            "iam",
+            "identity"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat build of Keycloak"
+        },
+        {
+          "name": "SPIFFE",
+          "logo": "logos/e649cd82385a7f0758eb272631b7d9148b3a9211493001b6864a6538b73cbee6.svg",
+          "url": "https://spiffe.io/",
+          "github": "https://github.com/spiffe/spiffe",
+          "summary": "Secure Production Identity Framework for Everyone. A set of standards for identifying software services.",
+          "stars": 1640,
+          "maturity": "graduated",
+          "tags": [
+            "identity",
+            "zero-trust"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Service Mesh"
+        },
+        {
+          "name": "SPIRE",
+          "logo": "logos/8cbfe9bcfba18cc9712bda70565c8598eee930663533395b6cc350618c3e5b02.svg",
+          "url": "https://spiffe.io/spire/",
+          "github": "https://github.com/spiffe/spire",
+          "summary": "The SPIFFE Runtime Environment, implementing SPIFFE APIs for workload identity in production.",
+          "stars": 2270,
+          "maturity": "graduated",
+          "tags": [
+            "identity",
+            "runtime"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Service Mesh"
+        },
+        {
+          "name": "Sigstore",
+          "logo": "logos/520dac93bf1d749bc559dfd020983d3db8cf211070be99aaaee6db709bcc3df6.svg",
+          "url": "https://www.sigstore.dev/",
+          "github": "https://github.com/sigstore/sigstore",
+          "summary": "Signed artifacts and transparency logs for software supply chain integrity.",
+          "stars": 516,
+          "maturity": "graduated",
+          "tags": [
+            "signing",
+            "supply-chain"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "in-toto",
+          "logo": "logos/78e76c8e6d3f6113e84431123f1f6642056727871828f76130b573c500aafd08.svg",
+          "url": "https://in-toto.io/",
+          "github": "https://github.com/in-toto/in-toto",
+          "summary": "Framework for securing the software supply chain through metadata and attestations.",
+          "stars": 905,
+          "maturity": "graduated",
+          "tags": [
+            "attestation",
+            "supply-chain"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Notary Project",
+          "logo": "logos/cd7295bb0d3dc7a30047b5b6af1759512da642e9b6a89adf71503e098f2c1ebf.svg",
+          "url": "https://notaryproject.dev/",
+          "github": "https://github.com/notaryproject/notation",
+          "summary": "Standards-based container signing and verification for supply chain security.",
+          "stars": 688,
+          "maturity": "incubating",
+          "tags": [
+            "signing",
+            "verification"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "TUF",
+          "logo": "logos/1f67f5f8e6c2f0064cac313ffacde8d4cd8e31e1277ac2cc940bd8b8e8e2b5dc.svg",
+          "url": "https://theupdateframework.io/",
+          "github": "https://github.com/theupdateframework/python-tuf",
+          "summary": "A framework for securing software update systems, protecting against key compromise and rollback attacks.",
+          "stars": 1756,
+          "maturity": "graduated",
+          "tags": [
+            "updates",
+            "security"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Clair",
+          "logo": "logos/1abb89b763bb529ab4166719afa5095e419138ce2eb125e01fc47a1ccf2b29e0.svg",
+          "url": "https://www.redhat.com/en/topics/containers/what-is-clair",
+          "github": "https://github.com/quay/clair",
+          "summary": "Vulnerability static analysis for containers, scanning images for known security issues.",
+          "stars": 10979,
+          "maturity": "sandbox",
+          "tags": [
+            "vulnerability",
+            "scanning"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Quay"
+        },
+        {
+          "name": "KubeLinter",
+          "logo": "logos/8b8a204af97577445edab984e83233ca60d894fa5ab918b62bd6871ae2164d8b.svg",
+          "url": "https://docs.kubelinter.io/",
+          "github": "https://github.com/stackrox/kube-linter",
+          "summary": "Analyzes Kubernetes YAML files and Helm charts, checking against security and best-practice rules.",
+          "stars": 3449,
+          "maturity": "sandbox",
+          "tags": [
+            "linting",
+            "best-practices"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Advanced Cluster Security"
+        },
+        {
+          "name": "OpenSCAP",
+          "logo": "logos/355c9140e6af6130dc1fe5de4bb15ef988541c99cff20270a59ab25c34c669bd.svg",
+          "url": "https://www.open-scap.org/",
+          "github": "https://github.com/OpenSCAP/openscap",
+          "summary": "NIST Certified SCAP 1.2 toolkit for security compliance scanning and remediation.",
+          "stars": 1717,
+          "maturity": "sandbox",
+          "tags": [
+            "compliance",
+            "scap"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Insights"
+        },
+        {
+          "name": "OSCAL-Compass",
+          "logo": "logos/8cd09905b32d41ed529878ec92840eb7008bf8e9ca933340cd1b1370de013554.svg",
+          "url": "https://github.com/oscal-compass/community",
+          "github": "https://github.com/oscal-compass/compliance-trestle",
+          "summary": "Tools enabling creation, validation, and governance of compliance documentation as code.",
+          "stars": 253,
+          "maturity": "sandbox",
+          "tags": [
+            "compliance",
+            "oscal"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Trusted Profile Analyzer"
+        },
+        {
+          "name": "Kuadrant",
+          "logo": "logos/4be4dfdc7c156747f9043a33139f7aa08a6c14e0cfa2e35e85d9bd0a43d553f7.svg",
+          "url": "https://kuadrant.io",
+          "github": "https://github.com/Kuadrant/kuadrant-operator",
+          "summary": "Combines Gateway API and Istio-based controllers for connectivity, rate limiting, and auth policy.",
+          "stars": 81,
+          "maturity": "sandbox",
+          "tags": [
+            "api-gateway",
+            "policy"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Connectivity Link"
+        },
+        {
+          "name": "KubeArmor",
+          "logo": "logos/84b3f34dd8fc2721ec69b0fb1b0d536b76f95a537c2db369144f9474fc5c388b.svg",
+          "url": "https://kubearmor.io/",
+          "github": "https://github.com/kubearmor/KubeArmor",
+          "summary": "Runtime protection for Kubernetes with observability and policy enforcement for workloads.",
+          "stars": 2097,
+          "maturity": "sandbox",
+          "tags": [
+            "security",
+            "runtime"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Kubewarden",
+          "logo": "logos/24207e926905a8f8a35dce3be43c4da4f8d9e8edea46b2beb3c319d6857b8e7a.svg",
+          "url": "https://www.kubewarden.io",
+          "github": "https://github.com/kubewarden/kubewarden-controller",
+          "summary": "Policy engine powered by WebAssembly for Kubernetes admission control with CEL and Rego support.",
+          "stars": 229,
+          "maturity": "sandbox",
+          "tags": [
+            "policy",
+            "wasm"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "external-secrets",
+          "logo": "logos/07686e3ac9335c6071c003bba42cc984b1bbef6feaa1b6ed02626937968d6e3b.svg",
+          "url": "https://external-secrets.io/",
+          "github": "https://github.com/external-secrets/external-secrets",
+          "summary": "Operator that reads from external secret stores and injects values as Kubernetes Secrets.",
+          "stars": 6609,
+          "maturity": "sandbox",
+          "tags": [
+            "secrets",
+            "management"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Confidential Containers",
+          "logo": "logos/3b94e1452f9b3887866a31042c2f972a5f6f2c884a6336a3d787a35abcbb0c04.svg",
+          "url": "https://confidentialcontainers.org/",
+          "github": "https://github.com/confidential-containers/confidential-containers",
+          "summary": "Enabling cloud native confidential computing by leveraging hardware-based trusted execution environments.",
+          "stars": 343,
+          "maturity": "sandbox",
+          "tags": [
+            "confidential",
+            "tee"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift sandboxed containers"
+        },
+        {
+          "name": "Copa",
+          "logo": "logos/012ec2df51a4bfd3fb65ede4c16c4dd2a79c585bbd057a30fadf7e233d4f5238.svg",
+          "url": "https://project-copacetic.github.io/copacetic/",
+          "github": "https://github.com/project-copacetic/copacetic",
+          "summary": "CLI tool for directly patching container image vulnerabilities without full rebuilds.",
+          "stars": 1620,
+          "maturity": "sandbox",
+          "tags": [
+            "patching",
+            "vulnerability"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    },
+    {
+      "id": "DS-5",
+      "title": "Open Source",
+      "description": "Transparency, observability, open standards, and community-driven ecosystems enabling sovereign operations.",
+      "items": [
+        {
+          "name": "OpenTelemetry",
+          "logo": "logos/52818595352a47637721976b546e0a2a1d0da186a0eb97ec203bd7e5248eb4fc.svg",
+          "url": "https://opentelemetry.io/",
+          "github": "https://github.com/open-telemetry/opentelemetry-collector",
+          "summary": "Vendor-neutral observability framework for collecting, processing, and exporting telemetry data.",
+          "stars": 5200,
+          "maturity": "graduated",
+          "tags": [
+            "observability",
+            "telemetry"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift distributed tracing"
+        },
+        {
+          "name": "Prometheus",
+          "logo": "logos/4d6a2b87a6c9a01ed1b82cef5db978e273adb99fda44d47e5dae48f75207147c.svg",
+          "url": "https://prometheus.io/",
+          "github": "https://github.com/prometheus/prometheus",
+          "summary": "The Prometheus monitoring system and time series database, the standard for cloud-native metrics.",
+          "stars": 64069,
+          "maturity": "graduated",
+          "tags": [
+            "monitoring",
+            "metrics"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Monitoring"
+        },
+        {
+          "name": "Jaeger",
+          "logo": "logos/5877af58428f6cd35e6dc2df2afe82af3b90853bd191670a60111e6e8c01ea54.svg",
+          "url": "https://www.jaegertracing.io/",
+          "github": "https://github.com/jaegertracing/jaeger",
+          "summary": "CNCF distributed tracing platform for monitoring and troubleshooting microservices-based architectures.",
+          "stars": 22805,
+          "maturity": "graduated",
+          "tags": [
+            "tracing",
+            "distributed"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift distributed tracing"
+        },
+        {
+          "name": "Fluentd",
+          "logo": "logos/af80830c567373db3566d11fc8f42f7a2648a58db4f11163fa143042ce515b04.svg",
+          "url": "https://www.fluentd.org/",
+          "github": "https://github.com/fluent/fluentd",
+          "summary": "Unified logging layer that allows you to collect and consume any data from any source.",
+          "stars": 13529,
+          "maturity": "graduated",
+          "tags": [
+            "logging",
+            "collection"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Thanos",
+          "logo": "logos/0246c435a220238574280479dfd919e033309178693f308b8c14bbb088eb0ac1.svg",
+          "url": "https://thanos.io/",
+          "github": "https://github.com/thanos-io/thanos",
+          "summary": "Highly available Prometheus setup with long term storage capabilities for global query views.",
+          "stars": 14072,
+          "maturity": "incubating",
+          "tags": [
+            "monitoring",
+            "long-term-storage"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Monitoring"
+        },
+        {
+          "name": "gRPC",
+          "logo": "logos/91304b6bc0ca2e9107c18c43a5732879d478909b6d2761b62af2beb445829d48.svg",
+          "url": "https://grpc.io",
+          "github": "https://github.com/grpc/grpc",
+          "summary": "A high performance, open source universal RPC framework for inter-service communication.",
+          "stars": 44763,
+          "maturity": "incubating",
+          "tags": [
+            "rpc",
+            "communication"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Envoy",
+          "logo": "logos/1cb1ec893e39b60f7d14dc76c6cc1e597b24be0161c0bdf9f97442fcb8d331f9.svg",
+          "url": "https://www.envoyproxy.io",
+          "github": "https://github.com/envoyproxy/envoy",
+          "summary": "Cloud-native high-performance edge/middle/service proxy for microservices architectures.",
+          "stars": 28046,
+          "maturity": "graduated",
+          "tags": [
+            "proxy",
+            "networking"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Service Mesh"
+        },
+        {
+          "name": "Istio",
+          "logo": "logos/2d881599f6faed0a16840a675049bd10ce7096134d93df3f533aaf91972a9689.svg",
+          "url": "https://istio.io/",
+          "github": "https://github.com/istio/istio",
+          "summary": "Service mesh that simplifies observability, traffic management, security, and policy for microservices.",
+          "stars": 38203,
+          "maturity": "graduated",
+          "tags": [
+            "service-mesh",
+            "networking"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Service Mesh"
+        },
+        {
+          "name": "Linkerd",
+          "logo": "logos/f1940543e59719e7ce1929d7bf6004b9fc56db3a6a59a2dc6f0db16c789b28ac.svg",
+          "url": "https://linkerd.io/",
+          "github": "https://github.com/linkerd/linkerd2",
+          "summary": "Ultralight service mesh adding security, observability, and reliability to Kubernetes without complexity.",
+          "stars": 11392,
+          "maturity": "graduated",
+          "tags": [
+            "service-mesh",
+            "networking"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Cilium",
+          "logo": "logos/6b052d96054bbe311b0429d2267d60b92b1c5e6527e6646c0bf2fc06a55e2f43.svg",
+          "url": "https://cilium.io/",
+          "github": "https://github.com/cilium/cilium",
+          "summary": "eBPF-based networking, security, and observability for cloud native environments.",
+          "stars": 24373,
+          "maturity": "graduated",
+          "tags": [
+            "networking",
+            "ebpf"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Dapr",
+          "logo": "logos/5b3a3f211aae4c129ca1aa9bf3cf52cf12fc7fe5a3c6bc44744ca45ccd697597.svg",
+          "url": "https://dapr.io",
+          "github": "https://github.com/dapr/dapr",
+          "summary": "Portable runtime for building distributed applications across cloud and edge, event-driven and resilient.",
+          "stars": 25758,
+          "maturity": "graduated",
+          "tags": [
+            "microservices",
+            "runtime"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Kiali",
+          "logo": "logos/b34740365c07333dd00acf25b6dc046a24a5d5f6fde1afa78be87a6fd49b4ab0.svg",
+          "url": "https://www.kiali.io/",
+          "github": "https://github.com/kiali/kiali",
+          "summary": "Observability console for Istio service mesh with topology visualization and health monitoring.",
+          "stars": 3611,
+          "maturity": "sandbox",
+          "tags": [
+            "service-mesh",
+            "observability"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Service Mesh"
+        },
+        {
+          "name": "NetObserv",
+          "logo": "logos/c525e8821e5a4e2ba9c26e07a98efa078f7f54060f0fad33179ef84f5ee8ef58.svg",
+          "url": "https://netobserv.io/",
+          "github": "https://github.com/netobserv/netobserv-operator",
+          "summary": "CNI-agnostic network observability for Kubernetes clusters with flow analysis and monitoring.",
+          "stars": 225,
+          "maturity": "sandbox",
+          "tags": [
+            "network",
+            "observability"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift Network Observability"
+        },
+        {
+          "name": "Cortex",
+          "logo": "logos/bf5fe4e2ef7bdef74a70cd072991171e5afb5c4153245109e706bc4b0cb8a7b7.svg",
+          "url": "https://cortexmetrics.io/",
+          "github": "https://github.com/cortexproject/cortex",
+          "summary": "Horizontally scalable, highly available, multi-tenant, long-term storage for Prometheus.",
+          "stars": 5801,
+          "maturity": "incubating",
+          "tags": [
+            "monitoring",
+            "multi-tenant"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Perses",
+          "logo": "logos/256e187cba8a0dbfe209fecebe387e3c66cb0ddcf25a281e7048e945f063c215.svg",
+          "url": "https://perses.dev",
+          "github": "https://github.com/perses/perses",
+          "summary": "Dashboard tool to visualize observability data from Prometheus, Thanos, and Jaeger.",
+          "stars": 2159,
+          "maturity": "sandbox",
+          "tags": [
+            "dashboard",
+            "visualization"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Hubble",
+          "logo": "logos/b93d94e96b7c60408767ca38c2d1fd90d69fdb57e88528a64ee626f18d3dc002.svg",
+          "url": "https://github.com/cilium/hubble",
+          "github": "https://github.com/cilium/hubble",
+          "summary": "Network, service, and security observability for Kubernetes using eBPF.",
+          "stars": 4189,
+          "maturity": "sandbox",
+          "tags": [
+            "observability",
+            "ebpf"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Inspektor Gadget",
+          "logo": "logos/12fdeff1f5f9750559f4844b21edbdcb159b3797f2fd51e3e5b33293a07432dc.svg",
+          "url": "https://inspektor-gadget.io/",
+          "github": "https://github.com/inspektor-gadget/inspektor-gadget",
+          "summary": "Open source eBPF debugging and data collection tool for Kubernetes and Linux systems.",
+          "stars": 2815,
+          "maturity": "sandbox",
+          "tags": [
+            "debugging",
+            "ebpf"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    },
+    {
+      "id": "DS-6",
+      "title": "Executive Oversight",
+      "description": "Governance, cost control, compliance visibility, risk testing, and strategic decision-making tooling.",
+      "items": [
+        {
+          "name": "OpenCost",
+          "logo": "logos/ba27e92ddd22f942dde50f20b6d6d3f2ac7a0b78baf2471bdd89eb5d105c708f.svg",
+          "url": "https://www.opencost.io/",
+          "github": "https://github.com/opencost/opencost",
+          "summary": "Visibility into current and historical Kubernetes spend and resource allocation.",
+          "stars": 6546,
+          "maturity": "incubating",
+          "tags": [
+            "cost",
+            "finops"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Kepler",
+          "logo": "logos/6df80d6b2985ade2f7bf259fb8cb1c9379ef50ae6ecdea6a5763b0b1db2d6437.svg",
+          "url": "https://sustainable-computing.io/",
+          "github": "https://github.com/sustainable-computing-io/kepler",
+          "summary": "Kubernetes-based Efficient Power Level Exporter using eBPF for energy and carbon metrics.",
+          "stars": 1512,
+          "maturity": "sandbox",
+          "tags": [
+            "energy",
+            "sustainability"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Kube-burner",
+          "logo": "logos/994a5fdc1fbd3f3723646d0dcdd73a29e3e6f4719c763a67b18106231f26faa1.svg",
+          "url": "https://kube-burner.github.io/kube-burner/",
+          "github": "https://github.com/kube-burner/kube-burner",
+          "summary": "Kubernetes performance and scale test orchestration framework.",
+          "stars": 771,
+          "maturity": "sandbox",
+          "tags": [
+            "performance",
+            "testing"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Backstage",
+          "logo": "logos/041229aa6e716c8d0beb5752747b4789f42dc3239c245c6cf3af8d5cf651b1ee.svg",
+          "url": "https://backstage.io/",
+          "github": "https://github.com/backstage/backstage",
+          "summary": "Open framework for building developer portals, providing a unified view of infrastructure and services.",
+          "stars": 33354,
+          "maturity": "incubating",
+          "tags": [
+            "developer-portal",
+            "governance"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Kubescape",
+          "logo": "logos/7204e2871a12ace755704a770c9d68b5e9cb8c8ddba6b8f94de1d8f63597cebb.svg",
+          "url": "https://kubescape.io/",
+          "github": "https://github.com/kubescape/kubescape",
+          "summary": "Open source security and compliance platform that scans clusters and manifests against security frameworks.",
+          "stars": 11426,
+          "maturity": "incubating",
+          "tags": [
+            "compliance",
+            "scanning"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Krkn",
+          "logo": "logos/523015b3923b22b1ad39b1baa6ccc6388db069bd5312827ddbca4c50d650a37b.svg",
+          "url": "https://krkn-chaos.github.io/krkn",
+          "github": "https://github.com/krkn-chaos/krkn",
+          "summary": "Chaos testing tool for Kubernetes to identify bottlenecks and improve resilience under failure.",
+          "stars": 452,
+          "maturity": "sandbox",
+          "tags": [
+            "chaos",
+            "resilience"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Headlamp",
+          "logo": "logos/6a9599e47f2d58683902cdcfaba7a0309aa7c300d83a033e28194cb3a23c8163.svg",
+          "url": "https://headlamp.dev",
+          "github": "https://github.com/kubernetes-sigs/headlamp",
+          "summary": "Extensible open source multi-cluster Kubernetes user interface for cluster management.",
+          "stars": 6404,
+          "maturity": "sandbox",
+          "tags": [
+            "ui",
+            "dashboard"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "K8sGPT",
+          "logo": "logos/f9e682e95b478ecfbc73c3aab054432908b1df1eadba2fb96866bf73afeb276e.svg",
+          "url": "https://www.k8sgpt.ai",
+          "github": "https://github.com/k8sgpt-ai/k8sgpt",
+          "summary": "AI-powered diagnostics for Kubernetes, giving superpowers to everyone for cluster troubleshooting.",
+          "stars": 7776,
+          "maturity": "sandbox",
+          "tags": [
+            "ai",
+            "diagnostics"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Cloud Custodian",
+          "logo": "logos/38807f329f5a2088305013eceb5b6fe8349c808aae92aac700fc2b50f8d03921.svg",
+          "url": "https://cloudcustodian.io/",
+          "github": "https://github.com/cloud-custodian/cloud-custodian",
+          "summary": "Rules engine for cloud security, cost optimization, and governance with policy-as-code.",
+          "stars": 5985,
+          "maturity": "incubating",
+          "tags": [
+            "governance",
+            "policy"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Cartography",
+          "logo": "logos/0fba24c5464a917464cc33194e151c2de051f268d54acd89c5dfa2ec7df0f05d.svg",
+          "url": "https://cartography.dev",
+          "github": "https://github.com/cartography-cncf/cartography",
+          "summary": "Tool that consolidates infrastructure assets and relationships in a graph for security analysis.",
+          "stars": 3889,
+          "maturity": "sandbox",
+          "tags": [
+            "asset-discovery",
+            "graph"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "OpenFeature",
+          "logo": "logos/031998d76ffa95ddcc5777968611c88a82b3ca43a771d2448b6535c0e31ab168.svg",
+          "url": "https://openfeature.dev/",
+          "github": "https://github.com/open-feature/spec",
+          "summary": "Standardizing feature flagging for everyone, enabling controlled rollouts and experimentation.",
+          "stars": 1148,
+          "maturity": "incubating",
+          "tags": [
+            "feature-flags",
+            "rollout"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    },
+    {
+      "id": "DS-7",
+      "title": "Managed Services",
+      "description": "Vendor-neutral networking, multi-cloud portability, service mesh, and exit-ready infrastructure.",
+      "items": [
+        {
+          "name": "Crossplane",
+          "logo": "logos/c43855293d114dcad77461e7e5af20cf26023e365619f5d4abb54942b51ffc8a.svg",
+          "url": "https://crossplane.io/",
+          "github": "https://github.com/crossplane/crossplane",
+          "summary": "Cloud native control plane framework for building portable, vendor-neutral infrastructure abstractions.",
+          "stars": 11675,
+          "maturity": "graduated",
+          "tags": [
+            "iac",
+            "multi-cloud"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "KubeVela",
+          "logo": "logos/c914016d15f6336269e2a3a7cb8e2483ec859282707766a16065e0d3560c5831.svg",
+          "url": "https://kubevela.io",
+          "github": "https://github.com/kubevela/kubevela",
+          "summary": "Modern application platform making deploying and operating across multi-cluster and multi-cloud easy.",
+          "stars": 7761,
+          "maturity": "incubating",
+          "tags": [
+            "platform",
+            "oam"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "OVN-Kubernetes",
+          "logo": "logos/2a67fb52c5a35b36cc411c124934d565d6c525778a3afbb5ca1116f7cad63c52.svg",
+          "url": "https://ovn-kubernetes.io/",
+          "github": "https://github.com/ovn-kubernetes/ovn-kubernetes",
+          "summary": "A robust Kubernetes networking platform built on Open Virtual Network.",
+          "stars": 1038,
+          "maturity": "sandbox",
+          "tags": [
+            "networking",
+            "sdn"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "NMState",
+          "logo": "logos/a01fd73cf6d58d88f34aaa7c485a0778e529396256286c4b4b2fb2e4f2590c00.svg",
+          "url": "https://nmstate.io/",
+          "github": "https://github.com/nmstate/nmstate",
+          "summary": "Library and CLI for declarative host networking settings management.",
+          "stars": 378,
+          "maturity": "sandbox",
+          "tags": [
+            "networking",
+            "declarative"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "Flannel",
+          "logo": "logos/53f7227b80fe485422efa26ee9b37a3fdced0866d92a99ec1325ca7fc6c4286e.svg",
+          "url": "https://github.com/flannel-io/flannel",
+          "github": "https://github.com/flannel-io/flannel",
+          "summary": "A simple and easy network fabric for containers, designed for Kubernetes.",
+          "stars": 9452,
+          "maturity": "sandbox",
+          "tags": [
+            "networking",
+            "overlay"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat OpenShift"
+        },
+        {
+          "name": "MetalLB",
+          "logo": "logos/d19371232c839420223f96327f99332bce52962724a113bd61f3eef10a0bc637.svg",
+          "url": "https://metallb.universe.tf",
+          "github": "https://github.com/metallb/metallb",
+          "summary": "A network load-balancer implementation for Kubernetes using standard routing protocols.",
+          "stars": 8185,
+          "maturity": "sandbox",
+          "tags": [
+            "load-balancer",
+            "bare-metal"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Submariner",
+          "logo": "logos/58ee5bb2fb1d6492724bbc8926162b64c52a7d05d539733affdbec839da55c0b.svg",
+          "url": "https://submariner.io",
+          "github": "https://github.com/submariner-io/submariner",
+          "summary": "Enables direct networking between Pods and Services across different Kubernetes clusters.",
+          "stars": 2643,
+          "maturity": "sandbox",
+          "tags": [
+            "multi-cluster",
+            "networking"
+          ],
+          "redhatSupported": true,
+          "redhatProduct": "Red Hat Advanced Cluster Management"
+        },
+        {
+          "name": "Cilium",
+          "logo": "logos/6b052d96054bbe311b0429d2267d60b92b1c5e6527e6646c0bf2fc06a55e2f43.svg",
+          "url": "https://cilium.io/",
+          "github": "https://github.com/cilium/cilium",
+          "summary": "eBPF-based networking, security, and observability with transparent encryption and load balancing.",
+          "stars": 24373,
+          "maturity": "graduated",
+          "tags": [
+            "networking",
+            "ebpf"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "Contour",
+          "logo": "logos/11e886c3866c61ad5b90421f878ce2ea25c98c3951084d935c5f079074330daf.svg",
+          "url": "https://projectcontour.io",
+          "github": "https://github.com/projectcontour/contour",
+          "summary": "Kubernetes ingress controller using Envoy proxy for HTTP routing and load balancing.",
+          "stars": 3928,
+          "maturity": "incubating",
+          "tags": [
+            "ingress",
+            "proxy"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "k8gb",
+          "logo": "logos/9de62179208dd12679c30b0569ac95769659282f04dafc19ff176b33a7356f72.svg",
+          "url": "https://www.k8gb.io",
+          "github": "https://github.com/k8gb-io/k8gb",
+          "summary": "A cloud native Kubernetes Global Balancer for multi-cluster traffic management.",
+          "stars": 1168,
+          "maturity": "sandbox",
+          "tags": [
+            "global-balancer",
+            "dns"
+          ],
+          "redhatSupported": false
+        },
+        {
+          "name": "kube-vip",
+          "logo": "logos/90651bb18b79d9e32a2e302080236d9f43ce638f4c6fe53787b4dfb7f178fd11.svg",
+          "url": "https://kube-vip.io",
+          "github": "https://github.com/kube-vip/kube-vip",
+          "summary": "Kubernetes Virtual IP and Load-Balancer for both control plane and services.",
+          "stars": 2845,
+          "maturity": "sandbox",
+          "tags": [
+            "vip",
+            "load-balancer"
+          ],
+          "redhatSupported": false
+        }
+      ]
+    }
+  ]
+}

@@ -24,9 +24,8 @@ jobs:
       - name: Stage site files
         run: |
           mkdir -p _site/assets/logos
-          cp index.html landscape.html _site/
+          cp index.html landscape.html sovereignty-landscape.html redhat-landscape.html _site/
           cp -r assessment css js data _site/
-          # Copy manually committed logos (fallbacks for non-Simple-Icons items)
           cp -r assets/. _site/assets/
 
       - name: Fetch brand logos from Simple Icons CDN
@@ -49,6 +48,26 @@ jobs:
           fetch_logo "envoy.svg"       "envoyproxy"
           fetch_logo "keycloak.svg"    "keycloak"
           fetch_logo "falco.svg"       "falco"
+
+      - name: Fetch CNCF logos for sovereignty landscape
+        run: |
+          mkdir -p _site/logos
+          python3 -c "
+          import json, os
+          with open('data/cncf-sovereignty-landscape.json') as f:
+              data = json.load(f)
+          logos = set()
+          for cat in data['categories']:
+              for item in cat['items']:
+                  if item.get('logo'):
+                      logos.add(item['logo'])
+          for logo in sorted(logos):
+              print(logo.split('/')[-1])
+          " | while read -r logo_file; do
+            curl -sf --max-time 15 "https://landscape.cncf.io/logos/${logo_file}" \
+              -o "_site/logos/${logo_file}" || echo "Skipping ${logo_file}"
+          done
+          echo "Downloaded $(ls _site/logos/*.svg 2>/dev/null | wc -l) CNCF logos"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
