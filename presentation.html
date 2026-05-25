@@ -95,18 +95,20 @@
    CONFIG
    ═══════════════════════════════════════════════════════════ */
 var CONFIG = {
-  totalSlides: 12,
+  totalSlides: 3,
 
   // Base embed URL — the slide parameter is appended automatically.
-  // Get this from Google Slides: File > Share > Publish to web > Embed
-  // Remove any existing start/loop/delayms/slide params.
-  slidesBaseUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/pub?start=false&loop=false&delayms=3000',
+  // Use /embed? format from: File > Share > Publish to web > Embed
+  slidesBaseUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/embed?start=false&loop=false',
+
+  // Page IDs from Google Slides (visible in the editor URL hash: #slide=id.XXXXX)
+  slideIds: ['g39aa8cde9eb_0_1','g3e2e1744529_0_0', 'g3e2e1744529_0_17'],
 
   demoPage: 'index.html',
 
-  // Closing slides — replace with a different deck when ready
-  closingSlidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/pub?start=false&loop=false&delayms=3000',
-  closingTotalSlides: 12,
+  closingSlidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/embed?start=false&loop=false',
+  closingSlideIds: ['g30e84f14e68_0_6240','g3d8d5d34004_0_0', 'g3dc3af1fd22_0_24'],
+  closingTotalSlides: 3,
 
   steps: [
     {
@@ -179,9 +181,9 @@ var CONFIG = {
 /* ═══════════════════════════════════════════════════════════
    STATE
    ═══════════════════════════════════════════════════════════ */
-var phase        = 'slides';  // 'slides' | 'demo' | 'closing'
+var phase        = 'slides';
 var currentSlide = 0;
-var activeId     = 'a';       // which iframe is currently visible
+var activeId     = 'a';
 var siteLoaded   = false;
 var driverObj    = null;
 
@@ -195,27 +197,31 @@ var closingEl = document.getElementById('closing-viewer');
 /* ═══════════════════════════════════════════════════════════
    SLIDE URL HELPER
    ═══════════════════════════════════════════════════════════ */
-function slideUrl(base, n) {
+function slideUrl(base, n, ids) {
+  if (ids && ids[n]) return base + '&slide=id.' + ids[n];
   return base + '&slide=id.p' + n;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   INIT — load first slide + preload second
+   INIT — load slide IDs from JSON, then start
    ═══════════════════════════════════════════════════════════ */
-frameA.src = slideUrl(CONFIG.slidesBaseUrl, 0);
-frameA.classList.add('active');
-if (CONFIG.totalSlides > 1) {
-  frameB.src = slideUrl(CONFIG.slidesBaseUrl, 1);
+function initSlides() {
+  frameA.src = slideUrl(CONFIG.slidesBaseUrl, 0, CONFIG.slideIds);
+  frameA.classList.add('active');
+  if (CONFIG.totalSlides > 1) {
+    frameB.src = slideUrl(CONFIG.slidesBaseUrl, 1, CONFIG.slideIds);
+  }
+  counterEl.textContent = '1 / ' + CONFIG.totalSlides;
+  console.log('[presentation] slideIds:', CONFIG.slideIds ? CONFIG.slideIds.length + ' loaded' : 'using pN fallback');
 }
-counterEl.textContent = '1 / ' + CONFIG.totalSlides;
 
-// Pre-fetch the demo page and disable all navigation links
+initSlides();
+
 fetch(CONFIG.demoPage)
   .then(function(r) { return r.text(); })
   .then(function(html) {
     var doc = new DOMParser().parseFromString(html, 'text/html');
     demoEl.innerHTML = doc.body.innerHTML;
-    // Prevent all links from navigating away during the presentation
     demoEl.querySelectorAll('a[href]').forEach(function(a) {
       a.addEventListener('click', function(e) { e.preventDefault(); });
     });
@@ -232,15 +238,13 @@ function goToSlide(n) {
   var show = (activeId === 'a') ? frameB : frameA;
   var hide = (activeId === 'a') ? frameA : frameB;
 
-  // The "show" frame already has slide n preloaded
   show.classList.add('active');
   hide.classList.remove('active');
   activeId = (activeId === 'a') ? 'b' : 'a';
 
-  // Preload the NEXT slide in the now-hidden frame
   var preloadIdx = (n < CONFIG.totalSlides - 1) ? n + 1 : n - 1;
   if (preloadIdx >= 0 && preloadIdx < CONFIG.totalSlides) {
-    hide.src = slideUrl(CONFIG.slidesBaseUrl, preloadIdx);
+    hide.src = slideUrl(CONFIG.slidesBaseUrl, preloadIdx, CONFIG.slideIds);
   }
 
   counterEl.textContent = (n + 1) + ' / ' + CONFIG.totalSlides;
@@ -250,9 +254,8 @@ function nextSlide() {
   if (currentSlide + 1 >= CONFIG.totalSlides) {
     startDemo();
   } else {
-    // Ensure the next frame has the right slide loaded
     var nextFrame = (activeId === 'a') ? frameB : frameA;
-    var expected = slideUrl(CONFIG.slidesBaseUrl, currentSlide + 1);
+    var expected = slideUrl(CONFIG.slidesBaseUrl, currentSlide + 1, CONFIG.slideIds);
     if (nextFrame.src !== expected) {
       nextFrame.src = expected;
     }
@@ -263,8 +266,7 @@ function nextSlide() {
 function prevSlide() {
   if (currentSlide <= 0) return;
   var prevFrame = (activeId === 'a') ? frameB : frameA;
-  prevFrame.src = slideUrl(CONFIG.slidesBaseUrl, currentSlide - 1);
-  // Small delay to let it start loading, then swap
+  prevFrame.src = slideUrl(CONFIG.slidesBaseUrl, currentSlide - 1, CONFIG.slideIds);
   setTimeout(function() {
     goToSlide(currentSlide - 1);
   }, 50);
@@ -317,7 +319,7 @@ function showClosingSlides() {
   demoEl.style.display = 'none';
   closingSlide = 0;
   var cf = document.getElementById('closing-frame');
-  cf.src = slideUrl(CONFIG.closingSlidesUrl, 0);
+  cf.src = slideUrl(CONFIG.closingSlidesUrl, 0, CONFIG.closingSlideIds);
   closingEl.style.display = 'block';
 }
 
@@ -353,11 +355,11 @@ document.addEventListener('keydown', function(e) {
     var cf = document.getElementById('closing-frame');
     if (isNext && closingSlide < CONFIG.closingTotalSlides - 1) {
       closingSlide++;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide);
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
     }
     if (isPrev && closingSlide > 0) {
       closingSlide--;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide);
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
     }
   }
 });
