@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presentation — Open Digital Sovereignty</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+    /* ── Slide viewer ────────────────────────────────────── */
+    #slide-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: #000;
+    }
+    .slide-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+    .slide-frame.active { opacity: 1; }
+
+    /* ── Slide counter (subtle, bottom-right) ────────────── */
+    #slide-counter {
+      position: absolute;
+      bottom: 12px;
+      right: 20px;
+      z-index: 9100;
+      font: 500 .8rem/1 system-ui, sans-serif;
+      color: rgba(255,255,255,.3);
+      pointer-events: none;
+    }
+
+    /* ── Demo content ────────────────────────────────────── */
+    #demo-site { display: none; }
+
+    /* ── Closing slides ──────────────────────────────────── */
+    #closing-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: #000;
+    }
+    #closing-viewer .slide-frame {
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    /* ── Driver.js brand overrides ────────────────────────── */
+    .driver-popover {
+      --driver-theme-bg-color: #fff;
+      --driver-theme-text-color: #0F172A;
+    }
+    .driver-popover .driver-popover-title {
+      font-size: 1.1rem;
+      color: #1E3A8A;
+    }
+    .driver-popover .driver-popover-next-btn {
+      background: #1E3A8A;
+      color: #fff;
+      text-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Slide viewer: two iframes for double-buffered navigation -->
+<div id="slide-viewer">
+  <iframe id="frame-a" class="slide-frame active"></iframe>
+  <iframe id="frame-b" class="slide-frame"></iframe>
+  <span id="slide-counter"></span>
+</div>
+
+<!-- Demo content injected here via fetch -->
+<div id="demo-site"></div>
+
+<!-- Closing slides viewer -->
+<div id="closing-viewer">
+  <iframe id="closing-frame" class="slide-frame"></iframe>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CONFIG
+   ═══════════════════════════════════════════════════════════ */
+var CONFIG = {
+  totalSlides: 12,
+
+  // Base embed URL — the slide parameter is appended automatically.
+  // Get this from Google Slides: File > Share > Publish to web > Embed
+  // Remove any existing start/loop/delayms/slide params.
+  slidesBaseUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/pub?start=false&loop=false&delayms=3000',
+
+  demoPage: 'index.html',
+
+  // Closing slides — replace with a different deck when ready
+  closingSlidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRYll6INiqA_crYrOTJ2wh3oevyUdvhN2YxHIb1tMelpUxQ9K1YeymUNw0x97d08c8MJIl_kpPNHPDk/pub?start=false&loop=false&delayms=3000',
+  closingTotalSlides: 12,
+
+  steps: [
+    {
+      element: '.hero',
+      popover: {
+        title: 'Open Digital Sovereignty',
+        description: 'Educational portal on digital sovereignty — what it is, why it matters, and how to assess your posture.',
+        side: 'bottom', align: 'center'
+      }
+    },
+    {
+      element: '.principles-grid',
+      popover: {
+        title: 'Three key principles',
+        description: '<strong>Control</strong> your dependencies, <strong>govern</strong> with evidence, and <strong>build openly</strong> to preserve exit freedom.',
+        side: 'bottom', align: 'center'
+      }
+    },
+    {
+      element: '#overview',
+      popover: {
+        title: 'What is open digital sovereignty?',
+        description: 'The ability to control, verify, and evolve your digital capabilities without opaque dependencies.',
+        side: 'top', align: 'center'
+      }
+    },
+    {
+      element: '.pillars-grid',
+      popover: {
+        title: 'The 7 sovereignty pillars',
+        description: 'From <em>Data Sovereignty</em> to <em>Managed Services</em> — each pillar is a domain organisations must evaluate.',
+        side: 'top', align: 'center'
+      }
+    },
+    {
+      element: 'a[href="landscape.html"]',
+      popover: {
+        title: 'Technology Landscape',
+        description: 'Sovereignty-enabling technologies grouped by the eight objectives of the EU Cloud Sovereignty Framework.',
+        side: 'bottom', align: 'start'
+      }
+    },
+    {
+      element: 'a[href="sovereignty-landscape.html"]',
+      popover: {
+        title: 'CNCF Sovereignty Landscape',
+        description: 'Cloud-native CNCF projects classified by their contribution to each sovereignty pillar.',
+        side: 'bottom', align: 'start'
+      }
+    },
+    {
+      element: 'a[href="redhat-landscape.html"]',
+      popover: {
+        title: 'Red Hat Portfolio',
+        description: 'Red Hat products mapped to digital sovereignty capabilities.',
+        side: 'bottom', align: 'start'
+      }
+    },
+    {
+      element: '.nav-dropdown',
+      popover: {
+        title: 'Sovereignty Assessments',
+        description: 'Self-assessment tools to measure your organisation\'s sovereignty maturity across all pillars.',
+        side: 'bottom', align: 'start'
+      }
+    }
+  ]
+};
+
+/* ═══════════════════════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════════════════════ */
+var phase        = 'slides';  // 'slides' | 'demo' | 'closing'
+var currentSlide = 0;
+var activeId     = 'a';       // which iframe is currently visible
+var siteLoaded   = false;
+var driverObj    = null;
+
+var viewerEl  = document.getElementById('slide-viewer');
+var frameA    = document.getElementById('frame-a');
+var frameB    = document.getElementById('frame-b');
+var counterEl = document.getElementById('slide-counter');
+var demoEl    = document.getElementById('demo-site');
+var closingEl = document.getElementById('closing-viewer');
+
+/* ═══════════════════════════════════════════════════════════
+   SLIDE URL HELPER
+   ═══════════════════════════════════════════════════════════ */
+function slideUrl(base, n) {
+  return base + '&slide=id.p' + n;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INIT — load first slide + preload second
+   ═══════════════════════════════════════════════════════════ */
+frameA.src = slideUrl(CONFIG.slidesBaseUrl, 0);
+frameA.classList.add('active');
+if (CONFIG.totalSlides > 1) {
+  frameB.src = slideUrl(CONFIG.slidesBaseUrl, 1);
+}
+counterEl.textContent = '1 / ' + CONFIG.totalSlides;
+
+// Pre-fetch the demo page and disable all navigation links
+fetch(CONFIG.demoPage)
+  .then(function(r) { return r.text(); })
+  .then(function(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    demoEl.innerHTML = doc.body.innerHTML;
+    // Prevent all links from navigating away during the presentation
+    demoEl.querySelectorAll('a[href]').forEach(function(a) {
+      a.addEventListener('click', function(e) { e.preventDefault(); });
+    });
+    siteLoaded = true;
+  });
+
+/* ═══════════════════════════════════════════════════════════
+   SLIDE NAVIGATION (double-buffered)
+   ═══════════════════════════════════════════════════════════ */
+function goToSlide(n) {
+  if (n < 0 || n >= CONFIG.totalSlides) return;
+  currentSlide = n;
+
+  var show = (activeId === 'a') ? frameB : frameA;
+  var hide = (activeId === 'a') ? frameA : frameB;
+
+  // The "show" frame already has slide n preloaded
+  show.classList.add('active');
+  hide.classList.remove('active');
+  activeId = (activeId === 'a') ? 'b' : 'a';
+
+  // Preload the NEXT slide in the now-hidden frame
+  var preloadIdx = (n < CONFIG.totalSlides - 1) ? n + 1 : n - 1;
+  if (preloadIdx >= 0 && preloadIdx < CONFIG.totalSlides) {
+    hide.src = slideUrl(CONFIG.slidesBaseUrl, preloadIdx);
+  }
+
+  counterEl.textContent = (n + 1) + ' / ' + CONFIG.totalSlides;
+}
+
+function nextSlide() {
+  if (currentSlide + 1 >= CONFIG.totalSlides) {
+    startDemo();
+  } else {
+    // Ensure the next frame has the right slide loaded
+    var nextFrame = (activeId === 'a') ? frameB : frameA;
+    var expected = slideUrl(CONFIG.slidesBaseUrl, currentSlide + 1);
+    if (nextFrame.src !== expected) {
+      nextFrame.src = expected;
+    }
+    goToSlide(currentSlide + 1);
+  }
+}
+
+function prevSlide() {
+  if (currentSlide <= 0) return;
+  var prevFrame = (activeId === 'a') ? frameB : frameA;
+  prevFrame.src = slideUrl(CONFIG.slidesBaseUrl, currentSlide - 1);
+  // Small delay to let it start loading, then swap
+  setTimeout(function() {
+    goToSlide(currentSlide - 1);
+  }, 50);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DEMO (Driver.js)
+   ═══════════════════════════════════════════════════════════ */
+function startDemo() {
+  if (phase !== 'slides') return;
+  if (!siteLoaded) { setTimeout(startDemo, 200); return; }
+  phase = 'demo';
+
+  viewerEl.style.display = 'none';
+  demoEl.style.display   = 'block';
+  window.focus();
+
+  driverObj = window.driver.js.driver({
+    showProgress: true,
+    animate: true,
+    allowKeyboardControl: false,
+    overlayColor: 'rgba(6, 13, 24, .7)',
+    stagePadding: 8,
+    stageRadius: 10,
+    nextBtnText:  'Next &rarr;',
+    prevBtnText:  '&larr; Previous',
+    doneBtnText:  'Finish',
+    progressText: '{{current}} of {{total}}',
+    allowClose: false,
+    onDestroyed: function() {
+      driverObj = null;
+      showClosingSlides();
+    },
+    steps: CONFIG.steps
+  });
+
+  driverObj.drive();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CLOSING SLIDES
+   ═══════════════════════════════════════════════════════════ */
+var closingSlide = 0;
+
+function showClosingSlides() {
+  phase = 'closing';
+  driverObj = null;
+  if (!CONFIG.closingSlidesUrl || CONFIG.closingTotalSlides === 0) return;
+
+  demoEl.style.display = 'none';
+  closingSlide = 0;
+  var cf = document.getElementById('closing-frame');
+  cf.src = slideUrl(CONFIG.closingSlidesUrl, 0);
+  closingEl.style.display = 'block';
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CLICKER — unified keyboard handler for ALL phases
+   ═══════════════════════════════════════════════════════════ */
+var NEXT = ['ArrowRight','ArrowDown','PageDown',' ','Enter'];
+var PREV = ['ArrowLeft','ArrowUp','PageUp'];
+
+document.addEventListener('keydown', function(e) {
+  var isNext = NEXT.indexOf(e.key) !== -1;
+  var isPrev = PREV.indexOf(e.key) !== -1;
+  if (!isNext && !isPrev && e.key !== 'Escape') return;
+
+  if (phase === 'slides') {
+    e.preventDefault();
+    if (isNext)  nextSlide();
+    if (isPrev)  prevSlide();
+  }
+
+  else if (phase === 'demo' && driverObj) {
+    e.preventDefault();
+    if (isNext) {
+      if (driverObj.isLastStep()) { driverObj.destroy(); }
+      else { driverObj.moveNext(); }
+    }
+    if (isPrev) { driverObj.movePrevious(); }
+    if (e.key === 'Escape') { driverObj.destroy(); }
+  }
+
+  else if (phase === 'closing' && CONFIG.closingSlidesUrl) {
+    e.preventDefault();
+    var cf = document.getElementById('closing-frame');
+    if (isNext && closingSlide < CONFIG.closingTotalSlides - 1) {
+      closingSlide++;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide);
+    }
+    if (isPrev && closingSlide > 0) {
+      closingSlide--;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide);
+    }
+  }
+});
+</script>
+</body>
+</html>
