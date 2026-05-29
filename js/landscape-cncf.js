@@ -48,6 +48,32 @@
     return CNCF_LOGO_CDN + item.logo;
   }
 
+  /* Sort items so projects sharing a redhatProduct are adjacent,
+     with RH-supported items first, preserving original order within groups. */
+  function presortItems(items) {
+    var groups = {};
+    var productOrder = [];
+    var noProduct = [];
+
+    items.forEach(function (item, idx) {
+      item._origIdx = idx;
+      if (item.redhatSupported && item.redhatProduct) {
+        var prod = item.redhatProduct;
+        if (!groups[prod]) { groups[prod] = []; productOrder.push(prod); }
+        groups[prod].push(item);
+      } else {
+        noProduct.push(item);
+      }
+    });
+
+    var sorted = [];
+    productOrder.forEach(function (prod) {
+      groups[prod].forEach(function (item) { sorted.push(item); });
+    });
+    noProduct.forEach(function (item) { sorted.push(item); });
+    return sorted;
+  }
+
   function renderTile(item) {
     var hue = hashHue(item.name);
     var inits = escapeHtml(initials(item.name));
@@ -67,17 +93,11 @@
         inits + "</span>";
     }
 
-    var maturityHtml = "";
-    if (item.maturity) {
-      maturityHtml =
-        '<span class="landscape-maturity ' + maturityClass(item.maturity) + '">' +
-        escapeHtml(item.maturity) + "</span>";
-    }
-
+    var rhClass = (item.redhatSupported && item.redhatProduct) ? "" : " landscape-tile--no-rh";
     var rhAttr = item.redhatSupported ? ' data-rh-supported="true"' : '';
 
     return (
-      '<a class="landscape-tile" href="' + escapeHtml(item.url) +
+      '<a class="landscape-tile' + rhClass + '" href="' + escapeHtml(item.url) +
       '" target="_blank" rel="noopener noreferrer" title="' +
       escapeHtml(item.summary || item.name) +
       '" data-search="' + escapeHtml(searchText) + '"' +
@@ -97,8 +117,40 @@
     );
   }
 
-  function renderCategory(cat) {
-    var tiles = cat.items.map(renderTile).join("");
+  /* Hybrid render: RH items grouped in product boxes, non-RH items as loose tiles.
+     Used on the unified sovereignty-landscape page. */
+  function renderHybridCategory(cat) {
+    var sorted = presortItems(cat.items);
+    var rhCount = 0;
+    var totalCount = sorted.length;
+
+    var groups = {};
+    var productOrder = [];
+    var looseTiles = [];
+
+    sorted.forEach(function (item) {
+      if (item.redhatSupported && item.redhatProduct) {
+        rhCount++;
+        var prod = item.redhatProduct;
+        if (!groups[prod]) { groups[prod] = []; productOrder.push(prod); }
+        groups[prod].push(item);
+      } else {
+        looseTiles.push(item);
+      }
+    });
+
+    var groupsHtml = productOrder.map(function (prod) {
+      var tiles = groups[prod].map(renderTile).join("");
+      return (
+        '<div class="rh-product-group">' +
+        '<div class="rh-product-name">' + escapeHtml(prod) + '</div>' +
+        '<div class="rh-product-tiles">' + tiles + '</div>' +
+        '</div>'
+      );
+    }).join("");
+
+    var looseHtml = looseTiles.map(renderTile).join("");
+
     return (
       '<section class="landscape-category" id="' + escapeHtml(cat.id) +
       '" data-category="' + escapeHtml(cat.id) + '">' +
@@ -106,7 +158,7 @@
       '<span class="landscape-category-id">' + escapeHtml(cat.id) + "</span>" +
       "<h2>" + escapeHtml(cat.title) + "</h2>" +
       "</div>" +
-      '<div class="landscape-tiles">' + tiles + "</div>" +
+      '<div class="landscape-tiles rh-hybrid-layout">' + groupsHtml + looseHtml + '</div>' +
       "</section>"
     );
   }
@@ -165,6 +217,11 @@
         var match = !q || (tile.getAttribute("data-search") || "").indexOf(q) !== -1;
         tile.classList.toggle("hidden", !match);
         if (match) visible++;
+      });
+      var productGroups = section.querySelectorAll(".rh-product-group");
+      productGroups.forEach(function (group) {
+        var anyVisible = group.querySelector(".landscape-tile:not(.hidden)");
+        group.classList.toggle("hidden", !anyVisible);
       });
       section.classList.toggle("hidden", visible === 0);
     });
@@ -272,11 +329,53 @@
     }, true);
   }
 
+  /* ── Red Hat toggle ──────────────────────────────────────── */
+
+  function setupRhToggle(root, data) {
+    var toggle = document.getElementById("rh-filter-toggle");
+    var legend = document.getElementById("rh-legend");
+    if (!toggle) return;
+
+    function setRhHighlight(active) {
+      root.classList.toggle("rh-highlight", active);
+      if (legend) legend.classList.toggle("hidden", !active);
+
+      var url = new URL(window.location);
+      if (active) {
+        url.searchParams.set("rh", "1");
+      } else {
+        url.searchParams.delete("rh");
+      }
+      history.replaceState(null, "", url);
+    }
+
+    toggle.addEventListener("change", function () {
+      setRhHighlight(toggle.checked);
+    });
+
+    if (new URLSearchParams(window.location.search).get("rh") === "1") {
+      toggle.checked = true;
+      setRhHighlight(true);
+    }
+  }
+
   /* ── Init ────────────────────────────────────────────────── */
 
   function init() {
     var root = document.getElementById("landscape-root");
     if (!root) return;
+
+    var isRhOnly = root.dataset.rhOnly === "true";
+    var isHybrid = root.dataset.rhHybrid === "true";
+
+    var rhFromUrl = new URLSearchParams(window.location.search).get("rh") === "1";
+    var toggle = document.getElementById("rh-filter-toggle");
+    var legend = document.getElementById("rh-legend");
+    if (rhFromUrl && toggle) {
+      toggle.checked = true;
+      root.classList.add("rh-highlight");
+      if (legend) legend.classList.remove("hidden");
+    }
 
     fetch("data/cncf-sovereignty-landscape.json")
       .then(function (res) {
@@ -289,7 +388,16 @@
           jump.innerHTML = renderJumpNav(data.categories);
         }
 
-        root.innerHTML = data.categories.map(renderCategory).join("");
+        if (isRhOnly) {
+          root.innerHTML = data.categories
+            .map(renderRhCategory)
+            .filter(function (html) { return html !== ""; })
+            .join("");
+        } else if (isHybrid) {
+          root.innerHTML = data.categories.map(renderHybridCategory).join("");
+        } else {
+          root.innerHTML = data.categories.map(renderHybridCategory).join("");
+        }
 
         root.addEventListener("error", function (e) {
           var img = e.target;
@@ -314,11 +422,8 @@
           });
         }
 
-        if (root.dataset.rhOnly === "true") {
-          root.innerHTML = data.categories
-            .map(renderRhCategory)
-            .filter(function (html) { return html !== ""; })
-            .join("");
+        if (!isRhOnly) {
+          setupRhToggle(root, data);
         }
 
         setupPopoverListeners(root);
