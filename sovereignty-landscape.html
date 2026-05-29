@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CNCF Sovereignty Landscape — Open Digital Sovereignty</title>
+  <title>Sovereignty Ecosystem — Open Digital Sovereignty</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -35,9 +35,7 @@
               </ul>
             </details>
           </li>
-          <li><a href="landscape.html">Technology Landscape</a></li>
-          <li><a href="sovereignty-landscape.html" aria-current="page">CNCF Sovereignty Landscape</a></li>
-          <li><a href="redhat-landscape.html">Red Hat Portfolio</a></li>
+          <li><a href="sovereignty-landscape.html" aria-current="page">Sovereignty Ecosystem</a></li>
         </ul>
       </nav>
     </div>
@@ -45,11 +43,9 @@
 
   <main class="landscape-main">
     <header class="page-header">
-      <h1>CNCF Sovereignty Landscape</h1>
+      <h1>Sovereignty Ecosystem</h1>
       <p class="lead">
-        Cloud-native projects from the
-        <a id="landscape-framework-link" href="https://landscape.cncf.io/" target="_blank" rel="noopener noreferrer">CNCF Landscape</a>
-        mapped to the seven pillars of digital sovereignty.
+        Cloud-native projects mapped to the seven pillars of digital sovereignty.
         Hover over any tile for details.
       </p>
       <p class="landscape-cta">
@@ -62,17 +58,26 @@
         <span class="landscape-search-label">Filter</span>
         <input type="search" id="landscape-search" class="landscape-search" placeholder="Search technologies…" autocomplete="off" />
       </label>
+      <label class="rh-toggle">
+        <input type="checkbox" id="rh-filter-toggle" />
+        <span class="rh-toggle-slider"></span>
+        <span class="rh-toggle-label">Red Hat Portfolio</span>
+      </label>
       <nav class="landscape-jump" id="landscape-jump" aria-label="Jump to category"></nav>
+    </div>
+
+    <div id="rh-legend" class="rh-legend hidden" role="status">
+      <span class="rh-legend-item rh-legend-supported">Red Hat supported</span>
+      <span class="rh-legend-item rh-legend-community">Community only</span>
     </div>
 
     <p id="landscape-empty" class="landscape-empty hidden" role="status">No technologies match your search.</p>
 
-    <div id="landscape-root" class="landscape-root" aria-live="polite">
+    <div id="landscape-root" class="landscape-root" data-rh-hybrid="true" aria-live="polite">
       <p class="landscape-loading">Loading landscape…</p>
     </div>
 
     <p class="landscape-footnote">
-      Project data sourced from the <a href="https://landscape.cncf.io/" target="_blank" rel="noopener noreferrer">CNCF Cloud Native Landscape</a>.
       Curated for education — not an exhaustive or endorsed catalogue.
     </p>
   </main>

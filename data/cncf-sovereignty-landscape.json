@@ -1,7 +1,7 @@
 {
   "framework": {
     "name": "Digital Sovereignty Pillars",
-    "source": "CNCF Cloud Native Landscape",
+    "source": "Cloud Native Landscape",
     "sourceUrl": "https://landscape.cncf.io/"
   },
   "categories": [
@@ -243,7 +243,7 @@
           "maturity": "graduated",
           "tags": [
             "orchestration",
-            "cncf"
+            "cloud-native"
           ],
           "redhatSupported": true,
           "redhatProduct": "Red Hat OpenShift"
@@ -428,21 +428,6 @@
           "redhatProduct": "Red Hat OpenShift Bare Metal"
         },
         {
-          "name": "crun",
-          "logo": "logos/8e241f1145fcf8ca479d6a65e04a1ef7e5ca9817e2d25dfe08953b649b22fb20.svg",
-          "url": "https://github.com/containers/crun",
-          "github": "https://github.com/containers/crun",
-          "summary": "A fast and lightweight fully featured OCI runtime written in C.",
-          "stars": 3921,
-          "maturity": "sandbox",
-          "tags": [
-            "runtime",
-            "oci"
-          ],
-          "redhatSupported": true,
-          "redhatProduct": "Red Hat OpenShift"
-        },
-        {
           "name": "Buildpacks",
           "logo": "logos/90290bef758df2bd10485616a6445e240b903ecbaee96a8cc844d1c3ed6591ba.svg",
           "url": "https://buildpacks.io/",
@@ -548,7 +533,7 @@
             "configuration"
           ],
           "redhatSupported": true,
-          "redhatProduct": "Red Hat Ansible Automation Platform"
+          "redhatProduct": "Red Hat Ansible Automation"
         },
         {
           "name": "Operator Framework",
@@ -1079,7 +1064,7 @@
           "logo": "logos/5877af58428f6cd35e6dc2df2afe82af3b90853bd191670a60111e6e8c01ea54.svg",
           "url": "https://www.jaegertracing.io/",
           "github": "https://github.com/jaegertracing/jaeger",
-          "summary": "CNCF distributed tracing platform for monitoring and troubleshooting microservices-based architectures.",
+          "summary": "Distributed tracing platform for monitoring and troubleshooting microservices-based architectures.",
           "stars": 22805,
           "maturity": "graduated",
           "tags": [

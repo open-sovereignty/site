@@ -1235,6 +1235,107 @@ main {
   text-align: center;
 }
 
+/* ── CNCF Landscape: Red Hat toggle switch ─────────────────── */
+.rh-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.rh-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rh-toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.375rem;
+  background: var(--border);
+  border-radius: 99px;
+  transition: background 0.25s;
+  flex-shrink: 0;
+}
+
+.rh-toggle-slider::after {
+  content: "";
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+}
+
+.rh-toggle input:checked + .rh-toggle-slider {
+  background: #dc2626;
+}
+
+.rh-toggle input:checked + .rh-toggle-slider::after {
+  transform: translateX(1.125rem);
+}
+
+.rh-toggle input:focus-visible + .rh-toggle-slider {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.rh-toggle-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text, var(--muted));
+}
+
+/* ── Red Hat legend ────────────────────────────────────────── */
+.rh-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, #dc2626 5%, var(--bg-card, var(--bg-main)));
+  border: 1px solid color-mix(in srgb, #dc2626 15%, var(--border));
+}
+
+.rh-legend.hidden { display: none; }
+
+.rh-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rh-legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+}
+
+.rh-legend-supported::before {
+  background: #dc2626;
+}
+
+.rh-legend-community::before {
+  background: var(--border);
+  opacity: 0.5;
+}
+
 /* ── CNCF Landscape: Red Hat product groups ────────────────── */
 .rh-product-layout {
   display: flex;
@@ -1250,18 +1351,48 @@ main {
   }
 }
 
-.rh-product-group {
+.rh-hybrid-layout .rh-product-group {
+  display: contents;
+}
+
+.rh-hybrid-layout .rh-product-tiles {
+  display: contents;
+}
+
+.rh-highlight .rh-product-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
   background: var(--bg-main);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.4rem;
+  min-width: 5rem;
+  max-width: 12rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+}
+
+.rh-highlight .rh-product-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.rh-product-layout .rh-product-group {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem;
   min-width: 5rem;
+  max-width: 12rem;
 }
 
 .rh-product-name {
+  display: none;
   font-size: 0.5625rem;
   font-weight: 700;
   color: #991b1b;
@@ -1270,6 +1401,13 @@ main {
   padding: 0.2rem 0.4rem;
   text-align: center;
   line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.rh-highlight .rh-product-name,
+.rh-product-layout .rh-product-name {
+  display: block;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1279,14 +1417,15 @@ main {
   }
 }
 
-.rh-product-tiles {
+.rh-product-layout .rh-product-tiles {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
   justify-content: center;
 }
 
-.rh-product-tiles .landscape-tile {
+.rh-highlight .rh-product-tiles .landscape-tile,
+.rh-product-layout .rh-product-tiles .landscape-tile {
   border: none;
   box-shadow: none;
   background: transparent;
@@ -1297,11 +1436,25 @@ main {
   max-width: 4rem;
 }
 
-.rh-product-tiles .landscape-tile:hover {
+.rh-highlight .rh-product-tiles .landscape-tile:hover,
+.rh-product-layout .rh-product-tiles .landscape-tile:hover {
   box-shadow: none;
   transform: none;
   background: color-mix(in srgb, var(--color-primary) 8%, transparent);
   border-radius: var(--radius);
+}
+
+/* ── Red Hat highlight mode: dim non-RH tiles ─────────────── */
+.landscape-tile--no-rh {
+  transition: opacity 0.3s, filter 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.rh-highlight .landscape-tile--no-rh {
+  opacity: 0.2;
+  filter: grayscale(1);
+  pointer-events: none;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 /* ── CNCF Landscape: maturity badges (popover only) ────────── */

@@ -47,8 +47,8 @@
       "title": "Operational Sovereignty",
       "description": "Ability to run, support, and evolve technology independently of foreign control.",
       "items": [
-        { "name": "Kubernetes",   "logo": "kubernetes.svg",  "url": "https://kubernetes.io",         "summary": "Portable orchestration standard for workload mobility across providers.", "tags": ["orchestration", "cncf"] },
-        { "name": "Crossplane",   "logo": "crossplane.svg",  "url": "https://www.crossplane.io",     "summary": "Open control plane for multi-cloud infrastructure as code.",              "tags": ["iac", "cncf"] },
+        { "name": "Kubernetes",   "logo": "kubernetes.svg",  "url": "https://kubernetes.io",         "summary": "Portable orchestration standard for workload mobility across providers.", "tags": ["orchestration", "cloud-native"] },
+        { "name": "Crossplane",   "logo": "crossplane.svg",  "url": "https://www.crossplane.io",     "summary": "Open control plane for multi-cloud infrastructure as code.",              "tags": ["iac", "cloud-native"] },
         { "name": "Ansible",      "logo": "ansible.svg",     "url": "https://www.ansible.com",       "summary": "Agentless automation for EU-operated infrastructure and applications.",   "tags": ["automation"] },
         { "name": "SUSE Rancher", "logo": "suse.svg",        "url": "https://www.rancher.com",       "summary": "European vendor Kubernetes management and edge operations.",              "tags": ["kubernetes", "eu-vendor"] },
         { "name": "OpenShift",    "logo": "openshift.svg",   "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift", "summary": "Enterprise Kubernetes platform for hybrid and dedicated EU deployments.", "tags": ["kubernetes", "platform"] }
@@ -59,7 +59,7 @@
       "title": "Supply Chain Sovereignty",
       "description": "Geographic origin, transparency, and resilience of the technology supply chain.",
       "items": [
-        { "name": "Sigstore",   "logo": "sigstore.svg",    "url": "https://www.sigstore.dev",           "summary": "Signed artifacts and transparency logs for software supply chain integrity.", "tags": ["signing", "cncf"] },
+        { "name": "Sigstore",   "logo": "sigstore.svg",    "url": "https://www.sigstore.dev",           "summary": "Signed artifacts and transparency logs for software supply chain integrity.", "tags": ["signing", "cloud-native"] },
         { "name": "in-toto",    "logo": "in-toto.svg",     "url": "https://in-toto.io",                 "summary": "Framework for securing software supply chain metadata and attestations.",    "tags": ["attestation", "ssdf"] },
         { "name": "Syft",       "logo": "syft.svg",        "url": "https://github.com/anchore/syft",    "summary": "SBOM generator for visibility into software composition.",                    "tags": ["sbom"] },
         { "name": "CycloneDX", "logo": "cyclonedx.svg",   "url": "https://cyclonedx.org",              "summary": "Machine-readable SBOM standard widely used in compliance programmes.",        "tags": ["sbom", "standard"] },
@@ -74,7 +74,7 @@
         { "name": "Linux",              "logo": "linux.svg",      "url": "https://www.kernel.org",           "summary": "Open operating system kernel underpinning sovereign cloud stacks.",                "tags": ["os", "open-source"] },
         { "name": "OpenStack",          "logo": "openstack.svg",  "url": "https://www.openstack.org",        "summary": "Open cloud infrastructure APIs for private and sovereign regions.",               "tags": ["iaas", "open-source"] },
         { "name": "OpenNebula",         "logo": "opennebula.svg", "url": "https://opennebula.io",            "summary": "European-origin open cloud and edge management platform.",                       "tags": ["iaas", "eu"] },
-        { "name": "Envoy",              "logo": "envoy.svg",      "url": "https://www.envoyproxy.io",        "summary": "Open proxy for portable, standards-based service networking.",                   "tags": ["networking", "cncf"] },
+        { "name": "Envoy",              "logo": "envoy.svg",      "url": "https://www.envoyproxy.io",        "summary": "Open proxy for portable, standards-based service networking.",                   "tags": ["networking", "cloud-native"] },
         { "name": "Apache CloudStack",  "logo": "cloudstack.svg", "url": "https://cloudstack.apache.org",   "summary": "Open-source IaaS for building sovereign cloud regions.",                        "tags": ["iaas", "apache"] }
       ]
     },
@@ -85,7 +85,7 @@
       "items": [
         { "name": "Keycloak", "logo": "keycloak.svg",       "url": "https://www.keycloak.org",                                               "summary": "Open identity and access management for self-hosted EU deployments.",             "tags": ["iam", "open-source"] },
         { "name": "Wazuh",    "logo": "wazuh.svg",          "url": "https://wazuh.com",                                                       "summary": "Open XDR and SIEM platform from a European security vendor.",                    "tags": ["siem", "eu-vendor"] },
-        { "name": "Falco",    "logo": "falco.svg",          "url": "https://falco.org",                                                       "summary": "Cloud-native runtime security for Kubernetes workloads.",                       "tags": ["security", "cncf"] },
+        { "name": "Falco",    "logo": "falco.svg",          "url": "https://falco.org",                                                       "summary": "Cloud-native runtime security for Kubernetes workloads.",                       "tags": ["security", "cloud-native"] },
         { "name": "MONARC",   "logo": "monarc.svg",         "url": "https://www.monarc.lu",                                                   "summary": "Risk management tool used in Luxembourg and EU public sector.",                  "tags": ["grc", "eu"] },
         { "name": "EUCS",     "logo": "eu-institution.svg", "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-computing",       "summary": "EU cloud cybersecurity certification scheme (reference framework).",             "tags": ["certification", "policy"] }
       ]
@@ -95,7 +95,7 @@
       "title": "Environmental Sustainability",
       "description": "Long-term autonomy relating to energy usage and resource dependency.",
       "items": [
-        { "name": "Kepler",                    "logo": "kepler.svg",         "url": "https://sustainable-computing.io",       "summary": "CNCF project for Kubernetes energy and carbon metrics.",                               "tags": ["metrics", "cncf"] },
+        { "name": "Kepler",                    "logo": "kepler.svg",         "url": "https://sustainable-computing.io",       "summary": "Kubernetes energy and carbon metrics for sustainable computing.",                               "tags": ["metrics", "cloud-native"] },
         { "name": "Scaphandre",                "logo": "scaphandre.svg",     "url": "https://github.com/hubblo-org/scaphandre","summary": "Energy consumption metrology agent for servers and containers.",                        "tags": ["energy", "open-source"] },
         { "name": "Green Software Foundation", "logo": "green-software.svg", "url": "https://greensoftware.foundation",       "summary": "Standards and patterns for reducing software carbon impact.",                          "tags": ["standards", "sustainability"] },
         { "name": "Open Compute Project",      "logo": "open-compute.svg",   "url": "https://www.opencompute.org",            "summary": "Open hardware designs for efficient data centre infrastructure.",                       "tags": ["hardware", "efficiency"] }
