@@ -28,6 +28,7 @@
       transition: opacity .2s ease;
     }
     .slide-frame.active { opacity: 1; }
+    #slide-viewer, #closing-viewer { cursor: pointer; }
 
     /* ── Slide counter (subtle, bottom-right) ────────────── */
     #slide-counter {
@@ -1190,43 +1191,70 @@ function showClosingSlides() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   CLICKER — unified keyboard handler for ALL phases
+   NAVIGATION — unified keyboard + mouse handler for ALL phases
    ═══════════════════════════════════════════════════════════════════ */
 var NEXT = ['ArrowRight','ArrowDown','PageDown',' ','Enter'];
 var PREV = ['ArrowLeft','ArrowUp','PageUp'];
+
+function handleNav(direction) {
+  if (phase === 'slides') {
+    if (direction === 'next') nextSlide();
+    if (direction === 'prev') prevSlide();
+  }
+
+  else if (phase === 'demo' && driverObj) {
+    if (direction === 'next') {
+      if (driverObj.isLastStep()) { driverObj.destroy(); }
+      else { driverObj.moveNext(); }
+    }
+    if (direction === 'prev') { driverObj.movePrevious(); }
+  }
+
+  else if (phase === 'closing' && CONFIG.closingSlidesUrl) {
+    var cf = document.getElementById('closing-frame');
+    if (direction === 'next' && closingSlide < CONFIG.closingTotalSlides - 1) {
+      closingSlide++;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
+    }
+    if (direction === 'prev' && closingSlide > 0) {
+      closingSlide--;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
+    }
+  }
+}
 
 document.addEventListener('keydown', function(e) {
   var isNext = NEXT.indexOf(e.key) !== -1;
   var isPrev = PREV.indexOf(e.key) !== -1;
   if (!isNext && !isPrev && e.key !== 'Escape') return;
 
+  e.preventDefault();
+  if (isNext) handleNav('next');
+  if (isPrev) handleNav('prev');
+  if (e.key === 'Escape' && phase === 'demo' && driverObj) driverObj.destroy();
+});
+
+/* ── Click navigation: left third = prev, right two-thirds = next ── */
+document.addEventListener('click', function(e) {
   if (phase === 'slides') {
-    e.preventDefault();
-    if (isNext) nextSlide();
-    if (isPrev) prevSlide();
+    var dir = (e.clientX < window.innerWidth / 3) ? 'prev' : 'next';
+    handleNav(dir);
+    return;
   }
 
-  else if (phase === 'demo' && driverObj) {
-    e.preventDefault();
-    if (isNext) {
-      if (driverObj.isLastStep()) { driverObj.destroy(); }
-      else { driverObj.moveNext(); }
+  if (phase === 'demo' && driverObj) {
+    var overlay = e.target.closest('.driver-overlay');
+    if (overlay) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleNav('next');
+      return;
     }
-    if (isPrev) { driverObj.movePrevious(); }
-    if (e.key === 'Escape') { driverObj.destroy(); }
   }
 
-  else if (phase === 'closing' && CONFIG.closingSlidesUrl) {
-    e.preventDefault();
-    var cf = document.getElementById('closing-frame');
-    if (isNext && closingSlide < CONFIG.closingTotalSlides - 1) {
-      closingSlide++;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
-    }
-    if (isPrev && closingSlide > 0) {
-      closingSlide--;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
-    }
+  if (phase === 'closing') {
+    var dir2 = (e.clientX < window.innerWidth / 3) ? 'prev' : 'next';
+    handleNav(dir2);
   }
 });
 </script>
