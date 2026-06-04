@@ -18,7 +18,7 @@ Open [http://localhost:8080](http://localhost:8080).
 
 | Path | Description |
 |------|-------------|
-| `index.html` | Home — principles and pillars |
+| `index.html` | Home — principles and domains |
 | `assessment/` | Sovereignty self-assessments |
 | `assessment/eu-csf.html` | EU Cloud Sovereignty Framework quiz |
 | `landscape.html` | Technology landscape (EU CSF objectives) |
