@@ -827,6 +827,78 @@ function clearEcosystemHighlights() {
   });
 }
 
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+window.flipToggle = function(root, activate) {
+  var already = root.classList.contains('rh-highlight') === activate;
+  if (already) return;
+
+  if (prefersReducedMotion.matches) {
+    root.classList.toggle('rh-highlight', activate);
+    return;
+  }
+
+  var tiles = root.querySelectorAll('.landscape-tile:not(.hidden)');
+  var first = new Map();
+  for (var i = 0; i < tiles.length; i++) {
+    first.set(tiles[i], tiles[i].getBoundingClientRect());
+  }
+
+  root.classList.add('flipping');
+  root.classList.toggle('rh-highlight', activate);
+
+  requestAnimationFrame(function() {
+    for (var j = 0; j < tiles.length; j++) {
+      var el = tiles[j];
+      var a = first.get(el);
+      var b = el.getBoundingClientRect();
+      if (b.width === 0 || b.height === 0) continue;
+
+      var dx = a.left - b.left;
+      var dy = a.top - b.top;
+      var sx = a.width / b.width;
+      var sy = a.height / b.height;
+
+      el.classList.add('is-flipping');
+      el.style.transformOrigin = 'top left';
+      el.style.transition = 'none';
+      el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sx + ', ' + sy + ')';
+    }
+
+    root.offsetHeight;
+
+    requestAnimationFrame(function() {
+      for (var k = 0; k < tiles.length; k++) {
+        tiles[k].style.transition = 'transform 2320ms cubic-bezier(0.2, 0, 0, 1)';
+        tiles[k].style.transitionDelay = (k * 8) + 'ms';
+        tiles[k].style.transform = '';
+      }
+
+      function cleanup() {
+        for (var m = 0; m < tiles.length; m++) {
+          tiles[m].classList.remove('is-flipping');
+          tiles[m].style.transition = '';
+          tiles[m].style.transitionDelay = '';
+          tiles[m].style.transformOrigin = '';
+        }
+        root.classList.remove('flipping');
+      }
+
+      var last = tiles[tiles.length - 1];
+      if (last) {
+        last.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName !== 'transform') return;
+          last.removeEventListener('transitionend', handler);
+          cleanup();
+        });
+        setTimeout(cleanup, 800);
+      } else {
+        cleanup();
+      }
+    });
+  });
+};
+
 function clearGapPulse() {
   var rows = document.querySelectorAll('.demo-gap-row');
   for (var i = 0; i < rows.length; i++) rows[i].classList.remove('demo-gap-pulse');
@@ -1034,18 +1106,22 @@ function startDemo() {
       onHighlightStarted: function() {
         showDemoSection('demo-s-ecosystem');
         setNavActive('ecosystem');
-        clearEcosystemHighlights();
-        document.getElementById('demo-landscape-root').classList.add('rh-highlight');
+        DEMO_DATA.gapEcosystemIds.forEach(function(id) {
+          var s = document.querySelector('[data-category="' + id + '"]');
+          if (s) s.classList.remove('demo-highlight-domain');
+        });
+        var root = document.getElementById('demo-landscape-root');
         document.getElementById('demo-rh-toggle').checked = true;
         document.getElementById('demo-rh-legend').classList.remove('hidden');
         var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
         if (toolbar) toolbar.style.display = '';
+        window.scrollTo({ top: 0 });
+        window.flipToggle(root, true);
         var sec = document.querySelector('[data-category="DS-2"]');
         if (sec) sec.classList.add('demo-highlight-domain');
-        window.scrollTo({ top: 0 });
       }
     },
-    /* Step 11: Assurance Sovereignty — ecosystem + Red Hat Portfolio */
+    /* Step 12: Assurance Sovereignty — ecosystem + Red Hat Portfolio */
     {
       element: '[data-category="DS-4"]',
       popover: {
@@ -1056,9 +1132,15 @@ function startDemo() {
       onHighlightStarted: function() {
         showDemoSection('demo-s-ecosystem');
         setNavActive('ecosystem');
-        clearEcosystemHighlights();
-        document.getElementById('demo-landscape-root').classList.add('rh-highlight');
-        document.getElementById('demo-rh-toggle').checked = true;
+        DEMO_DATA.gapEcosystemIds.forEach(function(id) {
+          var s = document.querySelector('[data-category="' + id + '"]');
+          if (s) s.classList.remove('demo-highlight-domain');
+        });
+        var root = document.getElementById('demo-landscape-root');
+        if (!root.classList.contains('rh-highlight')) {
+          document.getElementById('demo-rh-toggle').checked = true;
+          window.flipToggle(root, true);
+        }
         var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
         if (toolbar) toolbar.style.display = '';
         var sec = document.querySelector('[data-category="DS-4"]');

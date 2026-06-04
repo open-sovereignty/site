@@ -329,6 +329,82 @@
     }, true);
   }
 
+  /* ── FLIP animation for Red Hat toggle ──────────────────── */
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function flipToggle(root, activate) {
+    var dominated = root.classList.contains("rh-highlight") === activate;
+    if (dominated) return;
+
+    if (prefersReducedMotion.matches) {
+      root.classList.toggle("rh-highlight", activate);
+      return;
+    }
+
+    var tiles = root.querySelectorAll(".landscape-tile:not(.hidden)");
+    var first = new Map();
+    for (var i = 0; i < tiles.length; i++) {
+      first.set(tiles[i], tiles[i].getBoundingClientRect());
+    }
+
+    root.classList.add("flipping");
+    root.classList.toggle("rh-highlight", activate);
+
+    requestAnimationFrame(function () {
+      for (var j = 0; j < tiles.length; j++) {
+        var el = tiles[j];
+        var a = first.get(el);
+        var b = el.getBoundingClientRect();
+        if (b.width === 0 || b.height === 0) continue;
+
+        var dx = a.left - b.left;
+        var dy = a.top - b.top;
+        var sx = a.width / b.width;
+        var sy = a.height / b.height;
+
+        el.classList.add("is-flipping");
+        el.style.transformOrigin = "top left";
+        el.style.transition = "none";
+        el.style.transform = "translate(" + dx + "px, " + dy + "px) scale(" + sx + ", " + sy + ")";
+      }
+
+      root.offsetHeight; // force reflow
+
+      requestAnimationFrame(function () {
+        for (var k = 0; k < tiles.length; k++) {
+          tiles[k].style.transition = "transform 2320ms cubic-bezier(0.2, 0, 0, 1)";
+          tiles[k].style.transitionDelay = (k * 8) + "ms";
+          tiles[k].style.transform = "";
+        }
+
+        function cleanup() {
+          for (var m = 0; m < tiles.length; m++) {
+            tiles[m].classList.remove("is-flipping");
+            tiles[m].style.transition = "";
+            tiles[m].style.transitionDelay = "";
+            tiles[m].style.transformOrigin = "";
+          }
+          root.classList.remove("flipping");
+        }
+
+        var last = tiles[tiles.length - 1];
+        if (last) {
+          last.addEventListener("transitionend", function handler(e) {
+            if (e.propertyName !== "transform") return;
+            last.removeEventListener("transitionend", handler);
+            cleanup();
+          });
+          setTimeout(cleanup, 800);
+        } else {
+          cleanup();
+        }
+      });
+    });
+  }
+
+  window.flipToggle = flipToggle;
+
   /* ── Red Hat toggle ──────────────────────────────────────── */
 
   function setupRhToggle(root, data) {
@@ -337,7 +413,7 @@
     if (!toggle) return;
 
     function setRhHighlight(active) {
-      root.classList.toggle("rh-highlight", active);
+      flipToggle(root, active);
       if (legend) legend.classList.toggle("hidden", !active);
 
       var url = new URL(window.location);
