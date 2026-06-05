@@ -28,6 +28,7 @@
       transition: opacity .2s ease;
     }
     .slide-frame.active { opacity: 1; }
+    #slide-viewer, #closing-viewer { cursor: pointer; }
 
     /* ── Slide counter (subtle, bottom-right) ────────────── */
     #slide-counter {
@@ -109,8 +110,7 @@
 
     /* ── Demo domain-glow animation ──────────────────────── */
     .demo-highlight-domain {
-      outline: 2px solid #f59e0b;
-      outline-offset: 6px;
+      box-shadow: 0 0 0 3px #f59e0b;
       border-radius: 8px;
       animation: domain-glow 2s ease-in-out infinite;
     }
@@ -187,7 +187,7 @@
         <p>Open digital sovereignty is the ability to control, verify, and evolve digital capabilities in line with your legal, operational, and strategic interests. It spans how data is held, how technology is chosen and operated, how compliance is demonstrated, and how dependencies on vendors and foreign jurisdictions are managed. Maturity is assessed across seven interrelated domains used in digital sovereignty workshops and complemented by frameworks such as the EU Cloud Sovereignty Framework.</p>
       </section>
       <section class="section" id="demo-pillars">
-        <h2>Key pillars of digital sovereignty</h2>
+        <h2>Key domains of digital sovereignty</h2>
         <p>Seven domains that together describe a practical sovereignty posture for cloud and digital services.</p>
         <div class="pillars-grid">
           <article class="pillar-card"><h3>Data Sovereignty</h3><p>Where data lives, how it is protected, and who controls access.</p></article>
@@ -290,7 +290,7 @@
     <main class="landscape-main">
       <header class="page-header">
         <h1>Sovereignty Ecosystem</h1>
-        <p class="lead">Cloud-native projects mapped to the seven pillars of digital sovereignty. Hover over any tile for details.</p>
+        <p class="lead">Cloud-native projects mapped to the seven domains of digital sovereignty. Hover over any tile for details.</p>
         <p class="landscape-cta">
           <a href="#" onclick="return false" class="btn btn-primary">Evaluate your posture</a>
         </p>
@@ -360,7 +360,7 @@
  *   - Quiz questions (loaded from ds-readiness-questions.json)
  *
  * What does NOT sync automatically:
- *   - Homepage HTML (hero, principles, pillars) — section #demo-s-home
+ *   - Homepage HTML (hero, principles, domains) — section #demo-s-home
  *   - Assessment intro page — section #demo-s-readiness
  *   - Results HTML layout — built in buildResultsSection()
  *
@@ -407,7 +407,7 @@
  *           making it the most critical gap."
  * Step 10: "Now let's look at the Sovereignty Ecosystem — over
  *           100 cloud-native projects mapped to the same 7
- *           sovereignty pillars."
+ *           sovereignty domains."
  * Step 11: "Here are DS-2 (Technical) and DS-4 (Assurance) —
  *           the projects that directly address the gap domains
  *           we identified in the assessment."
@@ -828,6 +828,78 @@ function clearEcosystemHighlights() {
   });
 }
 
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+window.flipToggle = function(root, activate) {
+  var already = root.classList.contains('rh-highlight') === activate;
+  if (already) return;
+
+  if (prefersReducedMotion.matches) {
+    root.classList.toggle('rh-highlight', activate);
+    return;
+  }
+
+  var tiles = root.querySelectorAll('.landscape-tile:not(.hidden)');
+  var first = new Map();
+  for (var i = 0; i < tiles.length; i++) {
+    first.set(tiles[i], tiles[i].getBoundingClientRect());
+  }
+
+  root.classList.add('flipping');
+  root.classList.toggle('rh-highlight', activate);
+
+  requestAnimationFrame(function() {
+    for (var j = 0; j < tiles.length; j++) {
+      var el = tiles[j];
+      var a = first.get(el);
+      var b = el.getBoundingClientRect();
+      if (b.width === 0 || b.height === 0) continue;
+
+      var dx = a.left - b.left;
+      var dy = a.top - b.top;
+      var sx = a.width / b.width;
+      var sy = a.height / b.height;
+
+      el.classList.add('is-flipping');
+      el.style.transformOrigin = 'top left';
+      el.style.transition = 'none';
+      el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sx + ', ' + sy + ')';
+    }
+
+    root.offsetHeight;
+
+    requestAnimationFrame(function() {
+      for (var k = 0; k < tiles.length; k++) {
+        tiles[k].style.transition = 'transform 2320ms cubic-bezier(0.2, 0, 0, 1)';
+        tiles[k].style.transitionDelay = (k * 8) + 'ms';
+        tiles[k].style.transform = '';
+      }
+
+      function cleanup() {
+        for (var m = 0; m < tiles.length; m++) {
+          tiles[m].classList.remove('is-flipping');
+          tiles[m].style.transition = '';
+          tiles[m].style.transitionDelay = '';
+          tiles[m].style.transformOrigin = '';
+        }
+        root.classList.remove('flipping');
+      }
+
+      var last = tiles[tiles.length - 1];
+      if (last) {
+        last.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName !== 'transform') return;
+          last.removeEventListener('transitionend', handler);
+          cleanup();
+        });
+        setTimeout(cleanup, 800);
+      } else {
+        cleanup();
+      }
+    });
+  });
+};
+
 function clearGapPulse() {
   var rows = document.querySelectorAll('.demo-gap-row');
   for (var i = 0; i < rows.length; i++) rows[i].classList.remove('demo-gap-pulse');
@@ -902,7 +974,7 @@ function startDemo() {
       element: '#demo-hero',
       popover: {
         title: 'Open Digital Sovereignty',
-        description: 'Educational portal on digital sovereignty — what it is, why it matters, and how to assess your posture.',
+        description: 'Learn what digital sovereignty means, assess your organisation\'s readiness, and discover the open-source ecosystem that can help.',
         side: 'bottom', align: 'center'
       },
       onHighlightStarted: function() {
@@ -916,7 +988,7 @@ function startDemo() {
       element: '#demo-floating-menu',
       popover: {
         title: 'Sovereignty Assessments',
-        description: 'Three assessment tools: the <strong>EU Cloud Sovereignty Framework</strong>, a <strong>Digital Sovereignty Quiz</strong>, and the full <strong>Sovereignty Readiness Assessment</strong>.',
+        description: 'Three tools to evaluate your sovereignty posture — from a quick quiz to a full structured assessment.',
         side: 'left', align: 'start'
       },
       onHighlightStarted: function() {
@@ -1014,8 +1086,8 @@ function startDemo() {
       element: '#demo-landscape-root',
       popover: {
         title: 'Sovereignty Ecosystem',
-        description: 'Over 100 cloud-native projects mapped to the same <strong>7 sovereignty pillars</strong>. Each tile is a project that strengthens a specific aspect of digital sovereignty.',
-        side: 'top', align: 'center'
+        description: 'Over 100 cloud-native projects mapped to the same <strong>7 sovereignty domains</strong>. Each tile is a project that strengthens a specific aspect of digital sovereignty.',
+        side: 'left', align: 'start'
       },
       onHighlightStarted: function() {
         showDemoSection('demo-s-ecosystem');
@@ -1024,51 +1096,56 @@ function startDemo() {
         window.scrollTo({ top: 0 });
       }
     },
-    /* Step 11: Gap domains highlighted in ecosystem + Red Hat Portfolio */
-    {
-      element: '#demo-landscape-root',
-      popover: {
-        title: 'Your gap domains — Red Hat Portfolio',
-        description: '<strong>DS-2 (Technical)</strong> and <strong>DS-4 (Assurance)</strong> are highlighted. The <strong>Red Hat Portfolio</strong> filter is active — community-only projects are dimmed so you can focus on commercially supported solutions.',
-        side: 'top', align: 'center'
-      },
-      onHighlightStarted: function() {
-        showDemoSection('demo-s-ecosystem');
-        setNavActive('ecosystem');
-        clearEcosystemHighlights();
-        document.getElementById('demo-landscape-root').classList.add('rh-highlight');
-        document.getElementById('demo-rh-toggle').checked = true;
-        document.getElementById('demo-rh-legend').classList.remove('hidden');
-        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
-        if (toolbar) toolbar.style.display = '';
-        DEMO_DATA.gapEcosystemIds.forEach(function(id) {
-          var sec = document.querySelector('[data-category="' + id + '"]');
-          if (sec) sec.classList.add('demo-highlight-domain');
-        });
-        window.scrollTo({ top: 0 });
-      }
-    },
-    /* Step 12: RH products for gap domains */
+    /* Step 11: Technical Sovereignty — ecosystem + Red Hat Portfolio */
     {
       element: '[data-category="DS-2"]',
       popover: {
-        title: 'Red Hat products for your gaps',
-        description: 'For <strong>Technical Sovereignty (DS-2)</strong>: Red Hat OpenShift, Podman, Buildah. For <strong>Assurance (DS-4)</strong>: Red Hat ACS, Quay, Keycloak, Service Mesh, Trusted Artifact Signer — products that directly close these sovereignty gaps.',
+        title: 'Technical Sovereignty — Red Hat Portfolio',
+        description: 'Your biggest gap. Red Hat OpenShift, Podman, and Buildah help eliminate vendor lock-in and adopt open standards.',
         side: 'right', align: 'start'
       },
       onHighlightStarted: function() {
         showDemoSection('demo-s-ecosystem');
         setNavActive('ecosystem');
-        document.getElementById('demo-landscape-root').classList.add('rh-highlight');
-        document.getElementById('demo-rh-toggle').checked = true;
-        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
-        if (toolbar) toolbar.style.display = 'none';
-        var legend = document.getElementById('demo-rh-legend');
-        if (legend) legend.style.display = 'none';
         DEMO_DATA.gapEcosystemIds.forEach(function(id) {
-          var sec = document.querySelector('[data-category="' + id + '"]');
-          if (sec) sec.classList.add('demo-highlight-domain');
+          var s = document.querySelector('[data-category="' + id + '"]');
+          if (s) s.classList.remove('demo-highlight-domain');
         });
+        var root = document.getElementById('demo-landscape-root');
+        document.getElementById('demo-rh-toggle').checked = true;
+        document.getElementById('demo-rh-legend').classList.remove('hidden');
+        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
+        if (toolbar) toolbar.style.display = '';
+        window.scrollTo({ top: 0 });
+        window.flipToggle(root, true);
+        var sec = document.querySelector('[data-category="DS-2"]');
+        if (sec) sec.classList.add('demo-highlight-domain');
+      }
+    },
+    /* Step 12: Assurance Sovereignty — ecosystem + Red Hat Portfolio */
+    {
+      element: '[data-category="DS-4"]',
+      popover: {
+        title: 'Assurance Sovereignty — Red Hat Portfolio',
+        description: 'Carries <strong>2.0×</strong> weight for Financial Services. Red Hat ACS, Quay, Keycloak, and Trusted Artifact Signer provide the compliance evidence you need.',
+        side: 'right', align: 'start'
+      },
+      onHighlightStarted: function() {
+        showDemoSection('demo-s-ecosystem');
+        setNavActive('ecosystem');
+        DEMO_DATA.gapEcosystemIds.forEach(function(id) {
+          var s = document.querySelector('[data-category="' + id + '"]');
+          if (s) s.classList.remove('demo-highlight-domain');
+        });
+        var root = document.getElementById('demo-landscape-root');
+        if (!root.classList.contains('rh-highlight')) {
+          document.getElementById('demo-rh-toggle').checked = true;
+          window.flipToggle(root, true);
+        }
+        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
+        if (toolbar) toolbar.style.display = '';
+        var sec = document.querySelector('[data-category="DS-4"]');
+        if (sec) sec.classList.add('demo-highlight-domain');
       }
     }
   ];
@@ -1114,43 +1191,70 @@ function showClosingSlides() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   CLICKER — unified keyboard handler for ALL phases
+   NAVIGATION — unified keyboard + mouse handler for ALL phases
    ═══════════════════════════════════════════════════════════════════ */
 var NEXT = ['ArrowRight','ArrowDown','PageDown',' ','Enter'];
 var PREV = ['ArrowLeft','ArrowUp','PageUp'];
+
+function handleNav(direction) {
+  if (phase === 'slides') {
+    if (direction === 'next') nextSlide();
+    if (direction === 'prev') prevSlide();
+  }
+
+  else if (phase === 'demo' && driverObj) {
+    if (direction === 'next') {
+      if (driverObj.isLastStep()) { driverObj.destroy(); }
+      else { driverObj.moveNext(); }
+    }
+    if (direction === 'prev') { driverObj.movePrevious(); }
+  }
+
+  else if (phase === 'closing' && CONFIG.closingSlidesUrl) {
+    var cf = document.getElementById('closing-frame');
+    if (direction === 'next' && closingSlide < CONFIG.closingTotalSlides - 1) {
+      closingSlide++;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
+    }
+    if (direction === 'prev' && closingSlide > 0) {
+      closingSlide--;
+      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
+    }
+  }
+}
 
 document.addEventListener('keydown', function(e) {
   var isNext = NEXT.indexOf(e.key) !== -1;
   var isPrev = PREV.indexOf(e.key) !== -1;
   if (!isNext && !isPrev && e.key !== 'Escape') return;
 
+  e.preventDefault();
+  if (isNext) handleNav('next');
+  if (isPrev) handleNav('prev');
+  if (e.key === 'Escape' && phase === 'demo' && driverObj) driverObj.destroy();
+});
+
+/* ── Click navigation: left third = prev, right two-thirds = next ── */
+document.addEventListener('click', function(e) {
   if (phase === 'slides') {
-    e.preventDefault();
-    if (isNext) nextSlide();
-    if (isPrev) prevSlide();
+    var dir = (e.clientX < window.innerWidth / 3) ? 'prev' : 'next';
+    handleNav(dir);
+    return;
   }
 
-  else if (phase === 'demo' && driverObj) {
-    e.preventDefault();
-    if (isNext) {
-      if (driverObj.isLastStep()) { driverObj.destroy(); }
-      else { driverObj.moveNext(); }
+  if (phase === 'demo' && driverObj) {
+    var overlay = e.target.closest('.driver-overlay');
+    if (overlay) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleNav('next');
+      return;
     }
-    if (isPrev) { driverObj.movePrevious(); }
-    if (e.key === 'Escape') { driverObj.destroy(); }
   }
 
-  else if (phase === 'closing' && CONFIG.closingSlidesUrl) {
-    e.preventDefault();
-    var cf = document.getElementById('closing-frame');
-    if (isNext && closingSlide < CONFIG.closingTotalSlides - 1) {
-      closingSlide++;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
-    }
-    if (isPrev && closingSlide > 0) {
-      closingSlide--;
-      cf.src = slideUrl(CONFIG.closingSlidesUrl, closingSlide, CONFIG.closingSlideIds);
-    }
+  if (phase === 'closing') {
+    var dir2 = (e.clientX < window.innerWidth / 3) ? 'prev' : 'next';
+    handleNav(dir2);
   }
 });
 </script>

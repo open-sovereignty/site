@@ -1444,6 +1444,16 @@ main {
   border-radius: var(--radius);
 }
 
+/* ── FLIP animation helpers ────────────────────────────────── */
+.landscape-tile.is-flipping {
+  will-change: transform;
+  z-index: 1;
+}
+
+.landscape-root.flipping .landscape-tile {
+  pointer-events: none;
+}
+
 /* ── Red Hat highlight mode: dim non-RH tiles ─────────────── */
 .landscape-tile--no-rh {
   transition: opacity 0.3s, filter 0.3s, border-color 0.3s, box-shadow 0.3s;
