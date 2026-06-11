@@ -791,31 +791,16 @@
           "redhatProduct": "Red Hat build of Keycloak"
         },
         {
-          "name": "SPIFFE",
-          "logo": "logos/e649cd82385a7f0758eb272631b7d9148b3a9211493001b6864a6538b73cbee6.svg",
-          "url": "https://spiffe.io/",
-          "github": "https://github.com/spiffe/spiffe",
-          "summary": "Secure Production Identity Framework for Everyone. A set of standards for identifying software services.",
-          "stars": 1640,
+          "name": "Istio",
+          "logo": "logos/2d881599f6faed0a16840a675049bd10ce7096134d93df3f533aaf91972a9689.svg",
+          "url": "https://istio.io/",
+          "github": "https://github.com/istio/istio",
+          "summary": "Service mesh that simplifies observability, traffic management, security, and policy for microservices.",
+          "stars": 38203,
           "maturity": "graduated",
           "tags": [
-            "identity",
+            "service-mesh",
             "zero-trust"
-          ],
-          "redhatSupported": true,
-          "redhatProduct": "Red Hat OpenShift Service Mesh"
-        },
-        {
-          "name": "SPIRE",
-          "logo": "logos/8cbfe9bcfba18cc9712bda70565c8598eee930663533395b6cc350618c3e5b02.svg",
-          "url": "https://spiffe.io/spire/",
-          "github": "https://github.com/spiffe/spire",
-          "summary": "The SPIFFE Runtime Environment, implementing SPIFFE APIs for workload identity in production.",
-          "stars": 2270,
-          "maturity": "graduated",
-          "tags": [
-            "identity",
-            "runtime"
           ],
           "redhatSupported": true,
           "redhatProduct": "Red Hat OpenShift Service Mesh"
@@ -1128,21 +1113,6 @@
           "maturity": "graduated",
           "tags": [
             "proxy",
-            "networking"
-          ],
-          "redhatSupported": true,
-          "redhatProduct": "Red Hat OpenShift Service Mesh"
-        },
-        {
-          "name": "Istio",
-          "logo": "logos/2d881599f6faed0a16840a675049bd10ce7096134d93df3f533aaf91972a9689.svg",
-          "url": "https://istio.io/",
-          "github": "https://github.com/istio/istio",
-          "summary": "Service mesh that simplifies observability, traffic management, security, and policy for microservices.",
-          "stars": 38203,
-          "maturity": "graduated",
-          "tags": [
-            "service-mesh",
             "networking"
           ],
           "redhatSupported": true,

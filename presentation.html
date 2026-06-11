@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg, #000); }
 
     /* ── Slide viewer ────────────────────────────────────── */
     #slide-viewer {
@@ -149,8 +149,8 @@
               <summary id="demo-nav-assessment">Sovereignty Assessment</summary>
               <ul class="nav-submenu">
                 <li><a href="#" onclick="return false">All assessments</a></li>
-                <li><a href="#" onclick="return false">EU Cloud Sovereignty Framework</a></li>
                 <li><a href="#" onclick="return false">Digital Sovereignty Quiz</a></li>
+                <li><a href="#" onclick="return false">EU Cloud Sovereignty Framework</a></li>
                 <li><a href="#" onclick="return false">Sovereignty Readiness Assessment</a></li>
               </ul>
             </details>
@@ -323,8 +323,8 @@
 <!-- Floating assessment dropdown (outside #demo-site, above Driver.js overlay) -->
 <div id="demo-floating-menu">
   <a href="#" onclick="return false">All assessments</a>
-  <a href="#" onclick="return false">EU Cloud Sovereignty Framework</a>
   <a href="#" onclick="return false">Digital Sovereignty Quiz</a>
+  <a href="#" onclick="return false">EU Cloud Sovereignty Framework</a>
   <a href="#" onclick="return false">Sovereignty Readiness Assessment</a>
 </div>
 
@@ -670,6 +670,7 @@ function buildResultsSection(profile) {
       '<h2>Your Readiness Report</h2>' +
       '<p class="dsr-report-meta">Profile: <strong>' + esc(profile.label) + '</strong></p>' +
     '</div>' +
+    '<div id="demo-score-and-domains">' +
     '<div class="dsr-score-block" id="demo-score-block">' +
       '<div class="dsr-maturity-badge dsr-level-' + r.maturityLevel.level + '">' +
         '<span class="dsr-maturity-level-num">Level ' + r.maturityLevel.level + '</span>' +
@@ -691,6 +692,7 @@ function buildResultsSection(profile) {
         '<tbody>' + domainRowsHtml + '</tbody>' +
       '</table>' +
     '</section>' +
+    '</div>' +
     '<section class="dsr-results-section">' +
       '<h3>Recommended Actions</h3>' +
       '<div>' + actionsHtml + '</div>' +
@@ -998,22 +1000,7 @@ function startDemo() {
         showFloatingMenu();
       }
     },
-    /* Step 3: Readiness Assessment — intro */
-    {
-      element: '#demo-intro-card',
-      popover: {
-        title: 'Sovereignty Readiness Assessment',
-        description: 'A structured evaluation across <strong>7 domains</strong> with <strong>21 questions</strong> (Yes / No / Don\'t Know). Industry weights adjust the scoring. Output is a <strong>5-level maturity model</strong> with tailored actions.',
-        side: 'left', align: 'center'
-      },
-      onHighlightStarted: function() {
-        hideFloatingMenu();
-        showDemoSection('demo-s-readiness');
-        setNavActive('assessment');
-        document.getElementById('demo-nav-dropdown').removeAttribute('open');
-      }
-    },
-    /* Step 5: Profile selection — Financial Services */
+    /* Step 3: Profile selection — Financial Services */
     {
       element: '#demo-profile-block',
       popover: {
@@ -1022,11 +1009,13 @@ function startDemo() {
         side: 'left', align: 'start'
       },
       onHighlightStarted: function() {
+        hideFloatingMenu();
+        document.getElementById('demo-nav-dropdown').removeAttribute('open');
         showDemoSection('demo-s-profile');
         setNavActive('assessment');
       }
     },
-    /* Step 6: Data Sovereignty questions (strong) */
+    /* Step 4: Data Sovereignty questions (strong) */
     {
       element: '#demo-quiz-data-section',
       popover: {
@@ -1039,49 +1028,23 @@ function startDemo() {
         setNavActive('assessment');
       }
     },
-    /* Step 7: Technical Sovereignty questions (gap) */
+    /* Step 5: Results & gaps */
     {
-      element: '#demo-quiz-tech-section',
+      element: '#demo-score-and-domains',
       popover: {
-        title: 'Technical Sovereignty — 0/3 Yes',
-        description: 'Zero positive answers. Cannot mitigate vendor lock-in, does not prioritise open standards, and has not tested cloud migration. <strong>This is a critical gap.</strong>',
-        side: 'left', align: 'start'
-      },
-      onHighlightStarted: function() {
-        showDemoSection('demo-s-quiz-tech');
-        setNavActive('assessment');
-      }
-    },
-    /* Step 8: Results dashboard */
-    {
-      element: '#demo-score-block',
-      popover: {
-        title: 'Level 1 — Managed',
-        description: 'Overall score: <strong>33%</strong> (7.0 / 21 pts). Basic controls are in place but not yet standardised. Significant room to improve.',
-        side: 'bottom', align: 'center'
+        title: 'Critical gaps identified',
+        description: 'Overall score: <strong>33%</strong> (Level 1 — Managed). <strong>Technical Sovereignty</strong> and <strong>Assurance Sovereignty</strong> are both at <strong>0%</strong>. Assurance carries a <strong>2.0×</strong> weight for Financial Services, making it the most critical gap to close.',
+        side: 'right', align: 'start'
       },
       onHighlightStarted: function() {
         showDemoSection('demo-s-results');
         setNavActive('assessment');
         clearGapPulse();
-      }
-    },
-    /* Step 9: Gap domains highlighted */
-    {
-      element: '#demo-domain-table',
-      popover: {
-        title: 'Critical gaps identified',
-        description: '<strong>Technical Sovereignty</strong> and <strong>Assurance Sovereignty</strong> are both at <strong>0%</strong>. Assurance carries a <strong>2.0×</strong> weight for Financial Services, making it the most critical gap to close.',
-        side: 'left', align: 'start'
-      },
-      onHighlightStarted: function() {
-        showDemoSection('demo-s-results');
-        setNavActive('assessment');
         var rows = document.querySelectorAll('.demo-gap-row');
         for (var i = 0; i < rows.length; i++) rows[i].classList.add('demo-gap-pulse');
       }
     },
-    /* Step 10: Ecosystem overview */
+    /* Step 6: Ecosystem overview */
     {
       element: '#demo-landscape-root',
       popover: {
@@ -1096,33 +1059,7 @@ function startDemo() {
         window.scrollTo({ top: 0 });
       }
     },
-    /* Step 11: Technical Sovereignty — ecosystem + Red Hat Portfolio */
-    {
-      element: '[data-category="DS-2"]',
-      popover: {
-        title: 'Technical Sovereignty — Red Hat Portfolio',
-        description: 'Your biggest gap. Red Hat OpenShift, Podman, and Buildah help eliminate vendor lock-in and adopt open standards.',
-        side: 'right', align: 'start'
-      },
-      onHighlightStarted: function() {
-        showDemoSection('demo-s-ecosystem');
-        setNavActive('ecosystem');
-        DEMO_DATA.gapEcosystemIds.forEach(function(id) {
-          var s = document.querySelector('[data-category="' + id + '"]');
-          if (s) s.classList.remove('demo-highlight-domain');
-        });
-        var root = document.getElementById('demo-landscape-root');
-        document.getElementById('demo-rh-toggle').checked = true;
-        document.getElementById('demo-rh-legend').classList.remove('hidden');
-        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
-        if (toolbar) toolbar.style.display = '';
-        window.scrollTo({ top: 0 });
-        window.flipToggle(root, true);
-        var sec = document.querySelector('[data-category="DS-2"]');
-        if (sec) sec.classList.add('demo-highlight-domain');
-      }
-    },
-    /* Step 12: Assurance Sovereignty — ecosystem + Red Hat Portfolio */
+    /* Step 7: Assurance Sovereignty — ecosystem + Red Hat Portfolio */
     {
       element: '[data-category="DS-4"]',
       popover: {
@@ -1138,12 +1075,10 @@ function startDemo() {
           if (s) s.classList.remove('demo-highlight-domain');
         });
         var root = document.getElementById('demo-landscape-root');
-        if (!root.classList.contains('rh-highlight')) {
-          document.getElementById('demo-rh-toggle').checked = true;
-          window.flipToggle(root, true);
-        }
-        var toolbar = document.querySelector('#demo-s-ecosystem .landscape-toolbar');
-        if (toolbar) toolbar.style.display = '';
+        document.getElementById('demo-rh-toggle').checked = true;
+        document.getElementById('demo-rh-legend').classList.remove('hidden');
+        window.scrollTo({ top: 0 });
+        window.flipToggle(root, true);
         var sec = document.querySelector('[data-category="DS-4"]');
         if (sec) sec.classList.add('demo-highlight-domain');
       }

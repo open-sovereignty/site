@@ -908,7 +908,7 @@ main {
 
 .results-score-label {
   margin-top: 0.5rem;
-  color: var(--header-muted);
+  color: #CBD5E1;
   font-size: 0.9375rem;
 }
 
@@ -1749,27 +1749,27 @@ main {
 .vf-score-number {
   font-size: 3.5rem;
   font-weight: 900;
-  color: var(--navy-900);
+  color: #F8FAFC;
   line-height: 1;
 }
 
 .vf-score-denom {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--muted);
+  color: #CBD5E1;
 }
 
 .vf-band-label {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #22D3EE;
   text-align: center;
   margin-bottom: 0.4rem;
 }
 
 .vf-band-desc {
   text-align: center;
-  color: var(--text-muted);
+  color: #CBD5E1;
   font-size: 0.9375rem;
   max-width: 40ch;
   margin: 0 auto 1.5rem;

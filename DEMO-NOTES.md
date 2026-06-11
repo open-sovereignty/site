@@ -4,158 +4,121 @@ Notes on what to say at each step of the guided demo.
 
 ## Step 1 — Home / Welcome
 
-> **Key message:** Here you can see the website we have built to support this entire
-> Open Digital Sovereignty movement. The main idea is that any Red Hat employee — or
-> even partners — can rely on this framework to have better conversations with our
-> customers, from Account Executives through pre-sales to services.
+This is the website we built to support the Open Digital Sovereignty initiative.
+The main idea is simple: any Red Hat employee — or even partners — can use this
+framework to have better conversations with customers, whether you are in Sales,
+pre-sales, or services.
 
-The website has two very important parts: the **Assessment** section and the
-**Sovereignty Ecosystem** section. We will start with the Assessment part and
-finish with the Ecosystem.
+We created the start of an open-source project inspired by the CNCF model — a
+single place that brings together all the open-source projects that can help
+organisations achieve digital sovereignty.
+
+The website has two key parts: the **Assessment** section and the **Sovereignty
+Ecosystem** section. We will start with the Assessment and finish with the
+Ecosystem.
 
 ---
 
 ## Step 2 — Sovereignty Assessments
 
-As you can see, we currently support 3 assessments:
+As you can see, we currently have 3 assessments:
 
-1. **EU Cloud Sovereignty Framework** — A compliance-oriented checklist aligned with
-   European regulations (EUCS, GDPR, NIS2). Helps organisations understand where they
-   stand against EU-specific sovereignty requirements.
+1. **Digital Sovereignty Quiz** — A short quiz to quickly see how your
+   organisation is doing on sovereignty.
 
-2. **Digital Sovereignty Quiz** — A quick, lightweight quiz to get a first pulse on
-   your sovereignty posture. Ideal for an initial conversation or awareness session
-   with stakeholders who are new to the topic.
+2. **EU Cloud Sovereignty Framework** — A checklist based on European regulations.
+   It helps organisations see how ready they are to meet EU sovereignty rules.
 
-3. **Sovereignty Readiness Assessment**
-
----
-
-## Step 3 — Sovereignty Readiness Assessment (intro)
-
-> **Key message:** This is the most complete assessment we offer. It is a structured
-> evaluation covering **7 sovereignty domains** — Data, Technical, Operational,
-> Assurance, Open Source, Executive Oversight, and Managed Services.
-
-It consists of **21 questions** (3 per domain), each with contextual guidance.
-Answers are simple: Yes, No, or Don't Know — where "Don't Know" helps surface
-knowledge gaps within the organisation.
-
-Everything runs client-side — no data is stored or transmitted.
+3. **Sovereignty Readiness Assessment** — This is the most complete assessment
+   we offer.
 
 ---
 
-## Step 4 — Profile selection (Financial Services)
+## Step 3 — Profile selection (Financial Services)
 
-The assessment is designed for different industry profiles — in this case we have
-selected **Financial Services**.
+The assessment is built for different industries — in this case we picked
+**Financial Services**.
 
 Here we can see the **7 sovereignty domains**.
 
-Depending on the selected profile, each domain receives more or less weight.
-For Financial Services, **Data**, **Assurance**, and **Executive Oversight** carry
-a **2.0x** weight — driven by the heavy regulatory requirements in the financial sector.
+Each domain gets more or less weight depending on the industry. For Financial
+Services, **Data**, **Assurance**, and **Executive Oversight** carry a **2.0x**
+weight — because the financial sector has very strict regulations.
 
 ---
 
-## Step 5 — Data Sovereignty questions
+## Step 4 — Data Sovereignty questions
 
-Example of a domain where the organisation is doing well: 2 out of 3 questions
-answered "Yes". A solid foundation with room to grow.
+So any client by their own can do the assessment, but we can also do it with them, 
+here is where it will help us to have this kind of conversation with our clientes
 
----
-
-## Step 6 — Technical Sovereignty questions
-
-Example of a critical gap: 0 out of 3 questions answered "Yes". The organisation
-cannot mitigate vendor lock-in, does not prioritise open standards, and has not
-tested cloud migration.
-
-We won't go through all the questions to keep the demo moving — let's jump
-straight to the final results.
+Answers are simple: Yes, No, or Don't Know.
 
 ---
 
-## Step 7 — Results dashboard
+## Step 5 — Results dashboard
 
 Here we see the overall result: **Level 1 — Managed**, with a score of **33%**
-(7.0 out of 21 points). This means basic controls are in place but they are not
-yet standardised. There is significant room for improvement.
+. This means basic controls exist but they are not yet
+consistent. There is a lot of room for improvement.
 
-The output maps the score to a **5-level maturity model** and provides a tailored
-action plan showing where to focus next.
-
----
-
-## Step 8 — Gap domains highlighted
-
-The results table highlights the critical gaps. In this example, **Technical
+The results table shows the critical gaps. In this example, **Technical
 Sovereignty** and **Assurance Sovereignty** are both at **0%**. Since Assurance
-carries a **2.0x** weight for Financial Services, it becomes the most urgent
-domain to address.
+has a **2.0x** weight for Financial Services, it becomes the most urgent area to
+work on.
 
-This is where the **Sovereignty Ecosystem** has its greatest strength — when
-customers become aware of where they are weakest and therefore need to improve.
+This is where the **Sovereignty Ecosystem** is most powerful — when customers
+realise where they are and need to improve.
 
 ---
 
-## Step 9 — Critical gaps identified
+## Step 9 — Sovereignty Ecosystem
 
-When the gaps are shown (Technical Sovereignty and Assurance Sovereignty at 0%):
+Our message here is: you are not alone. The entire Open Source community is
+behind you and can help in each sovereignty domain through the projects that
+have been identified in the ecosystem.
+This saves organisations from having to
+research hundreds of projects on their own. The community has already done the
+hard work of sorting these projects by domain level.
 
-> **Key message:** You are not alone. The entire Open Source community stands behind you
-> and can help in each of the different sovereignty domains through the OS projects
-> that have been identified in the ecosystem.
+**Closing remark:** At the open-source level, this is where we stop — now it is
+in their hands. With the data they have and the community work already done, it
+is up to them to adopt the right OS projects. 
 
-**Closing remark:** At the open-source level, this is where we stop — now it is in
-their hands. Based on the data they have and the work done at community level, it is
-up to them to adopt the different OS projects that can help them. But Red Hat, as
-always, goes one step further.
+However Red Hat, as always, goes one step further.
 
 ---
 
 ## Step 10 — Technical Sovereignty (Red Hat Portfolio)
 
-> **Key message:** Red Hat has been doing this work for decades — getting involved in
-> open-source projects and productising them to make them enterprise-ready, always
-> keeping the upstream open-source project as the foundation.
+**Key message:** Red Hat has been doing this for years — getting involved in
+open-source projects and turning them into enterprise-ready products, always
+keeping the upstream project as the foundation.
 
-We have already researched and selected which of all these OS projects are truly
-useful, so we can offer them as products to our customers.
+We have already researched and picked which OS projects are truly useful, so we
+can offer them as products to our customers.
 
-For Technical Sovereignty — the customer's biggest gap — Red Hat offers:
-
-- **Red Hat OpenShift**
-- **Podman**
-- **Buildah**
-
-These products directly address the three questions where the customer scored 0:
-vendor lock-in mitigation, open standards adoption, and cloud migration readiness.
+Here we can see how Red Hat helps each customer based on their specific needs,
+matching our products to the sovereignty domains where they need the most help.
 
 ---
 
 ## Step 11 — Assurance Sovereignty (Red Hat Portfolio)
 
-For Assurance Sovereignty — which carries **2.0x** weight for Financial Services:
+For Assurance Sovereignty — which has a **2.0x** weight for Financial Services:
 
 - **Red Hat Advanced Cluster Security (ACS)**
-- **Red Hat Quay**
+- **Quay**
 - **Keycloak**
-- **Trusted Artifact Signer**
 
-These products provide the compliance evidence, audit trails, and supply-chain
-assurance that financial regulators demand.
+This shows that Red Hat has been investing in these projects for years, turning
+them into enterprise-ready products so our customers can tackle their sovereignty
+challenges with confidence.
 
 ---
 
 ## Conclusion
 
-To wrap up:
-
-- With this framework, customers can **measure** where they stand today, **identify**
-  their critical gaps, and **discover** the open-source projects that can help.
-- At the open-source level, the community provides the building blocks. But Red Hat
-  takes it further — **productising, hardening, and supporting** those projects so
-  customers can adopt them with confidence at enterprise scale.
-- The customer is never alone in this journey: they have the community, the ecosystem,
-  and Red Hat by their side.
+This tool is just the enabler.
+It's not the tool itself — it's the conversation it starts. This tool should be
+a catalyst to help us connect with our customers.
